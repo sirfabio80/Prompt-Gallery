@@ -57,6 +57,14 @@ declare global {
                         table: 'sys_ui_element'
                         id: '6c662f2d932dbed43321f2cbdd03d6f6'
                     }
+                    '7975415293a5fe183321f2cbdd03d61c': {
+                        table: 'sys_scope_privilege'
+                        id: '7975415293a5fe183321f2cbdd03d61c'
+                    }
+                    '7d17345693edbe183321f2cbdd03d676': {
+                        table: 'm2m_sp_theme_css_include'
+                        id: '7d17345693edbe183321f2cbdd03d676'
+                    }
                     '94eab80a93613a183321f2cbdd03d681': {
                         table: 'sys_ui_element'
                         id: '94eab80a93613a183321f2cbdd03d681'

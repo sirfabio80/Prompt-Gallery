@@ -28,6 +28,7 @@ export * from './service-portal/widget.now.ts';
 export * from './service-portal/widgets/prompt-gallery-search.now.ts';
 export * from './service-portal/widgets/prompt-gallery-main.now.ts';
 export * from './service-portal/widgets/prompt-gallery-detail.now.ts';
+export * from './service-portal/headers/prompt-gallery-header.now.ts';
 export * from './service-portal/css/prompt-gallery-css.now.ts';
 
 // Export sample data

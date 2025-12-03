@@ -1,23 +1,13 @@
 import '@servicenow/sdk/global'
 import { Record } from '@servicenow/sdk/core'
 
-// Theme Header/Footer record - Creates the header widget wrapper
-export const prompt_gallery_header_footer = Record({
-    $id: Now.ID['prompt_gallery_header_footer'],
-    table: 'sp_header_footer',
-    data: {
-        name: 'Prompt Gallery Header',
-        widget: '5ef595c1cb12020000f8d856634c9c6e', // OOB Stock Header widget sys_id
-    },
-})
-
 // Main Theme record for Prompt Gallery Portal
 export const prompt_gallery_theme = Record({
     $id: Now.ID['prompt_gallery_theme'],
     table: 'sp_theme',
     data: {
         name: 'Prompt Gallery Theme',
-        header: prompt_gallery_header_footer, // Link to our header/footer record
+        header: '511a7cb8fdbd49e3b452acd5fc2354fb', // Direct reference to our header sys_id
         footer: '', // No footer for now
         navbar_fixed: true, // Fix header to top of viewport
         footer_fixed: false,
