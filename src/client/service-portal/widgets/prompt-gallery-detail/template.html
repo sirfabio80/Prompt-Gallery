@@ -79,8 +79,9 @@
       <div class="action-section">
         <h5>Actions</h5>
         <div class="btn-group action-buttons" role="group">
-          <button class="btn btn-primary" 
+          <button class="btn btn-primary copy-full-prompt-btn" 
                   ng-click="c.copyFullPromptContent()"
+                  ng-style="c.getCopyButtonStyle()"
                   title="Copy complete prompt content">
             <i class="fa fa-copy"></i> Copy Full Prompt
           </button>
@@ -169,8 +170,9 @@
           <div class="action-section">
             <h5>Actions</h5>
             <div class="btn-group action-buttons" role="group">
-              <button class="btn btn-primary" 
+              <button class="btn btn-primary copy-full-prompt-btn" 
                       ng-click="c.copyFullPrompt()"
+                      ng-style="c.getCopyButtonStyle()"
                       title="Copy complete prompt with role instructions">
                 <i class="fa fa-copy"></i> Copy Full Prompt
               </button>

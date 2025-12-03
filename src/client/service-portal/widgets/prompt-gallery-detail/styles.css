@@ -439,6 +439,32 @@
   border-color: #005cbf;
 }
 
+/* Dynamic category color for Copy Full Prompt button */
+.action-buttons .btn-primary.copy-full-prompt-btn {
+  /* Background will be set dynamically via inline style */
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.action-buttons .btn-primary.copy-full-prompt-btn:hover {
+  /* Hover effect will be calculated dynamically */
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  filter: brightness(0.9);
+}
+
+.action-buttons .btn-primary.copy-full-prompt-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  filter: brightness(0.8);
+}
+
+.action-buttons .btn-primary.copy-full-prompt-btn:focus {
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.1);
+  outline: none;
+}
+
 .action-buttons .btn-success {
   background: #28a745;
   border-color: #28a745;

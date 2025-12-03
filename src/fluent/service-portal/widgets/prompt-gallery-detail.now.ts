@@ -131,9 +131,13 @@ export const prompt_gallery_detail_widget = Record({
           
           // Set recommended version as default
           if (data.prompt.versions && data.prompt.versions.length > 0) {
-            var recommendedVersion = data.prompt.versions.find(function(v) {
-              return v.status === 'recommended';
-            });
+            var recommendedVersion = null;
+            for (var i = 0; i < data.prompt.versions.length; i++) {
+              if (data.prompt.versions[i].status === 'recommended') {
+                recommendedVersion = data.prompt.versions[i];
+                break;
+              }
+            }
             
             data.selected_version = recommendedVersion || data.prompt.versions[0];
           }

@@ -423,6 +423,25 @@ function PromptGalleryDetailController($scope, $rootScope, spUtil, $sce, $timeou
     };
   };
 
+  // Get copy button style with category color
+  c.getCopyButtonStyle = function() {
+    if (!$scope.data.prompt || !$scope.data.prompt.category_color) {
+      return {
+        'background': '#0073e6',
+        'border-color': '#0073e6'
+      };
+    }
+    
+    var baseColor = $scope.data.prompt.category_color;
+    var darkerColor = c.darkenColor(baseColor, 15);
+    
+    return {
+      'background': baseColor,
+      'border-color': baseColor,
+      'transition': 'all 0.3s ease'
+    };
+  };
+
   // Helper function to darken a hex color
   c.darkenColor = function(hexColor, percent) {
     // Remove # if present
