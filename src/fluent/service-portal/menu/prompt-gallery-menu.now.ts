@@ -9,7 +9,12 @@ export const prompt_gallery_menu_instance = Record({
         title: 'Prompt Gallery Main Menu',
         sp_widget: '5ef595c1cb12020000f8d856634c9c6e', // OOB Header Menu widget sys_id
         color: 'default',
-        short_description: 'Main navigation menu for the Prompt Gallery portal'
+        short_description: 'Main navigation menu for the Prompt Gallery portal',
+        active: 'true',
+        advanced_placeholder_dimensions: 'false',
+        async_load: 'false',
+        glyph: 'empty',
+        preserve_placeholder_size: 'false',
     },
 })
 

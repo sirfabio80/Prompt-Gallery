@@ -5,10 +5,34 @@ declare global {
         namespace Internal {
             interface Keys extends KeysRegistry {
                 explicit: {
+                    '030f0c0a93adb6183321f2cbdd03d63a': {
+                        table: 'sys_ui_element'
+                        id: '030f0c0a93adb6183321f2cbdd03d63a'
+                    }
+                    '070f0c0a93adb6183321f2cbdd03d60d': {
+                        table: 'sys_ui_element'
+                        id: '070f0c0a93adb6183321f2cbdd03d60d'
+                    }
+                    '070f0c0a93adb6183321f2cbdd03d611': {
+                        table: 'sys_ui_element'
+                        id: '070f0c0a93adb6183321f2cbdd03d611'
+                    }
+                    '070f0c0a93adb6183321f2cbdd03d637': {
+                        table: 'sys_ui_element'
+                        id: '070f0c0a93adb6183321f2cbdd03d637'
+                    }
+                    '0b0f0c0a93adb6183321f2cbdd03d60e': {
+                        table: 'sys_ui_element'
+                        id: '0b0f0c0a93adb6183321f2cbdd03d60e'
+                    }
                     '0ee6ce9a93a172583321f2cbdd03d687': {
                         table: 'sp_row'
                         id: '0ee6ce9a93a172583321f2cbdd03d687'
                         deleted: true
+                    }
+                    '0f0f0c0a93adb6183321f2cbdd03d63c': {
+                        table: 'sys_ui_element'
+                        id: '0f0f0c0a93adb6183321f2cbdd03d63c'
                     }
                     '10eab80a93613a183321f2cbdd03d680': {
                         table: 'sys_ui_element'
@@ -37,6 +61,18 @@ declare global {
                     '28662f2d932dbed43321f2cbdd03d6f7': {
                         table: 'sys_ui_element'
                         id: '28662f2d932dbed43321f2cbdd03d6f7'
+                    }
+                    '430f0c0a93adb6183321f2cbdd03d63c': {
+                        table: 'sys_ui_element'
+                        id: '430f0c0a93adb6183321f2cbdd03d63c'
+                    }
+                    '470f0c0a93adb6183321f2cbdd03d639': {
+                        table: 'sys_ui_element'
+                        id: '470f0c0a93adb6183321f2cbdd03d639'
+                    }
+                    '4b0f0c0a93adb6183321f2cbdd03d610': {
+                        table: 'sys_ui_element'
+                        id: '4b0f0c0a93adb6183321f2cbdd03d610'
                     }
                     '4fe4eba1932dbed43321f2cbdd03d6db': {
                         table: 'sys_scope_privilege'
@@ -78,10 +114,22 @@ declare global {
                         table: 'm2m_sp_theme_css_include'
                         id: '7d17345693edbe183321f2cbdd03d676'
                     }
+                    '870f0c0a93adb6183321f2cbdd03d63b': {
+                        table: 'sys_ui_element'
+                        id: '870f0c0a93adb6183321f2cbdd03d63b'
+                    }
                     '8ae6ce9a93a172583321f2cbdd03d68d': {
                         table: 'sp_column'
                         id: '8ae6ce9a93a172583321f2cbdd03d68d'
                         deleted: true
+                    }
+                    '8b0f0c0a93adb6183321f2cbdd03d638': {
+                        table: 'sys_ui_element'
+                        id: '8b0f0c0a93adb6183321f2cbdd03d638'
+                    }
+                    '8f0f0c0a93adb6183321f2cbdd03d60f': {
+                        table: 'sys_ui_element'
+                        id: '8f0f0c0a93adb6183321f2cbdd03d60f'
                     }
                     '94eab80a93613a183321f2cbdd03d681': {
                         table: 'sys_ui_element'
@@ -130,6 +178,10 @@ declare global {
                         table: 'sys_module'
                         id: '6ead3bfa830c4733b8782363ad1d94ae'
                     }
+                    c30f0c0a93adb6183321f2cbdd03d60f: {
+                        table: 'sys_ui_element'
+                        id: 'c30f0c0a93adb6183321f2cbdd03d60f'
+                    }
                     c4451656936972583321f2cbdd03d6a9: {
                         table: 'sp_container'
                         id: 'c4451656936972583321f2cbdd03d6a9'
@@ -165,6 +217,14 @@ declare global {
                     category_solution_architecture: {
                         table: 'x_snc_prompt_galle_category'
                         id: 'cde3269d1a2f4d4d80f3282e70060504'
+                    }
+                    cb0f0c0a93adb6183321f2cbdd03d63a: {
+                        table: 'sys_ui_element'
+                        id: 'cb0f0c0a93adb6183321f2cbdd03d63a'
+                    }
+                    cf0f0c0a93adb6183321f2cbdd03d637: {
+                        table: 'sys_ui_element'
+                        id: 'cf0f0c0a93adb6183321f2cbdd03d637'
                     }
                     d4eab80a93613a183321f2cbdd03d683: {
                         table: 'sys_ui_element'
