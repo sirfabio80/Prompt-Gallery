@@ -199,9 +199,15 @@ declare global {
                         table: 'sys_security_acl'
                         id: '2a99150f3c2a47c6bcddca3facbcb70e'
                     }
+                    gallery_widget_to_gallery_column: {
+                        table: 'sp_column_instance'
+                        id: '1f9af7ca38db452480e300daba27d3f4'
+                        deleted: true
+                    }
                     main_widget_to_column: {
                         table: 'sp_column_instance'
                         id: 'c41c3c00126140798abe824093fc15f5'
+                        deleted: true
                     }
                     menu_item_admin: {
                         table: 'sp_rectangle_menu_item'
@@ -324,6 +330,7 @@ declare global {
                     prompt_gallery_column: {
                         table: 'sp_column'
                         id: '6726e0a8db284d63bc0daab5ad95856d'
+                        deleted: true
                     }
                     prompt_gallery_container: {
                         table: 'sp_container'
@@ -345,9 +352,20 @@ declare global {
                         id: '88b67b99ec0a4a7285b4176e64793d48'
                         deleted: true
                     }
+                    prompt_gallery_container_to_gallery_row: {
+                        table: 'sp_container_row'
+                        id: '9a0eb38d3f8643d09c7cca1f5f04a8d2'
+                        deleted: true
+                    }
                     prompt_gallery_container_to_row: {
                         table: 'sp_container_row'
                         id: '38990702c67349c4946dc83164c36e0f'
+                        deleted: true
+                    }
+                    prompt_gallery_container_to_search_row: {
+                        table: 'sp_container_row'
+                        id: 'b7c0e18c525541d49f6ba80b6906b3f1'
+                        deleted: true
                     }
                     prompt_gallery_content_container: {
                         table: 'sp_container'
@@ -410,6 +428,11 @@ declare global {
                         table: 'sp_widget'
                         id: '278d152504054146bd3ddeeacb55f762'
                     }
+                    prompt_gallery_gallery_row_to_column: {
+                        table: 'sp_row_column'
+                        id: '95af1b931d00415daaef34f66f81cb23'
+                        deleted: true
+                    }
                     prompt_gallery_header_column: {
                         table: 'sp_column'
                         id: '02c31ed5c075411b90899b7e116f0f96'
@@ -468,7 +491,7 @@ declare global {
                     prompt_gallery_main_column: {
                         table: 'sp_column'
                         id: 'd69baf81a5624720b483ae005dbe2187'
-                        deleted: true
+                        deleted: false
                     }
                     prompt_gallery_main_container: {
                         table: 'sp_container'
@@ -483,7 +506,7 @@ declare global {
                     prompt_gallery_main_row: {
                         table: 'sp_row'
                         id: 'a967aab80c364d72b4b987c8fd61ec09'
-                        deleted: true
+                        deleted: false
                     }
                     prompt_gallery_main_widget: {
                         table: 'sp_widget'
@@ -519,6 +542,7 @@ declare global {
                     prompt_gallery_page_to_container: {
                         table: 'sp_page_container'
                         id: '7ae6af4e21684def8fec4e6465ec796e'
+                        deleted: true
                     }
                     prompt_gallery_portal: {
                         table: 'sp_portal'
@@ -528,6 +552,7 @@ declare global {
                     prompt_gallery_row: {
                         table: 'sp_row'
                         id: 'a3a35003ed1d4a1686f224d9276f8408'
+                        deleted: true
                     }
                     prompt_gallery_row_column_header: {
                         table: 'sp_row_column'
@@ -547,11 +572,12 @@ declare global {
                     prompt_gallery_row_to_column: {
                         table: 'sp_row_column'
                         id: '336e236fb01a41a987c4f2247f3823f0'
+                        deleted: true
                     }
                     prompt_gallery_search_column: {
                         table: 'sp_column'
                         id: 'd99d94f987984de8aa13128ed12dbd77'
-                        deleted: true
+                        deleted: false
                     }
                     prompt_gallery_search_instance: {
                         table: 'sp_instance'
@@ -561,6 +587,11 @@ declare global {
                     prompt_gallery_search_row: {
                         table: 'sp_row'
                         id: 'cd6e392cdd04466d8c35fe52cb263a27'
+                        deleted: false
+                    }
+                    prompt_gallery_search_row_to_column: {
+                        table: 'sp_row_column'
+                        id: '8412056df71340cbb2bf683dd04572c4'
                         deleted: true
                     }
                     prompt_gallery_search_widget: {
@@ -772,6 +803,12 @@ declare global {
                     search_widget_to_column: {
                         table: 'sp_column_instance'
                         id: 'c87e602766c84a86b5aabe97bae15e0a'
+                        deleted: true
+                    }
+                    search_widget_to_search_column: {
+                        table: 'sp_column_instance'
+                        id: '7fa1e374e3334f0b858b390f46c42c71'
+                        deleted: true
                     }
                     'src_server_prompt-version-logic_js': {
                         table: 'sys_module'

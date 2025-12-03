@@ -2,6 +2,15 @@
   padding: 0;
 }
 
+/* Remove top margin from page header and title */
+.page-header {
+  margin-top: 0;
+}
+
+h1.page-title {
+  margin-top: 0;
+}
+
 /* Flexbox container for prompt cards */
 .prompts-container {
   display: flex;
