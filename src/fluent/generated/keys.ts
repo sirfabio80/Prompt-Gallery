@@ -66,6 +66,10 @@ declare global {
                         table: 'sys_ui_element'
                         id: '6c662f2d932dbed43321f2cbdd03d6f6'
                     }
+                    '7045d656936972583321f2cbdd03d6d7': {
+                        table: 'sp_column'
+                        id: '7045d656936972583321f2cbdd03d6d7'
+                    }
                     '7975415293a5fe183321f2cbdd03d61c': {
                         table: 'sys_scope_privilege'
                         id: '7975415293a5fe183321f2cbdd03d61c'
@@ -118,9 +122,17 @@ declare global {
                         id: 'bb8580f444f5466f8d28742fa3ef1c86'
                         deleted: true
                     }
+                    bc45d656936972583321f2cbdd03d6d1: {
+                        table: 'sp_row'
+                        id: 'bc45d656936972583321f2cbdd03d6d1'
+                    }
                     bom_json: {
                         table: 'sys_module'
                         id: '6ead3bfa830c4733b8782363ad1d94ae'
+                    }
+                    c4451656936972583321f2cbdd03d6a9: {
+                        table: 'sp_container'
+                        id: 'c4451656936972583321f2cbdd03d6a9'
                     }
                     category_communication: {
                         table: 'x_snc_prompt_galle_category'
@@ -514,6 +526,7 @@ declare global {
                     prompt_gallery_heading_row: {
                         table: 'sp_row'
                         id: 'bb8580f444f5466f8d28742fa3ef1c86'
+                        deleted: true
                     }
                     prompt_gallery_heading_widget: {
                         table: 'sp_widget'

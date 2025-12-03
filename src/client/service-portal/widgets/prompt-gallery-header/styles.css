@@ -171,3 +171,7 @@
   outline: 3px solid rgba(255, 255, 255, 0.5);
   outline-offset: 2px;
 }
+
+.avatar-container div.avatar.soloAvatar div.sub-avatar span {
+  line-height: 2.7rem !important;
+}
