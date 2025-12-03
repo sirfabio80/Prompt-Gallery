@@ -1,0 +1,91 @@
+<!-- TRUE Header Widget Template - Creates actual <header> HTML element -->
+<header class="prompt-gallery-header">
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+      
+      <!-- Brand/Logo Section -->
+      <div class="navbar-header">
+        <!-- Mobile menu toggle -->
+        <button type="button" 
+                class="navbar-toggle collapsed" 
+                data-toggle="collapse" 
+                data-target="#prompt-gallery-navbar"
+                ng-if="data.show_menu">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+        <!-- Logo and Title -->
+        <a class="navbar-brand" href="?id={{data.homepage}}">
+          <div class="brand-container" ng-if="data.show_logo">
+            <!-- Custom Portal Logo -->
+            <div class="servicenow-logo" ng-if="data.logo">
+              <img ng-src="{{data.logo}}" alt="{{data.portal_title}}" />
+            </div>
+            <!-- ServiceNow Logo Fallback -->
+            <div class="servicenow-logo" ng-if="!data.logo">
+              <svg width="120" height="32" viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.5 2C12.6421 2 16 5.35786 16 9.5C16 13.6421 12.6421 17 8.5 17C4.35786 17 1 13.6421 1 9.5C1 5.35786 4.35786 2 8.5 2Z" fill="#62d84e"/>
+                <path d="M23.5 15C27.6421 15 31 18.3579 31 22.5C31 26.6421 27.6421 30 23.5 30C19.3579 30 16 26.6421 16 22.5C16 18.3579 19.3579 15 23.5 15Z" fill="#62d84e"/>
+                <text x="36" y="20" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">ServiceNow</text>
+              </svg>
+            </div>
+            <span class="portal-title">{{data.portal_title}}</span>
+          </div>
+          <span ng-if="!data.show_logo" class="portal-title-only">{{data.portal_title}}</span>
+        </a>
+      </div>
+
+      <!-- Collapsible Navigation -->
+      <div class="collapse navbar-collapse" 
+           id="prompt-gallery-navbar" 
+           ng-if="data.show_menu">
+        
+        <!-- ════════════════════════════════════════════════════ -->
+        <!-- CRITICAL: Embedded Menu Widget - This is the key!    -->
+        <!-- The menu widget's HTML is injected here              -->
+        <!-- ════════════════════════════════════════════════════ -->
+        <sp-widget ng-if="data.menu" widget="data.menu"></sp-widget>
+        
+        <!-- Right side navigation - User Menu -->
+        <ul class="nav navbar-nav navbar-right" ng-if="data.show_user_menu">
+          
+          <!-- User Profile Dropdown -->
+          <li class="dropdown" ng-if="data.user.isLoggedIn">
+            <a ng-href="" 
+               class="dropdown-toggle" 
+               data-toggle="dropdown" 
+               role="button" 
+               aria-haspopup="true" 
+               aria-expanded="false">
+              <i class="fa fa-user"></i>
+              <span class="user-name">{{data.user.name}}</span>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="?id=user_profile&sys_id={{data.user.sys_id}}">
+                <i class="fa fa-user"></i> Profile
+              </a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="/logout.do">
+                <i class="fa fa-sign-out"></i> Logout
+              </a></li>
+            </ul>
+          </li>
+          
+          <!-- Login Button (when not logged in) -->
+          <li ng-if="!data.user.isLoggedIn">
+            <a href="?id=login">
+              <i class="fa fa-sign-in"></i> Login
+            </a>
+          </li>
+          
+        </ul>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>

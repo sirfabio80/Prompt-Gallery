@@ -1,0 +1,19 @@
+<div class="prompt-gallery-container">
+  <div id="prompt-gallery-sp-root" class="react-container">
+    <div class="text-center" style="padding: 40px;">
+      <div class="loading-spinner"></div>
+      <p class="text-muted" style="margin-top: 15px;">Loading Prompt Gallery...</p>
+    </div>
+  </div>
+</div>
+
+<!-- React will be bootstrapped here by the client controller -->
+<script>
+  // Make sure we have access to React and the current user context
+  window.PROMPT_GALLERY_CONFIG = {
+    currentUser: '${data.current_user}',
+    userRoles: ${data.user_roles},
+    apiEndpoint: '/api/x_snc_prompt_galle/prompt_gallery_api',
+    isServicePortal: true
+  };
+</script>

@@ -1,0 +1,6 @@
+{
+  "scope": "x_snc_prompt_galle",
+  "scopeId": "0189e2a593a17ed43321f2cbdd03d62e",
+  "name": "WDS Prompt Gallery",
+  "tsconfigPath": "./src/server/tsconfig.json"
+}

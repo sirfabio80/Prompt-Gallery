@@ -1,0 +1,253 @@
+<div class="prompt-gallery-search">
+  <form class="search-form" ng-submit="c.performSearch()" role="search">
+    
+    <!-- Main Search Input -->
+    <div class="search-input-section">
+      <div class="input-group input-group-lg">
+        <input type="text" 
+               class="form-control search-input" 
+               placeholder="{{data.search_placeholder}}"
+               ng-model="c.searchState.text"
+               ng-keyup="c.onSearchChange()"
+               aria-label="Search prompts">
+        <div class="input-group-btn">
+          <button class="btn btn-primary search-btn" 
+                  type="submit"
+                  aria-label="Search">
+            <i class="fa fa-search" ng-if="!c.isSearching"></i>
+            <i class="fa fa-spinner fa-spin" ng-if="c.isSearching"></i>
+          </button>
+          <button class="btn btn-default toggle-advanced" 
+                  type="button"
+                  ng-if="data.show_advanced"
+                  ng-click="c.toggleAdvancedFilters()"
+                  ng-class="{'active': c.showAdvanced}"
+                  title="Toggle advanced filters">
+            <i class="fa fa-sliders"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Filters -->
+    <div class="quick-filters" ng-if="!c.showAdvanced">
+      <div class="filter-row">
+        <div class="filter-group">
+          <label class="filter-label">Category:</label>
+          <select class="form-control form-control-sm" 
+                  ng-model="c.searchState.category"
+                  ng-change="c.onFilterChange()"
+                  aria-label="Filter by category">
+            <option value="">All Categories</option>
+            <option ng-repeat="cat in data.categories" value="{{cat.value}}">{{cat.label}}</option>
+          </select>
+        </div>
+
+        <div class="filter-group" ng-if="data.show_sorting">
+          <label class="filter-label">Sort:</label>
+          <select class="form-control form-control-sm" 
+                  ng-model="c.sortOption"
+                  ng-change="c.onSortChange()"
+                  aria-label="Sort results">
+            <option value="name_asc">Name (A-Z)</option>
+            <option value="name_desc">Name (Z-A)</option>
+            <option value="rating_desc">Highest Rated</option>
+            <option value="rating_asc">Lowest Rated</option>
+            <option value="usage_desc">Most Used</option>
+            <option value="usage_asc">Least Used</option>
+            <option value="created_desc">Newest</option>
+            <option value="created_asc">Oldest</option>
+          </select>
+        </div>
+
+        <div class="filter-actions">
+          <button type="button" 
+                  class="btn btn-sm btn-link clear-filters"
+                  ng-click="c.clearAllFilters()"
+                  ng-if="c.hasActiveFilters()"
+                  title="Clear all filters">
+            <i class="fa fa-times"></i> Clear
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Advanced Filters Panel -->
+    <div class="advanced-filters" ng-if="c.showAdvanced && data.show_advanced" ng-show="c.showAdvanced">
+      <div class="row">
+        
+        <!-- Category and Tool Filters -->
+        <div class="col-md-6">
+          <div class="filter-section">
+            <h6 class="filter-section-title">Category & Tool</h6>
+            
+            <div class="form-group">
+              <label class="control-label">Category</label>
+              <select class="form-control" 
+                      ng-model="c.searchState.category"
+                      ng-change="c.onFilterChange()"
+                      aria-label="Select category">
+                <option value="">All Categories</option>
+                <option ng-repeat="cat in data.categories" value="{{cat.value}}">{{cat.label}}</option>
+              </select>
+              
+              <!-- Category Information Box -->
+              <div ng-if="c.searchState.category" ng-repeat="cat in data.categories" ng-if="cat.value === c.searchState.category" 
+                   style="margin-top: 10px; padding: 12px; background: {{cat.color}}10; border: 1px solid {{cat.color}}30; border-radius: 6px;">
+                <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                  <i class="fa fa-{{cat.icon}}" style="color: {{cat.color}}; margin-right: 8px;"></i>
+                  <strong style="color: {{cat.color}};">{{cat.label}}</strong>
+                  <span ng-if="cat.prompt_count > 0" style="margin-left: 8px; background: {{cat.color}}20; color: {{cat.color}}; padding: 2px 6px; border-radius: 10px; font-size: 11px;">
+                    {{cat.prompt_count}} prompts
+                  </span>
+                </div>
+                <p style="font-size: 13px; color: #555; margin: 0; line-height: 1.4;">
+                  {{cat.description}}
+                </p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label">Target Tool</label>
+              <select class="form-control" 
+                      ng-model="c.searchState.target_tool"
+                      ng-change="c.onFilterChange()"
+                      aria-label="Select target tool">
+                <option value="">All Tools</option>
+                <option ng-repeat="tool in data.target_tools" value="{{tool.value}}">{{tool.label}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rating and Tags -->
+        <div class="col-md-6">
+          <div class="filter-section">
+            <h6 class="filter-section-title">Rating & Tags</h6>
+            
+            <div class="form-group">
+              <label class="control-label">
+                Minimum Rating: {{c.searchState.min_rating || 0}} 
+                <i class="fa fa-star" ng-repeat="n in c.getRatingStars() track by $index"></i>
+              </label>
+              <input type="range" 
+                     class="form-control rating-slider" 
+                     min="0" max="5" step="0.5"
+                     ng-model="c.searchState.min_rating"
+                     ng-change="c.onFilterChange()"
+                     aria-label="Minimum rating filter">
+            </div>
+
+            <div class="form-group" ng-if="data.available_tags.length > 0">
+              <label class="control-label">Tags</label>
+              <div class="tags-selector">
+                <div class="tag-option" ng-repeat="tag in data.available_tags track by tag.sys_id">
+                  <label class="checkbox-inline tag-checkbox">
+                    <input type="checkbox" 
+                           ng-model="tag.selected"
+                           ng-change="c.onTagChange(tag)"
+                           aria-label="Select tag {{tag.name}}">
+                    <span class="tag-name">{{tag.name}}</span>
+                  </label>
+                </div>
+              </div>
+              
+              <!-- Selected Tags Display -->
+              <div class="selected-tags" ng-if="c.getSelectedTags().length > 0">
+                <small class="text-muted">Selected:</small>
+                <span class="selected-tag" ng-repeat="tag in c.getSelectedTags() track by tag.sys_id">
+                  {{tag.name}}
+                  <button type="button" class="btn-remove-tag" ng-click="c.removeTag(tag)" aria-label="Remove tag">×</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sorting Options -->
+      <div class="row" ng-if="data.show_sorting">
+        <div class="col-md-12">
+          <div class="filter-section">
+            <h6 class="filter-section-title">Sorting</h6>
+            <div class="sorting-options">
+              <div class="sort-group">
+                <label class="control-label">Sort By:</label>
+                <select class="form-control" 
+                        ng-model="c.searchState.sort_by"
+                        ng-change="c.onSortChange()"
+                        aria-label="Sort by field">
+                  <option value="name">Name</option>
+                  <option value="rating">Rating</option>
+                  <option value="usage">Usage Count</option>
+                  <option value="created">Date Created</option>
+                  <option value="updated">Date Updated</option>
+                </select>
+              </div>
+              <div class="sort-group">
+                <label class="control-label">Order:</label>
+                <select class="form-control" 
+                        ng-model="c.searchState.sort_order"
+                        ng-change="c.onSortChange()"
+                        aria-label="Sort order">
+                  <option value="asc">Ascending</option>
+                  <option value="desc">Descending</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Advanced Filter Actions -->
+      <div class="advanced-actions">
+        <button type="submit" class="btn btn-primary">
+          <i class="fa fa-search"></i> Search with Filters
+        </button>
+        <button type="button" 
+                class="btn btn-default" 
+                ng-click="c.clearAllFilters()">
+          <i class="fa fa-times"></i> Clear All
+        </button>
+        <button type="button" 
+                class="btn btn-link" 
+                ng-click="c.toggleAdvancedFilters()">
+          <i class="fa fa-chevron-up"></i> Hide Advanced
+        </button>
+      </div>
+    </div>
+
+    <!-- Active Filters Summary -->
+    <div class="active-filters" ng-if="c.hasActiveFilters() && !c.showAdvanced">
+      <div class="filters-summary">
+        <span class="filter-label">Active filters:</span>
+        
+        <span class="filter-tag" ng-if="c.searchState.text">
+          Text: "{{c.searchState.text}}"
+          <button type="button" ng-click="c.clearFilter('text')" aria-label="Remove text filter">×</button>
+        </span>
+        
+        <span class="filter-tag" ng-if="c.searchState.category">
+          Category: {{c.getCategoryLabel(c.searchState.category)}}
+          <button type="button" ng-click="c.clearFilter('category')" aria-label="Remove category filter">×</button>
+        </span>
+        
+        <span class="filter-tag" ng-if="c.searchState.target_tool">
+          Tool: {{c.getToolLabel(c.searchState.target_tool)}}
+          <button type="button" ng-click="c.clearFilter('target_tool')" aria-label="Remove tool filter">×</button>
+        </span>
+        
+        <span class="filter-tag" ng-if="c.searchState.min_rating > 0">
+          Rating: {{c.searchState.min_rating}}+ stars
+          <button type="button" ng-click="c.clearFilter('min_rating')" aria-label="Remove rating filter">×</button>
+        </span>
+        
+        <span class="filter-tag" ng-repeat="tag in c.getSelectedTags() track by tag.sys_id">
+          Tag: {{tag.name}}
+          <button type="button" ng-click="c.removeTag(tag)" aria-label="Remove tag {{tag.name}}">×</button>
+        </span>
+      </div>
+    </div>
+
+  </form>
+</div>

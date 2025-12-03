@@ -1,0 +1,133 @@
+<div class="prompt-gallery-widget">
+  <!-- Error State -->
+  <div ng-if="c.error" class="alert alert-danger">
+    <strong>Error:</strong> {{c.error}}
+    <button class="btn btn-sm btn-secondary ml-2" ng-click="c.retry()">Retry</button>
+  </div>
+
+  <!-- Loading State -->
+  <div ng-if="c.isLoading" class="text-center py-4">
+    <i class="fa fa-spinner fa-spin fa-2x mb-2"></i>
+    <p>Loading prompts...</p>
+  </div>
+
+  <!-- Content -->
+  <div ng-if="!c.isLoading && !c.error">
+    <!-- Results Info -->
+    <div ng-if="c.prompts.length > 0" class="mb-3">
+      <small class="text-muted">
+        Showing {{c.prompts.length}} prompts
+        <span ng-if="c.totalCount"> of {{c.totalCount}}</span>
+        <span ng-if="c.totalPages > 1"> • Page {{c.currentPage}} of {{c.totalPages}}</span>
+      </small>
+    </div>
+
+    <!-- Prompt Grid -->
+    <div ng-if="c.prompts.length > 0" class="prompts-container">
+      <div ng-repeat="prompt in c.prompts track by $index" class="prompt-card-wrapper">
+        <div class="card prompt-card h-100 shadow-sm" ng-click="c.openPrompt(prompt)" style="cursor: pointer; border: 1px solid #e3e6f0; border-radius: 0.35rem;">
+          <!-- Category Color Bar -->
+          <div ng-if="prompt.category_color" 
+               class="category-bar" 
+               style="height: 4px; background-color: {{prompt.category_color}};"></div>
+          
+          <div class="card-body p-3">
+            <!-- Header -->
+            <div class="card-header-flex">
+              <h5 class="card-title mb-0 text-dark">{{prompt.name}}</h5>
+              <span class="badge badge-secondary category-badge" 
+                    ng-style="{'background-color': prompt.category_color || '#6B7280'}">
+                <i ng-if="prompt.category_icon" class="fa fa-{{prompt.category_icon}} mr-1"></i>
+                <i ng-if="!prompt.category_icon" class="fa fa-folder mr-1"></i>
+                {{prompt.category_display}}
+              </span>
+            </div>
+            
+            <!-- Description -->
+            <div class="card-description">
+              <p class="card-text text-muted">{{prompt.short_description || 'No description available'}}</p>
+            </div>
+            
+            <!-- Metrics -->
+            <div class="card-metrics d-flex justify-content-between align-items-center">
+              <div class="rating-section">
+                <span ng-if="prompt.latest_version && prompt.latest_version.average_rating > 0" class="rating-display">
+                  <span ng-repeat="star in c.getStars(prompt.latest_version.average_rating) track by $index" class="text-warning">
+                    <i class="fa" ng-class="star.class"></i>
+                  </span>
+                  <small class="text-muted ml-1">({{prompt.latest_version.rating_count}})</small>
+                </span>
+                <span ng-if="!prompt.latest_version || !prompt.latest_version.average_rating" class="text-muted small">No ratings yet</span>
+              </div>
+              <div class="usage-section">
+                <small class="text-muted">
+                  <i class="fa fa-bar-chart mr-1"></i>
+                  {{(prompt.latest_version && prompt.latest_version.usage_count) || prompt.total_usage_count || 0}} uses
+                </small>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Actions -->
+          <div class="card-footer bg-light border-top p-2">
+            <div class="btn-group btn-group-sm w-100">
+              <button class="btn btn-primary" ng-click="c.copyPrompt(prompt, $event)">
+                <i class="fa fa-copy"></i> Copy
+              </button>
+              <button class="btn btn-outline-secondary" ng-click="c.openPrompt(prompt, $event)">
+                <i class="fa fa-eye"></i> View
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div ng-if="c.totalPages > 1 && !c.isLoading" class="pagination-container mt-4">
+      <nav class="pagination-nav d-flex justify-content-center align-items-center">
+        <!-- Previous Button -->
+        <button class="btn btn-outline-secondary mr-2" 
+                ng-click="c.previousPage()" 
+                ng-disabled="c.currentPage === 1">
+          <i class="fa fa-chevron-left"></i> Previous
+        </button>
+        
+        <!-- Page Numbers -->
+        <div class="pagination-numbers d-flex align-items-center">
+          <span ng-repeat="page in c.getVisiblePages() track by $index">
+            <span ng-if="page === 'ellipsis-start' || page === 'ellipsis-end'" class="px-2">…</span>
+            <button ng-if="page !== 'ellipsis-start' && page !== 'ellipsis-end'"
+                    class="btn mx-1"
+                    ng-class="{'btn-primary': c.currentPage === page, 'btn-outline-secondary': c.currentPage !== page}"
+                    ng-click="c.goToPage(page)">
+              {{page}}
+            </button>
+          </span>
+        </div>
+        
+        <!-- Next Button -->
+        <button class="btn btn-outline-secondary ml-2" 
+                ng-click="c.nextPage()" 
+                ng-disabled="c.currentPage === c.totalPages">
+          Next <i class="fa fa-chevron-right"></i>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Empty State -->
+    <div ng-if="c.prompts.length === 0" class="text-center py-5">
+      <i class="fa fa-search fa-3x text-muted mb-3"></i>
+      <h4 class="text-muted">No prompts found</h4>
+      <p class="text-muted">
+        <span ng-if="c.searchText || c.selectedCategory">Try adjusting your search criteria.</span>
+        <span ng-if="!c.searchText && !c.selectedCategory">No prompts are available yet.</span>
+      </p>
+      <button ng-if="c.searchText || c.selectedCategory" 
+              class="btn btn-secondary" 
+              ng-click="c.clearFilters()">
+        Clear Filters
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,253 @@
+<div class="prompt-gallery-edit">
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Error State -->
+        <div class="alert alert-danger" ng-if="data.error" role="alert">
+          <i class="fa fa-exclamation-triangle"></i>
+          {{data.error}}
+        </div>
+
+        <!-- Success Message -->
+        <div class="alert alert-success" ng-if="data.success_message" role="alert">
+          <i class="fa fa-check-circle"></i>
+          {{data.success_message}}
+        </div>
+
+        <!-- Error Message -->
+        <div class="alert alert-danger" ng-if="data.error_message" role="alert">
+          <i class="fa fa-exclamation-triangle"></i>
+          {{data.error_message}}
+        </div>
+
+        <!-- Loading State -->
+        <div class="text-center py-4" ng-if="c.isLoading">
+          <i class="fa fa-spinner fa-spin fa-2x mb-2"></i>
+          <p>Loading prompt data...</p>
+        </div>
+
+        <!-- Edit Form -->
+        <div class="edit-form-container" ng-if="data.prompt && !data.error">
+          <form name="promptForm" ng-submit="c.updatePrompt()" novalidate>
+            
+            <!-- Basic Information Section -->
+            <div class="form-section">
+              <h3 class="section-title">
+                <i class="fa fa-info-circle"></i>
+                Basic Information
+              </h3>
+              
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label for="promptName" class="form-label required">
+                      <i class="fa fa-tag"></i> Name *
+                    </label>
+                    <input type="text" 
+                           id="promptName"
+                           name="name"
+                           class="form-control" 
+                           ng-model="c.formData.name"
+                           placeholder="Enter prompt name"
+                           required
+                           maxlength="100">
+                    <small class="form-text text-muted">
+                      A descriptive name for this prompt (max 100 characters)
+                    </small>
+                    <div ng-if="promptForm.name.$touched && promptForm.name.$invalid" class="invalid-feedback">
+                      <span ng-if="promptForm.name.$error.required">Name is required</span>
+                      <span ng-if="promptForm.name.$error.maxlength">Name is too long</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="promptActive" class="form-label">
+                      <i class="fa fa-toggle-on"></i> Status
+                    </label>
+                    <div class="form-control-wrapper">
+                      <label class="checkbox-wrapper">
+                        <input type="checkbox" 
+                               id="promptActive"
+                               ng-checked="c.formData.is_active"
+                               ng-click="c.formData.is_active = !c.formData.is_active">
+                        <span class="checkbox-label">Active</span>
+                      </label>
+                    </div>
+                    <small class="form-text text-muted">
+                      Inactive prompts won't appear in search results
+                    </small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="promptDescription" class="form-label">
+                  <i class="fa fa-file-text-o"></i> Short Description
+                </label>
+                <textarea id="promptDescription"
+                          name="short_description"
+                          class="form-control" 
+                          ng-model="c.formData.short_description"
+                          placeholder="Brief description of what this prompt does"
+                          rows="3"
+                          maxlength="1000"></textarea>
+                <small class="form-text text-muted">
+                  A brief description shown in the gallery (max 1000 characters)
+                </small>
+              </div>
+            </div>
+
+            <!-- Categorization Section -->
+            <div class="form-section">
+              <h3 class="section-title">
+                <i class="fa fa-folder"></i>
+                Categorization
+              </h3>
+              
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="promptCategory" class="form-label required">
+                      <i class="fa fa-tags"></i> Category *
+                    </label>
+                    <select id="promptCategory"
+                            name="category"
+                            class="form-control" 
+                            ng-model="c.formData.category"
+                            required>
+                      <option value="">Select a category</option>
+                      <option ng-repeat="category in data.categories track by category.sys_id" 
+                              value="{{category.sys_id}}">
+                        {{category.display_name || category.label}}
+                      </option>
+                    </select>
+                    <small class="form-text text-muted">
+                      Choose the most appropriate category for this prompt
+                    </small>
+                  </div>
+                </div>
+                
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="promptTeam" class="form-label">
+                      <i class="fa fa-users"></i> Owner Team
+                    </label>
+                    <select id="promptTeam"
+                            name="owner_team"
+                            class="form-control" 
+                            ng-model="c.formData.owner_team">
+                      <option value="">No specific team</option>
+                      <option ng-repeat="team in data.teams track by team.sys_id" 
+                              value="{{team.sys_id}}">
+                        {{team.label}}
+                      </option>
+                    </select>
+                    <small class="form-text text-muted">
+                      Optional: The team responsible for maintaining this prompt
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Content Section -->
+            <div class="form-section">
+              <h3 class="section-title">
+                <i class="fa fa-code"></i>
+                Prompt Content
+              </h3>
+              
+              <div class="form-group">
+                <label for="promptContent" class="form-label required">
+                  <i class="fa fa-file-code-o"></i> Full Prompt Content *
+                </label>
+                <div class="editor-container">
+                  <textarea id="promptContent"
+                            name="full_prompt"
+                            class="form-control editor-textarea" 
+                            ng-model="c.formData.full_prompt"
+                            placeholder="Enter the complete prompt content here..."
+                            rows="15"
+                            required></textarea>
+                </div>
+                <small class="form-text text-muted">
+                  The complete prompt content. Supports rich text formatting.
+                </small>
+                <div ng-if="promptForm.full_prompt.$touched && promptForm.full_prompt.$invalid" class="invalid-feedback">
+                  <span ng-if="promptForm.full_prompt.$error.required">Prompt content is required</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="action-buttons">
+                    <button type="submit" 
+                            class="btn btn-primary btn-lg"
+                            ng-style="c.getButtonStyle()"
+                            ng-disabled="promptForm.$invalid || c.isSubmitting">
+                      <i class="fa fa-save"></i>
+                      <span ng-if="!c.isSubmitting">Save Changes</span>
+                      <span ng-if="c.isSubmitting">Saving...</span>
+                    </button>
+                    
+                    <button type="button" 
+                            class="btn btn-secondary btn-lg"
+                            ng-click="c.cancelEdit()">
+                      <i class="fa fa-times"></i>
+                      Cancel
+                    </button>
+                    
+                    <button type="button" 
+                            class="btn btn-info btn-lg"
+                            ng-click="c.previewPrompt()"
+                            ng-if="c.formData.full_prompt">
+                      <i class="fa fa-eye"></i>
+                      Preview
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- Preview Modal -->
+        <div class="modal fade" id="previewModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">
+                  <i class="fa fa-eye"></i>
+                  Prompt Preview
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="preview-content">
+                  <h6>Name:</h6>
+                  <p class="preview-name">{{c.formData.name}}</p>
+                  
+                  <h6>Description:</h6>
+                  <p class="preview-description">{{c.formData.short_description || 'No description provided'}}</p>
+                  
+                  <h6>Content:</h6>
+                  <div class="preview-prompt" ng-bind-html="c.getPreviewHtml()"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

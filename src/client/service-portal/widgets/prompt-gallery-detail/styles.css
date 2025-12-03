@@ -1,0 +1,755 @@
+/* Prompt Gallery Detail Widget Styles */
+.prompt-gallery-detail {
+  max-width: 100%;
+}
+
+/* Modal Header */
+.modal-header-custom {
+  /* Background now set dynamically via ng-style */
+  color: white;
+  padding: 24px;
+  margin-bottom: 24px;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add subtle texture overlay to header */
+.modal-header-custom::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1) 0%, transparent 50%),
+              radial-gradient(circle at 70% 70%, rgba(255,255,255,0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.header-title {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.header-title .prompt-name {
+  margin: 0 0 8px 0;
+  color: white;
+  font-weight: 600;
+  font-size: 24px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.header-title .prompt-description {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.copy-header-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.copy-header-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.copy-header-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.header-actions .category-badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* Loading State */
+.loading-section {
+  padding: 40px 0;
+}
+
+.loading-text {
+  margin-top: 15px;
+  color: #666;
+  font-size: 16px;
+}
+
+/* Prompt Header */
+.prompt-header {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.prompt-name {
+  margin: 0 0 8px 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.prompt-description {
+  margin: 0;
+  color: #666;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.category-badge {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+/* Category-specific badge colors */
+.category-discovery { background: #e8f5e8; color: #2e7d32; }
+.category-design { background: #fff3e0; color: #ef6c00; }
+.category-solution_architecture { background: #f3e5f5; color: #7b1fa2; }
+.category-implementation { background: #e0f2f1; color: #00695c; }
+.category-documentation { background: #e1f5fe; color: #0277bd; }
+.category-communication { background: #fce4ec; color: #c2185b; }
+.category-demo_script { background: #f9fbe7; color: #689f38; }
+.category-internal_productivity { background: #fff8e1; color: #f57c00; }
+
+.prompt-meta {
+  margin-top: 8px;
+}
+
+/* Version Selector */
+.version-selector {
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.version-selector .control-label {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.version-status {
+  display: flex;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-right: 8px;
+}
+
+.status-recommended { background: #d4edda; color: #155724; }
+.status-draft { background: #fff3cd; color: #856404; }
+.status-deprecated { background: #f8d7da; color: #721c24; }
+
+.target-tool {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Content Sections */
+.version-content {
+  margin-bottom: 32px;
+}
+
+.content-section {
+  margin-bottom: 28px;
+}
+
+.section-title {
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.section-title .fa {
+  margin-right: 8px;
+  color: #666;
+  width: 20px;
+}
+
+.content-block {
+  position: relative;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.content-text {
+  margin: 0;
+  padding: 20px;
+  background: transparent;
+  border: none;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Rich Text Content Styles */
+.rich-content {
+  background: #fff;
+}
+
+.rich-text-display {
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+/* Rich text typography */
+.rich-text-display h1,
+.rich-text-display h2,
+.rich-text-display h3,
+.rich-text-display h4,
+.rich-text-display h5,
+.rich-text-display h6 {
+  margin: 20px 0 12px 0;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.rich-text-display h1 { font-size: 28px; color: #1a1a1a; }
+.rich-text-display h2 { font-size: 24px; color: #1a1a1a; }
+.rich-text-display h3 { font-size: 20px; color: #2c5aa0; }
+.rich-text-display h4 { font-size: 18px; color: #333; }
+.rich-text-display h5 { font-size: 16px; color: #333; }
+.rich-text-display h6 { font-size: 14px; color: #666; }
+
+.rich-text-display p {
+  margin: 12px 0;
+  line-height: 1.6;
+}
+
+.rich-text-display ul,
+.rich-text-display ol {
+  margin: 16px 0;
+  padding-left: 24px;
+}
+
+.rich-text-display li {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.rich-text-display blockquote {
+  margin: 20px 0;
+  padding: 16px 20px;
+  border-left: 4px solid #007acc;
+  background-color: #f8f9fa;
+  font-style: italic;
+}
+
+.rich-text-display table {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: collapse;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.rich-text-display table th,
+.rich-text-display table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+  vertical-align: top;
+}
+
+.rich-text-display table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+}
+
+.rich-text-display table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.rich-text-display strong {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.rich-text-display em {
+  font-style: italic;
+  color: #555;
+}
+
+.rich-text-display code {
+  background-color: #f8f9fa;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 13px;
+  color: #d73527;
+}
+
+/* Colored elements */
+.rich-text-display [style*="background"] {
+  padding: 12px;
+  border-radius: 6px;
+  margin: 12px 0;
+}
+
+.rich-text-display [style*="color"] {
+  font-weight: 500;
+}
+
+/* Interactive elements styling */
+.rich-text-display div[style*="grid"] {
+  display: grid !important;
+  gap: 12px;
+}
+
+.rich-text-display div[style*="flex"] {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Badge/pill elements */
+.rich-text-display span[style*="border-radius: 20px"],
+.rich-text-display span[style*="border-radius:20px"] {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 8px;
+  font-size: 12px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.copy-btn:hover {
+  opacity: 1;
+  background: #f5f5f5;
+}
+
+.copy-btn:active {
+  background: #e9ecef;
+}
+
+/* Actions and Metrics */
+.actions-metrics {
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.actions-metrics h5 {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* Action Buttons */
+.action-section {
+  margin-bottom: 20px;
+}
+
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.action-buttons .btn {
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.action-buttons .btn-primary {
+  background: #0073e6;
+  border-color: #0073e6;
+}
+
+.action-buttons .btn-primary:hover {
+  background: #005cbf;
+  border-color: #005cbf;
+}
+
+.action-buttons .btn-success {
+  background: #28a745;
+  border-color: #28a745;
+}
+
+.action-buttons .btn-success:hover {
+  background: #218838;
+  border-color: #1e7e34;
+}
+
+.action-buttons .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Metrics Section */
+.metrics-section {
+  border-left: 1px solid #dee2e6;
+  padding-left: 24px;
+}
+
+.rating-container {
+  margin-bottom: 20px;
+}
+
+.current-rating,
+.rate-version {
+  margin-bottom: 12px;
+}
+
+.rating-label {
+  display: inline-block;
+  font-weight: 500;
+  margin-right: 8px;
+  color: #333;
+  min-width: 100px;
+}
+
+.stars-display,
+.interactive-stars {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.stars-display .fa,
+.interactive-stars .fa {
+  color: #ffc107;
+  font-size: 16px;
+  margin-right: 2px;
+}
+
+.stars-display .fa-star-o {
+  color: #dee2e6;
+}
+
+.interactive-star {
+  cursor: pointer;
+  transition: color 0.1s ease;
+  padding: 2px;
+}
+
+.interactive-star:hover {
+  color: #ffc107 !important;
+}
+
+.rating-text {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Usage Stats */
+.usage-stats {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 16px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-weight: 500;
+  color: #333;
+}
+
+.stat-value {
+  font-weight: 600;
+  color: #0073e6;
+}
+
+.stat-link {
+  color: #0073e6;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.stat-link:hover {
+  text-decoration: underline;
+}
+
+/* Tags Section */
+.tags-section {
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.tags-section h5 {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-badge {
+  background: #e9ecef;
+  color: #495057;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Action Messages */
+.alert {
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.alert .fa {
+  margin-right: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modal-header-custom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+  }
+  
+  .header-title .prompt-name {
+    font-size: 20px;
+  }
+  
+  .header-title .prompt-description {
+    font-size: 14px;
+  }
+  
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .copy-header-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+  
+  .prompt-header {
+    padding: 16px;
+  }
+  
+  .prompt-header .row > div:last-child {
+    text-align: left;
+    margin-top: 16px;
+  }
+  
+  .version-selector {
+    padding: 16px;
+  }
+  
+  .version-status {
+    margin-top: 16px;
+  }
+  
+  .actions-metrics {
+    padding: 16px;
+  }
+  
+  .metrics-section {
+    border-left: none;
+    border-top: 1px solid #dee2e6;
+    padding-left: 0;
+    padding-top: 20px;
+    margin-top: 20px;
+  }
+  
+  .action-buttons {
+    justify-content: center;
+  }
+  
+  .content-text {
+    padding: 16px;
+    font-size: 13px;
+  }
+  
+  .rich-text-display {
+    padding: 16px;
+    font-size: 14px;
+    max-height: 400px;
+  }
+  
+  .rich-text-display table {
+    font-size: 13px;
+  }
+  
+  .rich-text-display h1 { font-size: 24px; }
+  .rich-text-display h2 { font-size: 20px; }
+  .rich-text-display h3 { font-size: 18px; }
+  .rich-text-display h4 { font-size: 16px; }
+  
+  .copy-btn {
+    position: static;
+    margin: 12px;
+    display: block;
+    width: auto;
+  }
+  
+  .rating-container .current-rating,
+  .rating-container .rate-version {
+    display: block;
+    margin-bottom: 12px;
+  }
+  
+  .rating-label {
+    display: block;
+    margin-bottom: 8px;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .content-block {
+    border-width: 2px;
+  }
+  
+  .category-badge,
+  .status-badge,
+  .tag-badge {
+    border: 1px solid currentColor;
+  }
+}
+
+/* Hide modal close button tooltip */
+.modal .modal-header .close[title],
+.modal-header .close[title] {
+  /* Remove the title attribute content to prevent tooltip */
+}
+
+/* Alternative approach: hide all tooltips in modal */
+.modal [title]:hover::after,
+.modal [title]:hover::before,
+.modal .tooltip {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Remove focus outline from modal close button */
+.modal .modal-header .close:focus,
+.modal-header .close:focus,
+.modal .close:focus,
+button[data-dismiss="modal"]:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Ensure close button doesn't get blue border on focus */
+.modal .modal-header .close,
+.modal-header .close,
+.modal .close,
+button[data-dismiss="modal"] {
+  outline: none;
+  border: none;
+  background: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Alternative: remove focus from all buttons in modal header */
+.modal-header button:focus,
+.modal-header .close:focus {
+  outline: 0 !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+/* Print styles */
+@media print {
+  .copy-btn,
+  .action-buttons,
+  .interactive-stars {
+    display: none;
+  }
+  
+  .content-text {
+    max-height: none;
+    overflow: visible;
+  }
+}

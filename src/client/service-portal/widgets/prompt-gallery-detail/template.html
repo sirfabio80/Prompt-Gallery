@@ -1,0 +1,269 @@
+<div class="prompt-gallery-detail">
+  <!-- Error State -->
+  <div class="alert alert-danger" ng-if="data.error" role="alert">
+    <i class="fa fa-exclamation-triangle"></i>
+    {{data.error}}
+  </div>
+
+  <!-- Loading State -->
+  <div class="loading-section text-center" ng-if="c.isLoading">
+    <i class="fa fa-spinner fa-spin fa-2x"></i>
+    <p class="loading-text">Loading prompt details...</p>
+  </div>
+
+  <!-- Modal Header with Copy Button -->
+  <div class="modal-header-custom" ng-if="data.prompt && !c.isLoading" ng-style="c.getHeaderStyle()">
+    <div class="header-title">
+      <h2 class="prompt-name">{{data.prompt.name}}</h2>
+      <p class="prompt-description" ng-if="data.prompt.short_description">
+        {{data.prompt.short_description}}
+      </p>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-primary copy-header-btn" 
+              ng-click="c.copyFullPromptFromHeader()"
+              ng-if="data.prompt && c.selectedVersion"
+              title="Copy complete prompt">
+        <i class="fa fa-copy"></i> Copy Prompt
+      </button>
+      <span class="category-badge" ng-class="'category-' + data.prompt.category" ng-if="data.prompt.category">
+        {{data.prompt.category_display}}
+      </span>
+    </div>
+  </div>
+
+  <!-- Prompt Details -->
+  <div class="prompt-details" ng-if="data.prompt && !c.isLoading">
+    <!-- Version Selector -->
+    <div class="version-selector" ng-if="data.prompt.versions.length > 1">
+      <div class="row">
+        <div class="col-md-6">
+          <label class="control-label">Version:</label>
+          <select class="form-control" 
+                  ng-model="c.selectedVersion" 
+                  ng-options="version.version_display for version in data.prompt.versions track by version.sys_id"
+                  ng-change="c.onVersionChange()">
+          </select>
+        </div>
+        <div class="col-md-6">
+          <div class="version-status" ng-if="c.selectedVersion">
+            <span class="status-badge" ng-class="'status-' + c.selectedVersion.status">
+              {{c.selectedVersion.status_display}}
+            </span>
+            <span class="target-tool" ng-if="c.selectedVersion.target_tool">
+              for {{c.selectedVersion.target_tool_display}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full Rich Text Content (Available without versions) -->
+    <div class="content-section" ng-if="data.prompt.full_prompt">
+      <h4 class="section-title">
+        <i class="fa fa-file-text-o"></i>
+        Full Prompt Content
+      </h4>
+      <div class="content-block rich-content">
+        <div class="rich-text-display" ng-bind-html="c.getTrustedHtml(data.prompt.full_prompt)"></div>
+        <button class="btn btn-sm btn-default copy-btn" 
+                ng-click="c.copyToClipboard('full_content', data.prompt.full_prompt)"
+                title="Copy full prompt content">
+          <i class="fa fa-copy"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Basic Actions (when no versions) -->
+    <div class="basic-actions" ng-if="data.prompt && data.prompt.versions.length === 0 && data.prompt.full_prompt">
+      <div class="action-section">
+        <h5>Actions</h5>
+        <div class="btn-group action-buttons" role="group">
+          <button class="btn btn-primary" 
+                  ng-click="c.copyFullPromptContent()"
+                  title="Copy complete prompt content">
+            <i class="fa fa-copy"></i> Copy Full Prompt
+          </button>
+          <button class="btn btn-warning" 
+                  ng-click="c.editPrompt()"
+                  title="Edit this prompt">
+            <i class="fa fa-edit"></i> Edit
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Version Content -->
+    <div class="version-content" ng-if="c.selectedVersion">
+      
+      <!-- Role Instructions -->
+      <div class="content-section" ng-if="c.selectedVersion.role_instructions">
+        <h4 class="section-title">
+          <i class="fa fa-user-circle"></i>
+          Role / Instructions
+        </h4>
+        <div class="content-block">
+          <pre class="content-text">{{c.selectedVersion.role_instructions}}</pre>
+          <button class="btn btn-sm btn-default copy-btn" 
+                  ng-click="c.copyToClipboard('role', c.selectedVersion.role_instructions)"
+                  title="Copy role instructions">
+            <i class="fa fa-copy"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Prompt -->
+      <div class="content-section">
+        <h4 class="section-title">
+          <i class="fa fa-comment-o"></i>
+          Prompt
+        </h4>
+        <div class="content-block">
+          <pre class="content-text">{{c.selectedVersion.prompt_body}}</pre>
+          <button class="btn btn-sm btn-default copy-btn" 
+                  ng-click="c.copyToClipboard('prompt', c.selectedVersion.prompt_body)"
+                  title="Copy prompt">
+            <i class="fa fa-copy"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Example Input -->
+      <div class="content-section" ng-if="c.selectedVersion.example_input">
+        <h4 class="section-title">
+          <i class="fa fa-arrow-right"></i>
+          Example Input
+        </h4>
+        <div class="content-block">
+          <pre class="content-text">{{c.selectedVersion.example_input}}</pre>
+          <button class="btn btn-sm btn-default copy-btn" 
+                  ng-click="c.copyToClipboard('input', c.selectedVersion.example_input)"
+                  title="Copy example input">
+            <i class="fa fa-copy"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Example Output -->
+      <div class="content-section" ng-if="c.selectedVersion.example_output">
+        <h4 class="section-title">
+          <i class="fa fa-arrow-left"></i>
+          Example Output
+        </h4>
+        <div class="content-block">
+          <pre class="content-text">{{c.selectedVersion.example_output}}</pre>
+          <button class="btn btn-sm btn-default copy-btn" 
+                  ng-click="c.copyToClipboard('output', c.selectedVersion.example_output)"
+                  title="Copy example output">
+            <i class="fa fa-copy"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions and Metrics Section -->
+    <div class="actions-metrics" ng-if="c.selectedVersion">
+      <div class="row">
+        <!-- Action Buttons -->
+        <div class="col-md-6">
+          <div class="action-section">
+            <h5>Actions</h5>
+            <div class="btn-group action-buttons" role="group">
+              <button class="btn btn-primary" 
+                      ng-click="c.copyFullPrompt()"
+                      title="Copy complete prompt with role instructions">
+                <i class="fa fa-copy"></i> Copy Full Prompt
+              </button>
+              <button class="btn btn-warning" 
+                      ng-click="c.editPrompt()"
+                      title="Edit this prompt">
+                <i class="fa fa-edit"></i> Edit
+              </button>
+              <button class="btn btn-success" 
+                      ng-click="c.markAsUsed()"
+                      ng-disabled="c.isProcessing">
+                <i class="fa fa-check"></i> 
+                <span ng-if="!c.isProcessing">Mark as Used</span>
+                <span ng-if="c.isProcessing">Processing...</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metrics and Rating -->
+        <div class="col-md-6">
+          <div class="metrics-section">
+            <h5>Version Metrics</h5>
+            
+            <!-- Rating Display and Input -->
+            <div class="rating-container">
+              <div class="current-rating">
+                <span class="rating-label">Current Rating:</span>
+                <div class="stars-display">
+                  <i class="fa" 
+                     ng-repeat="star in c.getStarsArray(c.selectedVersion.average_rating) track by $index"
+                     ng-class="star.class"></i>
+                </div>
+                <span class="rating-text">
+                  {{c.selectedVersion.average_rating | number:1}} 
+                  ({{c.selectedVersion.rating_count}} rating{{c.selectedVersion.rating_count === 1 ? '' : 's'}})
+                </span>
+              </div>
+
+              <div class="rate-version">
+                <span class="rating-label">Rate this version:</span>
+                <div class="interactive-stars">
+                  <i class="fa fa-star-o interactive-star" 
+                     ng-repeat="n in [1,2,3,4,5] track by $index"
+                     ng-class="{'fa-star': n <= c.hoverRating || (c.hoverRating === 0 && n <= c.userRating)}"
+                     ng-mouseover="c.hoverRating = n"
+                     ng-mouseleave="c.hoverRating = 0"
+                     ng-click="c.submitRating(n)"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Usage Stats -->
+            <div class="usage-stats">
+              <div class="stat-item">
+                <span class="stat-label">Total Uses:</span>
+                <span class="stat-value">{{c.selectedVersion.usage_count || 0}}</span>
+              </div>
+              <div class="stat-item" ng-if="c.usageHistory && c.usageHistory.length > 0">
+                <span class="stat-label">Recent Uses:</span>
+                <a href="#" ng-click="c.showUsageHistory()" class="stat-link">
+                  View History ({{c.usageHistory.length}})
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tags Section -->
+    <div class="tags-section" ng-if="data.prompt.tags && data.prompt.tags.length > 0">
+      <h5>Tags</h5>
+      <div class="tags-container">
+        <span class="tag-badge" ng-repeat="tag in data.prompt.tags track by tag.sys_id">
+          {{tag.name}}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Result Messages -->
+  <div class="alert alert-success" 
+       ng-if="c.actionMessage && c.actionMessage.type === 'success'" 
+       role="alert">
+    <i class="fa fa-check-circle"></i>
+    {{c.actionMessage.text}}
+  </div>
+
+  <div class="alert alert-danger" 
+       ng-if="c.actionMessage && c.actionMessage.type === 'error'" 
+       role="alert">
+    <i class="fa fa-exclamation-triangle"></i>
+    {{c.actionMessage.text}}
+  </div>
+</div>
