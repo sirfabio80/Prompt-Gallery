@@ -1,5 +1,17 @@
 <div class="prompt-gallery-widget">
-  <!-- Error State -->
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <div class="text-center">
+        <h1 class="page-title">Prompt Gallery</h1>
+        <p class="page-subtitle">Discover and share AI prompts for enhanced productivity</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Container -->
+  <div class="container main-content">
+    <!-- Error State -->
   <div ng-if="c.error" class="alert alert-danger">
     <strong>Error:</strong> {{c.error}}
     <button class="btn btn-sm btn-secondary ml-2" ng-click="c.retry()">Retry</button>
