@@ -1,5 +1,6 @@
 import '@servicenow/sdk/global'
 import { Record } from '@servicenow/sdk/core'
+import { prompt_gallery_theme } from '../theme.now'
 
 // Service Portal CSS record
 export const prompt_gallery_sp_css = Record({
@@ -292,9 +293,9 @@ export const prompt_gallery_css_include = Record({
 // Many-to-many record linking the CSS Include to the Prompt Gallery Theme
 export const theme_css_include_link = Record({
     $id: Now.ID['theme_css_include_link'],
-    table: 'm2m_sp_theme_css_include',
+    table: 'm2m_sp_theme_css',
     data: {
-        sp_theme: '7ba139dce64c477abec81af8d4d142e6', // sys_id of Prompt Gallery Theme
+        sp_theme: prompt_gallery_theme, // Reference to our theme
         sp_css_include: prompt_gallery_css_include, // Reference to the CSS include
     },
 })

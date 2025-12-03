@@ -415,7 +415,7 @@ declare global {
                     prompt_gallery_header_footer: {
                         table: 'sp_header_footer'
                         id: '511a7cb8fdbd49e3b452acd5fc2354fb'
-                        deleted: true
+                        deleted: false
                     }
                     prompt_gallery_header_instance: {
                         table: 'sp_instance'
@@ -613,7 +613,11 @@ declare global {
                     prompt_gallery_theme: {
                         table: 'sp_theme'
                         id: '7ba139dce64c477abec81af8d4d142e6'
-                        deleted: true
+                        deleted: false
+                    }
+                    prompt_gallery_theme_css_link: {
+                        table: 'm2m_sp_theme_css'
+                        id: '47eba618beb9445bbecffdc1e4c73f44'
                     }
                     prompt_gallery_ui_page: {
                         table: 'sys_ui_page'
@@ -814,8 +818,8 @@ declare global {
                         id: 'a3ecc61e743a4ec59f00710eaa63720b'
                     }
                     theme_css_include_link: {
-                        table: 'm2m_sp_theme_css_include'
-                        id: '424dbe4aa6a6403588cbcfbec610f2b8'
+                        table: 'm2m_sp_theme_css'
+                        id: '8dbcb48ddb304a849daae0fdbe8b982b'
                     }
                     version_arch_1_v1: {
                         table: 'x_snc_prompt_galle_prompt_version'

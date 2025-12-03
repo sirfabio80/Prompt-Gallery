@@ -1,5 +1,7 @@
 import '@servicenow/sdk/global'
 import { Record } from '@servicenow/sdk/core'
+import { prompt_gallery_theme } from './theme.now'
+import { prompt_gallery_menu_instance } from './menu/prompt-gallery-menu.now'
 
 // Service Portal for Prompt Gallery - Rebuilding with specific sys_id
 export const prompt_gallery_portal = Record({
@@ -10,8 +12,8 @@ export const prompt_gallery_portal = Record({
         url_suffix: 'prompt-gallery',
         title: 'Prompt Gallery Portal',
         homepage: '848eb10632fe45808e7c2da50b7ec266', // prompt_gallery page sys_id
-        theme: '', // Theme will be set separately - mentioned as already created
-        sp_rectangle_menu: 'ab44670105424f4b9919c98587ac006e', // Main menu sys_id (already created)
+        theme: prompt_gallery_theme, // Link to our Prompt Gallery Theme
+        sp_rectangle_menu: prompt_gallery_menu_instance, // Reference to our main menu instance
         logo: '',
         logo_alt_text: 'Prompt Gallery',
         quick_start_config: '',
