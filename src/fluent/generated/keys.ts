@@ -5,9 +5,18 @@ declare global {
         namespace Internal {
             interface Keys extends KeysRegistry {
                 explicit: {
+                    '0ee6ce9a93a172583321f2cbdd03d687': {
+                        table: 'sp_row'
+                        id: '0ee6ce9a93a172583321f2cbdd03d687'
+                        deleted: true
+                    }
                     '10eab80a93613a183321f2cbdd03d680': {
                         table: 'sys_ui_element'
                         id: '10eab80a93613a183321f2cbdd03d680'
+                    }
+                    '13e602da93a172583321f2cbdd03d63a': {
+                        table: 'sp_instance'
+                        id: '13e602da93a172583321f2cbdd03d63a'
                     }
                     '14eab80a93613a183321f2cbdd03d67d': {
                         table: 'sys_ui_element'
@@ -65,6 +74,11 @@ declare global {
                         table: 'm2m_sp_theme_css_include'
                         id: '7d17345693edbe183321f2cbdd03d676'
                     }
+                    '8ae6ce9a93a172583321f2cbdd03d68d': {
+                        table: 'sp_column'
+                        id: '8ae6ce9a93a172583321f2cbdd03d68d'
+                        deleted: true
+                    }
                     '94eab80a93613a183321f2cbdd03d681': {
                         table: 'sys_ui_element'
                         id: '94eab80a93613a183321f2cbdd03d681'
@@ -98,6 +112,11 @@ declare global {
                     ac662f2d932dbed43321f2cbdd03d6f8: {
                         table: 'sys_ui_element'
                         id: 'ac662f2d932dbed43321f2cbdd03d6f8'
+                    }
+                    bb8580f444f5466f8d28742fa3ef1c86: {
+                        table: 'sp_row'
+                        id: 'bb8580f444f5466f8d28742fa3ef1c86'
+                        deleted: true
                     }
                     bom_json: {
                         table: 'sys_module'
@@ -436,7 +455,7 @@ declare global {
                     prompt_gallery_header_column: {
                         table: 'sp_column'
                         id: '02c31ed5c075411b90899b7e116f0f96'
-                        deleted: true
+                        deleted: false
                     }
                     prompt_gallery_header_container: {
                         table: 'sp_container'
@@ -466,7 +485,7 @@ declare global {
                     prompt_gallery_header_row: {
                         table: 'sp_row'
                         id: '65169a6c2af04291a7918244cb9aebf6'
-                        deleted: true
+                        deleted: false
                     }
                     prompt_gallery_header_theme_instance: {
                         table: 'sp_instance'
@@ -481,12 +500,28 @@ declare global {
                     prompt_gallery_header_widget: {
                         table: 'sp_widget'
                         id: 'd10bdb98af324fbd8005b93003e2bdab'
-                        deleted: true
+                        deleted: false
                     }
                     prompt_gallery_header_widget_instance: {
                         table: 'sp_instance'
                         id: '931a5845583444b1aaa8ef8aa6c02efc'
-                        deleted: true
+                        deleted: false
+                    }
+                    prompt_gallery_heading_column: {
+                        table: 'sp_column'
+                        id: '1986b5a2cce34c3eaafb24da15cdff52'
+                    }
+                    prompt_gallery_heading_row: {
+                        table: 'sp_row'
+                        id: 'bb8580f444f5466f8d28742fa3ef1c86'
+                    }
+                    prompt_gallery_heading_widget: {
+                        table: 'sp_widget'
+                        id: 'b012698c78b44c84b25356b4482ac798'
+                    }
+                    prompt_gallery_heading_widget_instance: {
+                        table: 'sp_instance'
+                        id: '860b6360401c4176a9714e826cc49d7d'
                     }
                     prompt_gallery_main_column: {
                         table: 'sp_column'

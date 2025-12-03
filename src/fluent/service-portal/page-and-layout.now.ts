@@ -59,14 +59,14 @@ export const prompt_gallery_container = Record({
     table: 'sp_container',
     data: {
         sp_page: '848eb10632fe45808e7c2da50b7ec266', // Direct reference to the actual page sys_id
-        name: 'Prompt Gallery Main Container',
+        name: 'Prompt Gallery - Container 2',
         title: 'Main Container',
         bootstrap_alt: false,
         background_color: '',
         background_image: '',
         class_name: 'container-fluid',
         color: '',
-        order: 100,
+        order: 2,
         css: `
 .container-fluid {
     padding: 0 15px;
@@ -79,9 +79,12 @@ export const prompt_gallery_container = Record({
         padding: 0 10px;
     }
 }`,
+        subheader: 'false',
+        width: 'container',
     },
 })
 
+// Row for heading widget - MUST reference sp_container directly
 // Row for search widget - MUST reference sp_container directly
 export const prompt_gallery_search_row = Record({
     $id: Now.ID['prompt_gallery_search_row'],
@@ -91,7 +94,25 @@ export const prompt_gallery_search_row = Record({
         name: 'Search Row',
         title: 'Search Widget Row',
         class_name: 'row search-row',
-        order: 100,
+        order: 2,
+    },
+})
+
+// Column for heading widget (full width) - MUST reference sp_row directly
+export const prompt_gallery_heading_column = Record({
+    $id: Now.ID['prompt_gallery_heading_column'],
+    table: 'sp_column',
+    data: {
+        sp_row: 'h1234567890123456789012345678901234567890', // Direct reference to actual heading row sys_id
+        name: 'Heading Column',
+        title: 'Heading Widget Column',
+        class_name: 'col-xs-12 col-sm-12 col-md-12 col-lg-12',
+        size_xs: 12,
+        size_sm: 12,
+        size_md: 12,
+        size_lg: 12,
+        order: 1,
+        size: '12',
     },
 })
 
@@ -108,7 +129,7 @@ export const prompt_gallery_search_column = Record({
         size_sm: 12,
         size_md: 12,
         size_lg: 12,
-        order: 100,
+        order: 1,
     },
 })
 
@@ -121,7 +142,7 @@ export const prompt_gallery_main_row = Record({
         name: 'Gallery Row',
         title: 'Gallery Widget Row',
         class_name: 'row gallery-row',
-        order: 200,
+        order: 3,
     },
 })
 
@@ -138,11 +159,41 @@ export const prompt_gallery_main_column = Record({
         size_sm: 12,
         size_md: 12,
         size_lg: 12,
-        order: 100,
+        order: 1,
+        size: '12',
     },
 })
 
 // Widget instances - MUST reference sp_column directly
+export const prompt_gallery_heading_widget_instance = Record({
+    $id: Now.ID['prompt_gallery_heading_widget_instance'],
+    table: 'sp_instance',
+    data: {
+        sp_widget: 'prompt_gallery_heading_widget', // Reference to the heading widget
+        sp_column: 'h9999999999999999999999999999999999999999', // Direct reference to heading column
+        title: 'Prompt Gallery Heading',
+        short_description: 'Page heading with title and subtitle',
+        order: 1,
+        color: 'default',
+        size: 'md',
+        options: JSON.stringify({
+            title: 'Prompt Gallery',
+            subtitle: 'Discover and share AI prompts for enhanced productivity',
+        }),
+        active: true,
+        advanced_placeholder_dimensions: 'false',
+        async_load: 'false',
+        css: `/* Heading widget instance styling */
+.prompt-gallery-heading-widget {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+}`,
+        preserve_placeholder_size: 'false',
+    },
+})
+
 export const prompt_gallery_search_widget_instance = Record({
     $id: Now.ID['prompt_gallery_search_widget_instance'],
     table: 'sp_instance',
@@ -151,7 +202,7 @@ export const prompt_gallery_search_widget_instance = Record({
         sp_column: 'd99d94f987984de8aa13128ed12dbd77', // Direct reference to column
         title: 'Search Prompts',
         short_description: 'Search and filter prompts',
-        order: 100,
+        order: 1,
         color: 'default',
         size: 'md',
         options: JSON.stringify({
@@ -184,7 +235,7 @@ export const prompt_gallery_main_widget_instance = Record({
         sp_column: 'd69baf81a5624720b483ae005dbe2187', // Direct reference to column
         title: 'Prompt Gallery',
         short_description: 'Browse and view prompts',
-        order: 100,
+        order: 1,
         color: 'default',
         size: 'md',
         options: JSON.stringify({

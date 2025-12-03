@@ -16,7 +16,6 @@ export const prompt_gallery_main_widget = Record({
     data.error = null;
     
     // Widget options with defaults
-    data.title = options.title || 'Prompt Gallery';
     data.show_search = options.show_search !== 'false';
     data.show_categories = options.show_categories !== 'false';
     data.items_per_page = parseInt(options.items_per_page) || 9;
@@ -202,9 +201,9 @@ export const prompt_gallery_main_widget = Record({
 })()`,
         css: Now.include('../../../client/service-portal/widgets/prompt-gallery-main/styles.css'),
         option_schema:
-            '[{"name":"title","label":"Title","type":"string","default_value":"Prompt Gallery"}, {"name":"show_search","label":"Show Search","type":"boolean","default_value":"true"}, {"name":"show_categories","label":"Show Categories","type":"boolean","default_value":"true"}, {"name":"items_per_page","label":"Items Per Page","type":"string","default_value":"9"}]',
+            '[{"name":"show_search","label":"Show Search","type":"boolean","default_value":"true"}, {"name":"show_categories","label":"Show Categories","type":"boolean","default_value":"true"}, {"name":"items_per_page","label":"Items Per Page","type":"string","default_value":"9"}]',
         demo_data:
-            '{"title": "Prompt Gallery", "show_search": "true", "show_categories": "true", "items_per_page": "9"}',
+            '{"show_search": "true", "show_categories": "true", "items_per_page": "9"}',
         docs: 'Main widget for displaying the p',
         public: false,
         has_preview: true,
