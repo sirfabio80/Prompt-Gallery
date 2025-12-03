@@ -349,6 +349,11 @@ export const prompt_gallery_header_footer = Record({
 
 .user-dropdown.show {
   animation: fadeInUp 0.3s ease forwards;
+}
+
+/* Hide inner-details element that appears in an ugly way */
+.inner-details {
+  display: none !important;
 }`,
 
         client_script: `function promptGalleryHeaderController($rootScope, $scope, $window, spUtil, $location, $uibModal, i18n, $document, $timeout) {

@@ -852,26 +852,32 @@ declare global {
                     'x_snc_prompt_galle/debug': {
                         table: 'sys_ux_lib_asset'
                         id: '6dcdd326aec544db948cda7e1af567f2'
+                        deleted: false
                     }
                     'x_snc_prompt_galle/debug.js.map': {
                         table: 'sys_ux_lib_asset'
                         id: '1b8ec46310cc4470a05d9f9d558d8288'
+                        deleted: false
                     }
                     'x_snc_prompt_galle/fields-zv17xwAC': {
                         table: 'sys_ux_lib_asset'
                         id: 'df774e31aff8400eacd59c7c3f80c992'
+                        deleted: false
                     }
                     'x_snc_prompt_galle/fields-zv17xwAC.js.map': {
                         table: 'sys_ux_lib_asset'
                         id: '59c7f52b73cd4c0ca621dd368adeae9e'
+                        deleted: false
                     }
                     'x_snc_prompt_galle/main': {
                         table: 'sys_ux_lib_asset'
                         id: 'da8c634095eb49f5b82fdecefa330ad9'
+                        deleted: false
                     }
                     'x_snc_prompt_galle/main.js.map': {
                         table: 'sys_ux_lib_asset'
                         id: '6812f4cba87b4090bb887472244ae8c1'
+                        deleted: false
                     }
                 }
                 composite: [
