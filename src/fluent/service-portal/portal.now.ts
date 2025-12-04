@@ -14,7 +14,7 @@ export const prompt_gallery_portal = Record({
         homepage: prompt_gallery_sp_page, // Reference to our main page
         theme: prompt_gallery_theme, // Link to our Prompt Gallery Theme
         sp_rectangle_menu: prompt_gallery_menu_instance, // Reference to our main menu instance
-        logo: '5a3d46d6936572583321f2cbdd03d625',
+        logo: 'a28622569361b2583321f2cbdd03d6c7',
         logo_alt_text: 'Prompt Gallery',
         quick_start_config: '',
         login_page: '',

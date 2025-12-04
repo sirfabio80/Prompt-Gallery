@@ -1,6 +1,7 @@
 # Prompt Gallery 🎯
 
 A comprehensive ServiceNow application designed to help teams collect, organize, and share AI prompts effectively. Whether you're using ChatGPT, Claude, Copilot, or any other AI tool, Prompt Gallery provides a centralized hub for managing your prompt library.
+Existing prompts are sample data provided for demonstration purposes only.
 
 ![Prompt Gallery](https://github.com/user-attachments/assets/e1cb79b7-1739-4bfb-b534-c1fd74e324fa)
 
