@@ -49,6 +49,21 @@ export const menu_item_gallery = Record({
     },
 })
 
+export const menu_item_create = Record({
+    $id: Now.ID['menu_item_create'],
+    table: 'sp_rectangle_menu_item',
+    data: {
+        sp_rectangle_menu: prompt_gallery_menu_instance,
+        label: 'Create New Prompt',
+        type: 'page',
+        page: 'prompt_create', // Reference to our create page ID
+        order: 250,
+        glyph: 'plus',
+        roles: '',
+        condition: '',
+    },
+})
+
 export const menu_item_categories = Record({
     $id: Now.ID['menu_item_categories'],
     table: 'sp_rectangle_menu_item',

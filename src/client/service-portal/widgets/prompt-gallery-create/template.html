@@ -1,0 +1,163 @@
+<div class="prompt-create-form-container">
+  <!-- Success Message -->
+  <div class="alert alert-success" ng-if="c.data.success_message">
+    <i class="fa fa-check-circle" aria-hidden="true"></i>
+    {{c.data.success_message}}
+    <div class="mt-3" ng-if="c.data.created_prompt_id">
+      <a href="?id=prompt_gallery_detail&sys_id={{c.data.created_prompt_id}}" class="btn btn-sm btn-primary">
+        <i class="fa fa-eye" aria-hidden="true"></i>
+        View Created Prompt
+      </a>
+    </div>
+  </div>
+
+  <!-- Error Message -->
+  <div class="alert alert-danger" ng-if="c.data.error_message">
+    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+    {{c.data.error_message}}
+  </div>
+
+  <!-- Create Form -->
+  <form name="createPromptForm" ng-submit="c.createPrompt()" novalidate>
+    <div class="form-section">
+      <label for="prompt-name" class="form-label">
+        Name <span class="text-danger">*</span>
+      </label>
+      <input 
+        type="text" 
+        id="prompt-name"
+        name="name"
+        class="form-control"
+        ng-model="c.formData.name"
+        ng-class="{'is-invalid': createPromptForm.name.$invalid && createPromptForm.name.$touched}"
+        placeholder="Enter a unique name for this prompt"
+        maxlength="100"
+        required
+      />
+      <div class="invalid-feedback" ng-show="createPromptForm.name.$invalid && createPromptForm.name.$touched">
+        Name is required and must be unique
+      </div>
+    </div>
+
+    <div class="form-section">
+      <label for="prompt-description" class="form-label">
+        Short Description
+      </label>
+      <textarea 
+        id="prompt-description"
+        name="short_description"
+        class="form-control"
+        ng-model="c.formData.short_description"
+        placeholder="Briefly describe what this prompt does and when to use it"
+        maxlength="1000"
+        rows="3"
+      ></textarea>
+      <small class="form-text text-muted">
+        {{c.formData.short_description.length || 0}}/1000 characters
+      </small>
+    </div>
+
+    <div class="form-section">
+      <label for="prompt-content" class="form-label">
+        Full Prompt Content <span class="text-danger">*</span>
+      </label>
+      <textarea 
+        id="prompt-content"
+        name="full_prompt"
+        class="form-control"
+        ng-model="c.formData.full_prompt"
+        ng-class="{'is-invalid': createPromptForm.full_prompt.$invalid && createPromptForm.full_prompt.$touched}"
+        placeholder="Enter the complete prompt content here..."
+        rows="8"
+        required
+      ></textarea>
+      <div class="invalid-feedback" ng-show="createPromptForm.full_prompt.$invalid && createPromptForm.full_prompt.$touched">
+        Full prompt content is required
+      </div>
+      <small class="form-text text-muted">
+        {{c.formData.full_prompt.length || 0}} characters
+      </small>
+    </div>
+
+    <div class="form-section">
+      <label for="prompt-category" class="form-label">
+        Category <span class="text-danger">*</span>
+      </label>
+      <select 
+        id="prompt-category"
+        name="category"
+        class="form-control"
+        ng-model="c.formData.category"
+        ng-class="{'is-invalid': createPromptForm.category.$invalid && createPromptForm.category.$touched}"
+        required
+      >
+        <option value="">-- Select a Category --</option>
+        <option 
+          ng-repeat="category in c.data.categories" 
+          value="{{category.sys_id}}"
+        >
+          {{category.label || category.name}}
+        </option>
+      </select>
+      <div class="invalid-feedback" ng-show="createPromptForm.category.$invalid && createPromptForm.category.$touched">
+        Please select a category
+      </div>
+    </div>
+
+    <div class="form-section">
+      <label for="prompt-team" class="form-label">
+        Owner Team
+      </label>
+      <select 
+        id="prompt-team"
+        name="owner_team"
+        class="form-control"
+        ng-model="c.formData.owner_team"
+      >
+        <option value="">-- Select a Team (Optional) --</option>
+        <option 
+          ng-repeat="team in c.data.teams" 
+          value="{{team.sys_id}}"
+        >
+          {{team.label || team.name}}
+        </option>
+      </select>
+      <small class="form-text text-muted">
+        Assign this prompt to a specific team for ownership and maintenance
+      </small>
+    </div>
+
+    <div class="form-section">
+      <div class="checkbox-wrapper">
+        <input 
+          type="checkbox" 
+          id="prompt-active"
+          name="is_active"
+          ng-model="c.formData.is_active"
+        />
+        <label for="prompt-active" class="form-label mb-0">
+          Active
+        </label>
+      </div>
+      <small class="form-text text-muted">
+        Active prompts are visible in the gallery and searchable by users
+      </small>
+    </div>
+
+    <div class="form-actions">
+      <a href="?id=prompt_gallery" class="btn btn-secondary">
+        <i class="fa fa-times" aria-hidden="true"></i>
+        Cancel
+      </a>
+      <button 
+        type="submit" 
+        class="btn btn-primary"
+        ng-disabled="createPromptForm.$invalid || c.isSubmitting"
+      >
+        <i class="fa fa-spinner fa-spin" aria-hidden="true" ng-if="c.isSubmitting"></i>
+        <i class="fa fa-plus" aria-hidden="true" ng-if="!c.isSubmitting"></i>
+        {{c.isSubmitting ? 'Creating...' : 'Create Prompt'}}
+      </button>
+    </div>
+  </form>
+</div>

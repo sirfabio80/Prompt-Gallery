@@ -46,6 +46,10 @@ declare global {
                         table: 'sys_ui_element'
                         id: '14eab80a93613a183321f2cbdd03d67d'
                     }
+                    '1afaee1693e1b2583321f2cbdd03d610': {
+                        table: 'sp_container'
+                        id: '1afaee1693e1b2583321f2cbdd03d610'
+                    }
                     '1ceab80a93613a183321f2cbdd03d682': {
                         table: 'sys_ui_element'
                         id: '1ceab80a93613a183321f2cbdd03d682'
@@ -61,6 +65,10 @@ declare global {
                     '28662f2d932dbed43321f2cbdd03d6f7': {
                         table: 'sys_ui_element'
                         id: '28662f2d932dbed43321f2cbdd03d6f7'
+                    }
+                    '3c0b665693e1b2583321f2cbdd03d6f2': {
+                        table: 'sp_row'
+                        id: '3c0b665693e1b2583321f2cbdd03d6f2'
                     }
                     '430f0c0a93adb6183321f2cbdd03d63c': {
                         table: 'sys_ui_element'
@@ -85,6 +93,10 @@ declare global {
                     '54eab80a93613a183321f2cbdd03d67f': {
                         table: 'sys_ui_element'
                         id: '54eab80a93613a183321f2cbdd03d67f'
+                    }
+                    '570b269693e1b2583321f2cbdd03d6b1': {
+                        table: 'sp_column'
+                        id: '570b269693e1b2583321f2cbdd03d6b1'
                     }
                     '64662f2d932dbed43321f2cbdd03d691': {
                         table: 'sys_ui_section'
@@ -170,6 +182,10 @@ declare global {
                         id: 'bb8580f444f5466f8d28742fa3ef1c86'
                         deleted: true
                     }
+                    bc0b6e5693e1b2583321f2cbdd03d60f: {
+                        table: 'sp_column'
+                        id: 'bc0b6e5693e1b2583321f2cbdd03d60f'
+                    }
                     bc45d656936972583321f2cbdd03d6d1: {
                         table: 'sp_row'
                         id: 'bc45d656936972583321f2cbdd03d6d1'
@@ -230,6 +246,14 @@ declare global {
                         table: 'sys_ui_element'
                         id: 'd4eab80a93613a183321f2cbdd03d683'
                     }
+                    d80b665693e1b2583321f2cbdd03d6ec: {
+                        table: 'sp_container'
+                        id: 'd80b665693e1b2583321f2cbdd03d6ec'
+                    }
+                    d82b2e9693e1b2583321f2cbdd03d67d: {
+                        table: 'sp_instance'
+                        id: 'd82b2e9693e1b2583321f2cbdd03d67d'
+                    }
                     d8ea3cc693613a183321f2cbdd03d6fb: {
                         table: 'sys_ui_section'
                         id: 'd8ea3cc693613a183321f2cbdd03d6fb'
@@ -237,6 +261,10 @@ declare global {
                     d8eab80a93613a183321f2cbdd03d680: {
                         table: 'sys_ui_element'
                         id: 'd8eab80a93613a183321f2cbdd03d680'
+                    }
+                    db0b269693e1b2583321f2cbdd03d6ac: {
+                        table: 'sp_row'
+                        id: 'db0b269693e1b2583321f2cbdd03d6ac'
                     }
                     db4a35ce936d7a183321f2cbdd03d6a9: {
                         table: 'sys_scope_privilege'
@@ -290,6 +318,10 @@ declare global {
                         table: 'sys_security_acl'
                         id: '2a99150f3c2a47c6bcddca3facbcb70e'
                     }
+                    f10b6e5693e1b2583321f2cbdd03d617: {
+                        table: 'sp_instance'
+                        id: 'f10b6e5693e1b2583321f2cbdd03d617'
+                    }
                     gallery_widget_to_gallery_column: {
                         table: 'sp_column_instance'
                         id: '1f9af7ca38db452480e300daba27d3f4'
@@ -307,6 +339,10 @@ declare global {
                     menu_item_categories: {
                         table: 'sp_rectangle_menu_item'
                         id: '9059d8d2cc154bdba65462c44b3f953d'
+                    }
+                    menu_item_create: {
+                        table: 'sp_rectangle_menu_item'
+                        id: 'c79125c54d4d4e85a2ddfc7ef23a3304'
                     }
                     menu_item_favorites: {
                         table: 'sp_rectangle_menu_item'
@@ -418,6 +454,10 @@ declare global {
                         id: 'f532660d8d2e4035b28608e35ca9f3a4'
                         deleted: true
                     }
+                    prompt_gallery_breadcrumbs_widget: {
+                        table: 'sp_widget'
+                        id: '3bfa6d45b37548068df0fe74908abc47'
+                    }
                     prompt_gallery_column: {
                         table: 'sp_column'
                         id: '6726e0a8db284d63bc0daab5ad95856d'
@@ -462,6 +502,46 @@ declare global {
                         table: 'sp_container'
                         id: '8e0ab5e7dc2d4a58b14677ce50357bcd'
                         deleted: true
+                    }
+                    prompt_gallery_create_breadcrumb_column: {
+                        table: 'sp_column'
+                        id: '425f52df03d84adb8faf7c60717f05ba'
+                    }
+                    prompt_gallery_create_breadcrumb_instance: {
+                        table: 'sp_instance'
+                        id: '1519ea2fcc5b428895293b6171694849'
+                    }
+                    prompt_gallery_create_breadcrumb_row: {
+                        table: 'sp_row'
+                        id: 'd720ba1175b64df5b6e61fb7ea36bcb4'
+                    }
+                    prompt_gallery_create_container1: {
+                        table: 'sp_container'
+                        id: '1f756e7b52f64757a50521a2bcea7230'
+                    }
+                    prompt_gallery_create_container2: {
+                        table: 'sp_container'
+                        id: '6bb7c8266e3842d59384050594db04f7'
+                    }
+                    prompt_gallery_create_form_column: {
+                        table: 'sp_column'
+                        id: '518e9ae19da5404e9eaa0cfaca2d4dc4'
+                    }
+                    prompt_gallery_create_form_instance: {
+                        table: 'sp_instance'
+                        id: '804873e99e044cadbd15500be089da3f'
+                    }
+                    prompt_gallery_create_form_row: {
+                        table: 'sp_row'
+                        id: '77f45fa9046841acb96952a575ecd557'
+                    }
+                    prompt_gallery_create_sp_page: {
+                        table: 'sp_page'
+                        id: 'c93a4646dff543639b416b453da1895f'
+                    }
+                    prompt_gallery_create_widget: {
+                        table: 'sp_widget'
+                        id: 'bd564037326c488fba1f536a0930937b'
                     }
                     prompt_gallery_css_include: {
                         table: 'sp_css_include'

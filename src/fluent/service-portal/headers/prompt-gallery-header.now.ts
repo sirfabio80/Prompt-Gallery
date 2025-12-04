@@ -28,6 +28,14 @@ export const prompt_gallery_header_footer = Record({
     <!-- Navigation Menu -->
     <nav class="header-nav" role="navigation" aria-label="Main Navigation">
       <ul class="nav-menu">
+        <!-- Create New Prompt Button (when on prompt gallery pages) -->
+        <li ng-if="::user.logged_in && (page.id == 'prompt_gallery' || page.id == 'prompt_create' || page.id == 'prompt_gallery_edit')" class="create-prompt-item">
+          <a href="?id=prompt_create" class="nav-link create-prompt-link" aria-label="Create New Prompt">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            <span>Create New Prompt</span>
+          </a>
+        </li>
+        
         <!-- Login link for anonymous users -->
         <li ng-if="::(!user.logged_in && page.id != portal.login_page_dv)">
           <a href="#" ng-click="openLogin()" class="nav-link login-link" aria-label="Login">
@@ -160,6 +168,23 @@ export const prompt_gallery_header_footer = Record({
   transform: translateY(-1px);
 }
 
+/* Create New Prompt Button */
+.create-prompt-link {
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0.5rem;
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+}
+
+.create-prompt-link:hover,
+.create-prompt-link:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
 .login-link {
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -170,7 +195,7 @@ export const prompt_gallery_header_footer = Record({
   border-color: rgba(255, 255, 255, 0.3);
 }
 
-/* User Menu */
+/* User Menu - Simplified */
 .user-link {
   background-color: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -190,21 +215,20 @@ export const prompt_gallery_header_footer = Record({
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.2);
   flex-shrink: 0;
 }
 
 .fa-chevron-down {
   font-size: 0.7rem;
   opacity: 0.7;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
 .dropdown.open .fa-chevron-down {
   transform: rotate(180deg);
 }
 
-/* Dropdown Menu */
+/* Dropdown Menu - Simplified Animation */
 .user-dropdown {
   position: absolute;
   top: 100%;
@@ -220,14 +244,14 @@ export const prompt_gallery_header_footer = Record({
   z-index: 1050;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
+  transform: translateY(-5px) scale(0.95);
+  transition: all 0.2s ease;
 }
 
 .dropdown.open .user-dropdown {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 .dropdown-link {
@@ -238,8 +262,8 @@ export const prompt_gallery_header_footer = Record({
   color: #374151;
   text-decoration: none;
   font-weight: 500;
-  font-size: 1.2rem;
-  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .dropdown-link:hover,
@@ -247,7 +271,6 @@ export const prompt_gallery_header_footer = Record({
   background-color: #f3f4f6;
   color: #1f2937;
   text-decoration: none;
-  /* Removed the problematic translateX - just use background color change */
 }
 
 .dropdown-link i {
@@ -287,6 +310,11 @@ export const prompt_gallery_header_footer = Record({
     font-size: 0.9rem;
   }
   
+  /* Hide text on Create New Prompt button on mobile */
+  .create-prompt-link span {
+    display: none;
+  }
+  
   .user-dropdown {
     right: 0;
     left: unset;
@@ -317,7 +345,8 @@ export const prompt_gallery_header_footer = Record({
     font-size: 0.85rem;
   }
   
-  .login-link span {
+  .login-link span,
+  .create-prompt-link span {
     display: none;
   }
 }
@@ -333,22 +362,6 @@ export const prompt_gallery_header_footer = Record({
 .user-dropdown .dropdown-link:focus {
   outline: 2px solid #667eea;
   outline-offset: -2px;
-}
-
-/* Animation for smooth interactions */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.user-dropdown.show {
-  animation: fadeInUp 0.3s ease forwards;
 }
 
 /* Hide inner-details element that appears in an ugly way */
