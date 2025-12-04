@@ -1,1633 +1,1360 @@
-# ServiceNow Service Portal Complete Development Guide
+# ServiceNow Service Portal Complete Guide
 
-## Build Agent Critical Instructions
+**Version:** 2.0  
+**Purpose:** Authoritative reference for Build Agent (Claude-4-Sonnet) to correctly create Service Portal components  
+**Last Updated:** December 2025  
+**Source:** Official ServiceNow Zurich Documentation
 
-**IMPORTANT:** This document is the authoritative reference for ServiceNow Service Portal development. When creating portals, pages, widgets, themes, or layouts, follow the patterns and best practices documented here.
+---
 
-### Critical Rules
+# PART 1: SERVICE PORTAL OVERVIEW AND CONCEPTS
 
-1. **NEVER place GlideRecord scripts directly in widget Server Script fields** - Always use Script Includes
-2. **Columns in a row must sum to 12** - Bootstrap grid requirement
-3. **Theme CSS Variables should ONLY contain SCSS variable declarations** - Never include CSS rule sets
-4. **Use `!default` flag in all widget SCSS variables** - Ensures theme values take precedence
-5. **Use order field increments of 100** - Allows future insertions (100, 200, 300...)
-6. **Headers link via Theme, NOT page layout** - Never add header widgets to sp_container/sp_row/sp_column
-7. **Menus link via Portal** - sp_portal.sp_rectangle_menu field
-8. **Always deregister $rootScope.$on listeners** - Prevent memory leaks
+## What is Service Portal?
 
-### Framework Versions
+Service Portal contains two parts: **a framework** and **a portal**. The framework is composed of a set of APIs, Angular services, directives, and tools that help to build portals. The portal is a group of pages linked by page IDs.
 
-- **AngularJS:** 1.5.1 (NOT 1.6+ or 2+)
-- **Bootstrap:** 3.3.6 (NOT Bootstrap 4 or 5)
+After you enter a URL, the framework uses the suffix and picks the appropriate portal to determine the theme and configurations. Then it loads the configured default portal homepage unless the URL has a specified ID.
 
-**Access Method:** `https://<instance>.service-now.com/<portal_suffix>?id=<page_id>`
+## Configuration Overview
+
+The following is the high-level workflow to configure a portal:
+
+1. **Create a new portal or update a base system portal**
+   - A portal is the engine that houses all the references to content for your site
+   - The portal record defines the URL extension for a site, as well as things like the knowledge base, catalog, and homepage
+   - You can also use the portal record to define the header menu and the portal branding
+
+2. **Configure portal branding**
+   - With the Branding Editor, you can configure the styles and theme of your portal in a view with real-time updates
+   - More advanced users still have the option of creating CSS style sheets for the portal theme
+   - Changes made in the Branding Editor or to specific components of the portal (such as a widget or a page container) override any customizations made to the theme
+
+3. **Create new pages or update base system pages and configure widgets**
+   - Pages are the centerpiece of the end-user experience
+   - Page definitions not only control the layout of the content, they craft the experience for the user
+   - Pages also help define mobile responsiveness, which is a key component in the user experience
+
+4. **Configure search in a portal**
+   - Search data displays within a widget on the search page
+   - To make data searchable from a portal, create a search source that fetches data from a single table within your instance, from multiple tables, or from an external site
+
+5. **Manage access to a portal**
+   - Manage who can access your portal by making pages public, configuring user logins and single sign-on, limiting page access by role, or enabling multi-factor authentication
+
+---
+
+## Understanding Portal Styles
+
+Pages are made up of containers, columns, rows, widgets, and widget instances. You can configure the CSS of each component, or use the CSS defined in theme and branding as global definitions for the portal. **If you do not define CSS in theme or branding, Bootstrap defaults are used.**
+
+### CSS Hierarchy (Lowest to Highest Priority)
+
+| Level | Source | Description |
+|-------|--------|-------------|
+| 1 | Bootstrap defaults | If no other CSS is defined, all elements use Bootstrap version 3.3.6 defaults |
+| 2 | Branding editor / Portal CSS | CSS defined in the Branding Editor Theme Colors tab. Changes appear in the CSS variables field in sp_portal |
+| 3 | Theme CSS | CSS defined in the CSS variables field in the Themes table [sp_theme]. Use the Theme CSS as much as possible |
+| 4 | Page CSS | CSS defined in the Page Specific CSS field in the Pages table [sp_page]. Overwrites theme CSS |
+| 5 | Container/Row/Column CSS | CSS classes and styles defined on layout elements |
+| 6 | Widget CSS | CSS defined in the CSS field in the Widgets table [sp_widget]. Overwrites layout CSS |
+| 7 | Widget instance CSS | CSS defined in the CSS field in the Instance table [sp_instance]. **Overwrites all other CSS** |
+
+**Important:** Use the CSS variables field to define CSS variables only. Use CSS Includes to define CSS rules. As of the Madrid release, Sass and LESS can be used within CSS Includes.
+
+---
+
+## Embedded Frameworks
+
+Service Portal provides these frameworks embedded and already loaded, which can be used to speed up development (especially branding) and reduce the amount of CSS to write in each entity:
+
+### Bootstrap 3.3.6
+
+Service Portal includes Bootstrap 3 with full SCSS/SASS variable support. The complete list of configurable variables is provided below.
+
+**🔴 CRITICAL: SASS Variable Best Practices**
+
+1. **SASS variables can ONLY be specified in the Theme** (`sp_theme.css_variables` field)
+2. **Widgets MUST inherit values from Theme SASS variables** - do not hardcode CSS values in widgets
+3. **Custom widgets requiring new SASS variables** must define them in their CSS field with `!default` suffix:
+   ```scss
+   $my-custom-color: #336699 !default;
+   $my-custom-spacing: 16px !default;
+   ```
+4. **The `!default` flag** allows the Theme to override widget-defined variables if needed
+
+This approach ensures:
+- Centralized branding control through the Theme
+- Consistent styling across all widgets
+- Easy theme switching and rebranding
+- Reduced CSS duplication
+
+#### Bootstrap 3 SASS Variables Reference
+
+##### Color System
+
+```scss
+// Grayscale
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+// Base Colors
+$blue:    #0d6efd !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #d63384 !default;
+$red:     #dc3545 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #ffc107 !default;
+$green:   #198754 !default;
+$teal:    #20c997 !default;
+$cyan:    #0dcaf0 !default;
+
+// Theme Colors
+$primary:       $blue !default;
+$secondary:     $gray-600 !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-900 !default;
+```
+
+##### Typography
+
+```scss
+// Font Families
+$font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif !default;
+$font-family-monospace:  SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+
+// Font Sizes
+$font-size-base: 1rem !default;
+$font-size-sm:   $font-size-base * .875 !default;
+$font-size-lg:   $font-size-base * 1.25 !default;
+
+// Font Weights
+$font-weight-lighter: lighter !default;
+$font-weight-light:   300 !default;
+$font-weight-normal:  400 !default;
+$font-weight-medium:  500 !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold:    700 !default;
+$font-weight-bolder:  bolder !default;
+
+// Line Heights
+$line-height-base: 1.5 !default;
+$line-height-sm:   1.25 !default;
+$line-height-lg:   2 !default;
+
+// Headings
+$h1-font-size: $font-size-base * 2.5 !default;
+$h2-font-size: $font-size-base * 2 !default;
+$h3-font-size: $font-size-base * 1.75 !default;
+$h4-font-size: $font-size-base * 1.5 !default;
+$h5-font-size: $font-size-base * 1.25 !default;
+$h6-font-size: $font-size-base !default;
+
+$headings-margin-bottom: $spacer * .5 !default;
+$headings-font-weight:   500 !default;
+$headings-line-height:   1.2 !default;
+$headings-color:         inherit !default;
+```
+
+##### Spacing
+
+```scss
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+) !default;
+```
+
+##### Grid System
+
+```scss
+// Breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
+
+// Container Max Widths
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+) !default;
+
+// Grid Configuration
+$grid-columns:      12 !default;
+$grid-gutter-width: 1.5rem !default;
+$grid-row-columns:  6 !default;
+```
+
+##### Body
+
+```scss
+$body-color: $gray-900 !default;
+$body-bg:    $white !default;
+$body-secondary-color: rgba($body-color, .75) !default;
+$body-secondary-bg:    $gray-200 !default;
+$body-tertiary-color:  rgba($body-color, .5) !default;
+$body-tertiary-bg:     $gray-100 !default;
+```
+
+##### Links
+
+```scss
+$link-color:            $primary !default;
+$link-decoration:       underline !default;
+$link-hover-decoration: null !default;
+```
+
+##### Borders
+
+```scss
+$border-width: 1px !default;
+$border-style: solid !default;
+$border-color: $gray-300 !default;
+
+$border-radius:    .375rem !default;
+$border-radius-sm: .25rem !default;
+$border-radius-lg: .5rem !default;
+$border-radius-xl: 1rem !default;
+$border-radius-xxl: 2rem !default;
+$border-radius-pill: 50rem !default;
+```
+
+##### Box Shadows
+
+```scss
+$box-shadow:       0 .5rem 1rem rgba($black, .15) !default;
+$box-shadow-sm:    0 .125rem .25rem rgba($black, .075) !default;
+$box-shadow-lg:    0 1rem 3rem rgba($black, .175) !default;
+$box-shadow-inset: inset 0 1px 2px rgba($black, .075) !default;
+```
+
+##### Components
+
+```scss
+$component-active-color: $white !default;
+$component-active-bg:    $primary !default;
+
+// Focus Ring
+$focus-ring-width:   .25rem !default;
+$focus-ring-opacity: .25 !default;
+$focus-ring-color:   rgba($primary, $focus-ring-opacity) !default;
+
+// Transitions
+$transition-base:     all .2s ease-in-out !default;
+$transition-fade:     opacity .15s linear !default;
+$transition-collapse: height .35s ease !default;
+```
+
+##### Buttons
+
+```scss
+$btn-padding-y:    .375rem !default;
+$btn-padding-x:    .75rem !default;
+$btn-font-size:    $font-size-base !default;
+$btn-line-height:  $line-height-base !default;
+$btn-border-width: 1px !default;
+$btn-font-weight:  $font-weight-normal !default;
+
+$btn-padding-y-sm: .25rem !default;
+$btn-padding-x-sm: .5rem !default;
+$btn-font-size-sm: $font-size-sm !default;
+
+$btn-padding-y-lg: .5rem !default;
+$btn-padding-x-lg: 1rem !default;
+$btn-font-size-lg: $font-size-lg !default;
+
+$btn-border-radius:    $border-radius !default;
+$btn-border-radius-sm: $border-radius-sm !default;
+$btn-border-radius-lg: $border-radius-lg !default;
+
+$btn-disabled-opacity: .65 !default;
+```
+
+##### Forms
+
+```scss
+$input-padding-y: .375rem !default;
+$input-padding-x: .75rem !default;
+$input-font-size: $font-size-base !default;
+$input-line-height: $line-height-base !default;
+
+$input-bg: $body-bg !default;
+$input-disabled-bg: $gray-200 !default;
+$input-color: $body-color !default;
+$input-border-color: $gray-300 !default;
+$input-border-width: 1px !default;
+
+$input-border-radius:    $border-radius !default;
+$input-border-radius-sm: $border-radius-sm !default;
+$input-border-radius-lg: $border-radius-lg !default;
+
+$input-focus-border-color: tint-color($primary, 50%) !default;
+$input-placeholder-color: $gray-600 !default;
+
+$form-label-margin-bottom: .5rem !default;
+$form-text-margin-top:     .25rem !default;
+$form-text-color:          $gray-600 !default;
+```
+
+##### Navbar
+
+```scss
+$navbar-padding-y: $spacer * .5 !default;
+$navbar-padding-x: null !default;
+
+$navbar-brand-font-size: $font-size-lg !default;
+$navbar-brand-margin-end: 1rem !default;
+
+// Light Navbar
+$navbar-light-color:          rgba($gray-900, .65) !default;
+$navbar-light-hover-color:    rgba($gray-900, .8) !default;
+$navbar-light-active-color:   rgba($gray-900, 1) !default;
+$navbar-light-disabled-color: rgba($gray-900, .3) !default;
+
+// Dark Navbar
+$navbar-dark-color:          rgba($white, .55) !default;
+$navbar-dark-hover-color:    rgba($white, .75) !default;
+$navbar-dark-active-color:   $white !default;
+$navbar-dark-disabled-color: rgba($white, .25) !default;
+```
+
+##### Cards
+
+```scss
+$card-spacer-y: $spacer !default;
+$card-spacer-x: $spacer !default;
+$card-title-spacer-y: $spacer * .5 !default;
+$card-border-width: 1px !default;
+$card-border-color: rgba($black, .125) !default;
+$card-border-radius: $border-radius !default;
+$card-cap-padding-y: $card-spacer-y * .5 !default;
+$card-cap-padding-x: $card-spacer-x !default;
+$card-cap-bg: rgba($gray-900, .03) !default;
+$card-bg: $body-bg !default;
+```
+
+##### Modals
+
+```scss
+$modal-inner-padding: $spacer !default;
+$modal-dialog-margin: .5rem !default;
+
+$modal-content-bg: $body-bg !default;
+$modal-content-border-color: rgba($black, .175) !default;
+$modal-content-border-width: 1px !default;
+$modal-content-border-radius: $border-radius-lg !default;
+
+$modal-backdrop-bg: $black !default;
+$modal-backdrop-opacity: .5 !default;
+
+$modal-header-border-color: $gray-300 !default;
+$modal-header-padding-y: $spacer !default;
+$modal-header-padding-x: $spacer !default;
+
+$modal-sm: 300px !default;
+$modal-md: 500px !default;
+$modal-lg: 800px !default;
+$modal-xl: 1140px !default;
+```
+
+##### Alerts
+
+```scss
+$alert-padding-y: $spacer !default;
+$alert-padding-x: $spacer !default;
+$alert-margin-bottom: 1rem !default;
+$alert-border-radius: $border-radius !default;
+$alert-border-width: 1px !default;
+```
+
+##### Tables
+
+```scss
+$table-cell-padding-y: .5rem !default;
+$table-cell-padding-x: .5rem !default;
+$table-cell-padding-y-sm: .25rem !default;
+$table-cell-padding-x-sm: .25rem !default;
+
+$table-striped-bg-factor: .05 !default;
+$table-active-bg-factor:  .1 !default;
+$table-hover-bg-factor:   .075 !default;
+$table-border-factor:     .2 !default;
+```
+
+##### Badges
+
+```scss
+$badge-font-size:   .75em !default;
+$badge-font-weight: $font-weight-bold !default;
+$badge-color:       $white !default;
+$badge-padding-y:   .35em !default;
+$badge-padding-x:   .65em !default;
+$badge-border-radius: $border-radius !default;
+```
+
+##### Progress Bars
+
+```scss
+$progress-height: 1rem !default;
+$progress-font-size: $font-size-base * .75 !default;
+$progress-bg: $gray-200 !default;
+$progress-border-radius: $border-radius !default;
+$progress-bar-color: $white !default;
+$progress-bar-bg: $primary !default;
+```
+
+##### List Groups
+
+```scss
+$list-group-color: $body-color !default;
+$list-group-bg: $body-bg !default;
+$list-group-border-color: $gray-300 !default;
+$list-group-border-width: 1px !default;
+$list-group-border-radius: $border-radius !default;
+
+$list-group-item-padding-y: $spacer * .5 !default;
+$list-group-item-padding-x: $spacer !default;
+
+$list-group-hover-bg: $gray-100 !default;
+$list-group-active-color: $component-active-color !default;
+$list-group-active-bg: $component-active-bg !default;
+```
+
+##### Dropdowns
+
+```scss
+$dropdown-min-width: 10rem !default;
+$dropdown-padding-x: 0 !default;
+$dropdown-padding-y: .5rem !default;
+$dropdown-spacer: .125rem !default;
+$dropdown-font-size: $font-size-base !default;
+$dropdown-color: $body-color !default;
+$dropdown-bg: $body-bg !default;
+$dropdown-border-color: rgba($black, .175) !default;
+$dropdown-border-radius: $border-radius !default;
+$dropdown-border-width: 1px !default;
+
+$dropdown-link-color: $body-color !default;
+$dropdown-link-hover-bg: $gray-100 !default;
+$dropdown-link-active-color: $white !default;
+$dropdown-link-active-bg: $primary !default;
+
+$dropdown-item-padding-y: $spacer * .25 !default;
+$dropdown-item-padding-x: $spacer !default;
+```
+
+##### Pagination
+
+```scss
+$pagination-padding-y: .375rem !default;
+$pagination-padding-x: .75rem !default;
+$pagination-font-size: $font-size-base !default;
+$pagination-color: $link-color !default;
+$pagination-bg: $body-bg !default;
+$pagination-border-radius: $border-radius !default;
+$pagination-border-width: 1px !default;
+$pagination-border-color: $gray-300 !default;
+
+$pagination-hover-color: $link-hover-color !default;
+$pagination-hover-bg: $gray-200 !default;
+
+$pagination-active-color: $component-active-color !default;
+$pagination-active-bg: $component-active-bg !default;
+
+$pagination-disabled-color: $gray-600 !default;
+$pagination-disabled-bg: $gray-200 !default;
+```
+
+##### Tooltips
+
+```scss
+$tooltip-font-size: $font-size-sm !default;
+$tooltip-max-width: 200px !default;
+$tooltip-color: $body-bg !default;
+$tooltip-bg: $gray-900 !default;
+$tooltip-border-radius: $border-radius !default;
+$tooltip-opacity: .9 !default;
+$tooltip-padding-y: $spacer * .25 !default;
+$tooltip-padding-x: $spacer * .5 !default;
+```
+
+##### Breadcrumbs
+
+```scss
+$breadcrumb-font-size: null !default;
+$breadcrumb-padding-y: 0 !default;
+$breadcrumb-padding-x: 0 !default;
+$breadcrumb-item-padding-x: .5rem !default;
+$breadcrumb-margin-bottom: 1rem !default;
+$breadcrumb-divider-color: $gray-600 !default;
+$breadcrumb-active-color: $gray-600 !default;
+$breadcrumb-divider: quote("/") !default;
+```
+
+##### Z-Index Stack
+
+```scss
+$zindex-dropdown:          1000 !default;
+$zindex-sticky:            1020 !default;
+$zindex-fixed:             1030 !default;
+$zindex-offcanvas-backdrop: 1040 !default;
+$zindex-offcanvas:         1045 !default;
+$zindex-modal-backdrop:    1050 !default;
+$zindex-modal:             1055 !default;
+$zindex-popover:           1070 !default;
+$zindex-tooltip:           1080 !default;
+$zindex-toast:             1090 !default;
+```
+
+### Font Awesome 4.7.0
+
+Service Portal includes Font Awesome 4.7.0 for icons. Use icons directly in HTML templates:
+
+```html
+<!-- Basic usage -->
+<i class="fa fa-home"></i>
+<i class="fa fa-user"></i>
+<i class="fa fa-cog"></i>
+
+<!-- Sizing -->
+<i class="fa fa-home fa-lg"></i>    <!-- 33% larger -->
+<i class="fa fa-home fa-2x"></i>    <!-- 2x size -->
+<i class="fa fa-home fa-3x"></i>    <!-- 3x size -->
+<i class="fa fa-home fa-4x"></i>    <!-- 4x size -->
+<i class="fa fa-home fa-5x"></i>    <!-- 5x size -->
+
+<!-- Fixed width (useful in navigation) -->
+<i class="fa fa-home fa-fw"></i>
+
+<!-- Lists -->
+<ul class="fa-ul">
+  <li><i class="fa-li fa fa-check"></i>Item 1</li>
+  <li><i class="fa-li fa fa-check"></i>Item 2</li>
+</ul>
+
+<!-- Spinning (for loaders) -->
+<i class="fa fa-spinner fa-spin"></i>
+<i class="fa fa-refresh fa-spin"></i>
+<i class="fa fa-cog fa-spin"></i>
+
+<!-- Rotations -->
+<i class="fa fa-shield fa-rotate-90"></i>
+<i class="fa fa-shield fa-rotate-180"></i>
+<i class="fa fa-shield fa-rotate-270"></i>
+<i class="fa fa-shield fa-flip-horizontal"></i>
+<i class="fa fa-shield fa-flip-vertical"></i>
+
+<!-- Stacked icons -->
+<span class="fa-stack fa-lg">
+  <i class="fa fa-circle fa-stack-2x"></i>
+  <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+</span>
+```
+
+#### Commonly Used Icons in Service Portal
+
+| Category | Icons |
+|----------|-------|
+| Navigation | `fa-home`, `fa-arrow-left`, `fa-arrow-right`, `fa-bars`, `fa-chevron-down` |
+| Actions | `fa-plus`, `fa-edit`, `fa-trash`, `fa-save`, `fa-download`, `fa-upload` |
+| Status | `fa-check`, `fa-times`, `fa-exclamation-triangle`, `fa-info-circle` |
+| Communication | `fa-envelope`, `fa-phone`, `fa-comment`, `fa-bell` |
+| Users | `fa-user`, `fa-users`, `fa-user-circle` |
+| Files | `fa-file`, `fa-file-text`, `fa-folder`, `fa-paperclip` |
+| Settings | `fa-cog`, `fa-cogs`, `fa-wrench`, `fa-sliders` |
+| Search | `fa-search`, `fa-filter` |
+| Time | `fa-clock-o`, `fa-calendar`, `fa-history` |
+| Misc | `fa-star`, `fa-heart`, `fa-bookmark`, `fa-tag` |
+
+**Reference:** Full icon list at https://fontawesome.com/v4/icons/
+
+---
+
+## Understanding Pages
+
+Use pages to organize content, ensure responsive mobile optimization, and design meaningful portal user experiences for your customers. A page houses containers and rows, which then contain widgets.
+
+**Key concepts:**
+- Pages are referenced using the page ID
+- Pages can be referenced in more than one portal
+- Use base system pages as templates
+
+### Page Layout Structure
+
+**Containers** are markup artifacts that are put on a page to contain the layouts that house the widgets. You can view containers in the Service Portal Designer (Service Portal > Service Portal Configuration > Designer).
+
+**Layouts** define the structure of your page and the space available to drop widgets. The structure of the layout aligns with the Bootstrap grid template and always adds up to 12.
+
+### Creating Pages
+
+1. Navigate to All > Service Portal > Service Portal Configuration
+2. Select Designer
+3. Switch to the portal you want to design pages for
+4. Select a page to customize or select "Add a new page"
+5. Under Layouts, select Container and drag it onto the page
+6. Drag one of the other layouts and drop it in the container
+7. Use the filter to search for a widget, then drag the widget to the layout
+
+---
+
+## Understanding Widgets
+
+Widgets are what define the content of your portal pages. You can use the base system widgets provided with Service Portal, clone and modify widgets, or develop custom widgets to fit your own needs.
+
+### Base System Widgets
+
+You can use the base system widgets included with Service Portal to get started configuring portal pages. **Base system widgets are read-only** so you can benefit from future updates. However, for each instance of a base system widget that you add to a page, you can configure the instance options available for that widget.
+
+### Widget Instances
+
+Each widget added to a page becomes its own instance. A widget instance is basically the application of a widget in a page. Because widgets are reusable and can appear on different pages to do different things, the manifestation of a widget on a page is referred to as a **Widget Instance**.
+
+Widget instances get their logic from the base widget template, client scripts, server scripts, and depending on the widget, CSS.
+
+**Key points:**
+- Adding the same widget multiple times to the same page creates multiple instances
+- All widget instances point to a widget - if you edit that widget, all of its widget instances receive that change
+- You can also make changes specific to a widget instance, and only that widget instance is affected
+- For widgets that do not contain any information by default, you must configure the options for their widget instances before they will appear on a portal page
+
+### Widget Context Menu
+
+From any rendered Service Portal page, you can **CTRL+right-click** a widget to see more configuration options in a context menu. You must have the admin or sp_admin role to see the widget context menu.
+
+---
+
+## Understanding Headers and Menus
+
+Configuring a portal header with a menu involves several steps:
+
+1. **Create a header and add it to a theme**
+   - Until you add a theme with a header to a portal, the header menu does not display
+
+2. **Create a main menu with menu items and assign it to the portal**
+   - The main menu record is where you assign which navigation options appear in the header
+   - For example, you can add a menu item that links to another page within your portal
+
+**Result:** The main menu and header form a header menu when associated with a theme and a portal.
+
+### Adding a Header or Footer
+
+Use the theme to add a header or footer to your portal:
+
+1. Navigate to All > Service Portal > Service Portal Configuration
+2. Select Portal Tables > Themes and then select the theme
+3. In the header or footer field, select the header or footer you want to use
+4. If you are just getting started, you can reuse the base system **Stock Header** or **Sample Footer** widgets
+5. (Optional) Select Fixed Header or Fixed Footer to lock it in place when users scroll
+
+---
+
+## Best Practices Summary
+
+1. **Use Theme CSS as the primary styling location** - allows for more flexible evolution of your portal
+2. **Base system widgets are read-only** - clone them if you need to make changes
+3. **Pages can be referenced in more than one portal** - design reusable pages
+4. **Configure widget instance options** - many widgets require configuration to display content
+5. **Avoid reserved words in URL suffixes** - such as "portal" and "cms"
+6. **Use Bootstrap grid system** - layouts always add up to 12 columns
+7. **Test mobile responsiveness** - pages help define mobile responsiveness
+
+---
+
+# PART 2: COMPLETE DEVELOPMENT GUIDE FOR BUILD AGENT
+
+## CRITICAL WARNINGS - READ FIRST
+
+### ⛔ MOST COMMON FATAL ERRORS
+
+Build Agent frequently makes these mistakes when creating Service Portals. **DO NOT** make these errors:
+
+1. **HEADER vs MENU CONFUSION**
+   - ❌ **WRONG:** Using "Header Menu" widget for `sp_header_footer.widget`
+   - ✅ **CORRECT:** Using "Stock Header" widget (`widget-stock-header`) for `sp_header_footer.widget`
+   - ❌ **WRONG:** Using "Stock Header" widget for `sp_instance_menu.widget`
+   - ✅ **CORRECT:** Using "Header Menu" widget (`widget-menu`) for `sp_instance_menu.widget`
+
+2. **PAGE LAYOUT HIERARCHY**
+   - ❌ **WRONG:** Creating `sp_instance` records without `sp_column` parent
+   - ✅ **CORRECT:** Always follow: `sp_page` → `sp_container` → `sp_row` → `sp_column` → `sp_instance`
+
+3. **CSS INCLUDES**
+   - ❌ **WRONG:** Creating `sp_css` records without linking to theme via `sp_css_include`
+   - ✅ **CORRECT:** Create `sp_css` record THEN create `sp_css_include` linking CSS to theme
 
 ---
 
 ## Table of Contents
 
-### Part 1: Foundation
-1. [Complete Data Model & Schema](#part-1-complete-data-model--schema)
-2. [Schema Relationships Map](#schema-relationships-map)
-
-### Part 2: Page Layout System
-3. [Layout Hierarchy](#part-2-page-layout-system)
-4. [Bootstrap v3 Grid System](#bootstrap-v3-grid-system)
-5. [Creating Page Layouts](#creating-page-layouts-programmatically)
-6. [Common Layout Patterns](#common-layout-patterns)
-
-### Part 3: Theme System
-7. [Theme Architecture](#part-3-theme-system)
-8. [CSS/SCSS Processing Pipeline](#cssscss-processing-pipeline)
-9. [SASS Variables Reference](#sass-variables-reference)
-
-### Part 4: Header & Menu System
-10. [Header Architecture](#part-4-header--menu-system)
-11. [Menu Configuration](#creating-the-menu)
-12. [Header vs Menu Distinction](#the-true-header-vs-menu-widget)
-
-### Part 5: Widget Development
-13. [Widget Architecture](#part-5-widget-development)
-14. [Script Include Pattern](#critical-script-include-pattern)
-15. [Client Scripts](#client-scripts)
-16. [Server Scripts](#server-scripts)
-
-### Part 6: Widget Communication
-17. [Event Broadcasting](#part-6-widget-communication)
-18. [Embedded Widgets](#embedded-widgets)
-19. [Angular Services](#angular-service-providers)
-20. [URL Parameters](#url-parameters)
-21. [Session Data](#session-data)
-
-### Part 7: Pagination
-22. [Pagination Best Practices](#part-7-pagination)
-23. [Multi-Fallback Solution](#the-multi-fallback-solution)
-
-### Part 8: Troubleshooting
-24. [Common Issues & Fixes](#part-8-troubleshooting)
-25. [Infinite Digest Loop Prevention](#infinite-digest-loop-prevention)
-26. [Diagnostic Scripts](#diagnostic-scripts)
-
-### Part 9: Quick Reference
-27. [Tables Reference](#part-9-quick-reference)
-28. [Common Methods](#common-methods)
+1. [Architecture Overview](#1-architecture-overview)
+2. [Core Tables Reference](#2-core-tables-reference)
+3. [Table Relationships](#3-table-relationships)
+4. [Complete Portal Creation Workflow](#4-complete-portal-creation-workflow)
+5. [Header and Menu Implementation](#5-header-and-menu-implementation)
+6. [Page Layout Creation](#6-page-layout-creation)
+7. [Theme and CSS Configuration](#7-theme-and-css-configuration)
+8. [Widget Development](#8-widget-development)
+9. [Field Reference Tables](#9-field-reference-tables)
+10. [Validation Scripts](#10-validation-scripts)
 
 ---
 
-# Part 1: Complete Data Model & Schema
+## 1. Architecture Overview
 
-## Primary Tables
+### Component Hierarchy
 
-| Table Name | Label | Purpose |
-|------------|-------|---------|
-| `sp_portal` | Portal | Root configuration record defining URL suffix, theme, homepage, and global settings |
-| `sp_page` | Page | Individual portal pages identified by `id` parameter in URL |
-| `sp_container` | Container | Divides pages into sections; holds rows |
-| `sp_row` | Row | Subdivides containers using Bootstrap 12-column grid |
-| `sp_column` | Column | Individual columns within rows; holds widget instances |
-| `sp_widget` | Widget | Reusable component containing HTML, CSS, client/server scripts |
-| `sp_instance` | Instance | Specific placement of a widget on a page with configuration options |
-| `sp_theme` | Theme | Defines portal styling, branding, header/footer widgets |
+```
+Portal (sp_portal)
+├── Theme (sp_theme)
+│   ├── Header (sp_header_footer) ─── Widget: "Stock Header" (widget-stock-header)
+│   ├── Footer (sp_header_footer) ─── Widget: Custom footer widget
+│   └── CSS Includes (sp_css_include) ─── Style Sheet (sp_css)
+│
+├── Main Menu (sp_instance_menu) ─── Widget: "Header Menu" (widget-menu)
+│   └── Menu Items (sp_rectangle_menu_item)
+│
+├── Homepage (sp_page)
+├── Login Page (sp_page)
+├── 404 Page (sp_page)
+│
+└── Pages (sp_page)
+    └── Containers (sp_container)
+        └── Rows (sp_row)
+            └── Columns (sp_column)
+                └── Widget Instances (sp_instance)
+                    └── Widget Definition (sp_widget)
+```
 
-## Instance Extension Tables
+### URL Structure
 
-| Table Name | Label | Purpose |
-|------------|-------|---------|
-| `sp_instance_carousel` | Instance of Carousel | Configuration for carousel widgets |
-| `sp_instance_link` | Instance with Link | Configuration for link-based widgets (Icon Link, etc.) |
-| `sp_instance_menu` | Instance with Menu | Configuration for menu widgets; has Menu Items related list |
-| `sp_instance_table` | Instance with Table | Configuration for Data Table and Count widgets |
-| `sp_instance_vlist` | Instance of Simple List | Configuration for Simple List widgets |
+```
+https://[instance].service-now.com/[url_suffix]?id=[page_id]
 
-## Theme-Related Tables
-
-| Table Name | Label | Purpose |
-|------------|-------|---------|
-| `sp_header_footer` | Header/Footer | Container record linking a widget to serve as header or footer |
-| `sp_css` | SP CSS | Reusable CSS stylesheets |
-| `sp_js_include` | JS Include | JavaScript file references (URL or UI Script) |
-| `m2m_sp_theme_css` | Theme CSS Include | Many-to-many: Theme ↔ CSS stylesheets |
-| `m2m_sp_theme_js` | Theme JS Include | Many-to-many: Theme ↔ JS includes |
-
-## Supporting Tables
-
-| Table Name | Label | Purpose |
-|------------|-------|---------|
-| `sp_angular_provider` | Angular Provider | Custom Angular directives, services, and factories |
-| `sp_dependency` | Widget Dependency | JS/CSS dependency packages for widgets |
-| `sp_search_group` | Search Group | Groups search sources for portal search |
-| `sp_rectangle_menu_item` | Menu Item | Individual menu entries |
-| `sp_carousel_slide` | Carousel Slide | Individual slides for carousel widgets |
-| `sn_ng_template` | Angular ng-template | Reusable HTML templates for widgets |
+Examples:
+- https://myinstance.service-now.com/sp              (default homepage)
+- https://myinstance.service-now.com/sp?id=catalog   (catalog page)
+- https://myinstance.service-now.com/ess?id=home     (custom portal, home page)
+```
 
 ---
 
-## Schema Relationships Map
+## 2. Core Tables Reference
 
-```
-┌─────────────────────────────────────────────────────────────────────────────────────────┐
-│                           SERVICE PORTAL COMPLETE SCHEMA MAP                             │
-└─────────────────────────────────────────────────────────────────────────────────────────┘
+### Primary Tables
 
-                                      ┌──────────────┐
-                                      │  sp_portal   │
-                                      │   (Portal)   │
-                                      └──────┬───────┘
-                                             │
-              ┌──────────────────────────────┼──────────────────────────────┐
-              │                              │                              │
-              ▼                              ▼                              ▼
-       ┌──────────────┐              ┌──────────────┐              ┌──────────────┐
-       │   sp_theme   │              │   sp_page    │              │sp_instance_  │
-       │   (Theme)    │              │    (Page)    │              │    menu      │
-       └──────┬───────┘              └──────┬───────┘              │ (Main Menu)  │
-              │                             │                      └──────────────┘
-    ┌─────────┼─────────┐                   ▼
-    │         │         │            ┌──────────────┐
-    ▼         ▼         ▼            │ sp_container │
-┌────────┐ ┌────────┐ ┌────────┐     │ (Container)  │
-│header  │ │footer  │ │css/js  │     └──────┬───────┘
-│   ↓    │ │   ↓    │ │includes│            │
-│sp_hdr_ │ │sp_hdr_ │ │  m2m   │            ▼
-│footer  │ │footer  │ └────────┘     ┌──────────────┐
-└───┬────┘ └───┬────┘                │   sp_row     │
-    │          │                     │    (Row)     │
-    ▼          ▼                     └──────┬───────┘
-┌──────────────────┐                        │
-│    sp_widget     │                        ▼
-│  (Header/Footer  │                 ┌──────────────┐
-│     Widget)      │                 │  sp_column   │
-└──────────────────┘                 │   (Column)   │
-                                     └──────┬───────┘
-                                            │
-                                            ▼
-                                     ┌──────────────┐
-                                     │ sp_instance  │◄────── extends ────┐
-                                     │  (Instance)  │                    │
-                                     └──────┬───────┘                    │
-                                            │                     ┌──────┴──────────┐
-                                            │ references          │ sp_instance_*   │
-                                            ▼                     │ extension tables│
-                                     ┌──────────────┐             └─────────────────┘
-                                     │  sp_widget   │
-                                     │   (Widget)   │
-                                     └──────┬───────┘
-                                            │
-              ┌─────────────────────────────┼─────────────────────────────┐
-              │                             │                             │
-              ▼                             ▼                             ▼
-       ┌──────────────┐              ┌──────────────┐             ┌──────────────┐
-       │sp_dependency │              │sp_angular_   │             │sn_ng_template│
-       │(Dependencies)│              │  provider    │             │ (Templates)  │
-       └──────────────┘              └──────────────┘             └──────────────┘
-
-
-                              RELATIONSHIP LEGEND
-    ───────────────────────────────────────────────────────────────
-    │ = Contains / Parent-Child (one-to-many)
-    ◄── = References / Foreign Key
-    extends = Table Extension (inheritance)
-    m2m = Many-to-Many Junction Table
-```
-
-### Reference Field Mappings
-
-| Child Table | Field Name | Parent Table | Relationship |
-|-------------|------------|--------------|--------------|
-| sp_portal | theme | sp_theme | Many portals → One theme |
-| sp_portal | homepage | sp_page | Many portals → One page |
-| sp_portal | sp_rectangle_menu | sp_instance_menu | One portal → One menu |
-| sp_theme | header | sp_header_footer | Many themes → One header |
-| sp_theme | footer | sp_header_footer | Many themes → One footer |
-| sp_header_footer | widget | sp_widget | One header/footer → One widget |
-| sp_container | sp_page | sp_page | Many containers → One page |
-| sp_row | sp_container | sp_container | Many rows → One container |
-| sp_column | sp_row | sp_row | Many columns → One row |
-| sp_instance | sp_column | sp_column | Many instances → One column |
-| sp_instance | sp_widget | sp_widget | Many instances → One widget |
+| Table Name | API Name | Purpose |
+|------------|----------|---------|
+| Portal | `sp_portal` | Main portal definition |
+| Theme | `sp_theme` | Visual styling and structure |
+| Header/Footer | `sp_header_footer` | Header/footer widget container |
+| Menu Instance | `sp_instance_menu` | Navigation menu definition |
+| Menu Item | `sp_rectangle_menu_item` | Individual navigation links |
+| Page | `sp_page` | Portal page definition |
+| Container | `sp_container` | Top-level page layout element |
+| Row | `sp_row` | Horizontal row within container |
+| Column | `sp_column` | Column within row (Bootstrap grid) |
+| Widget Instance | `sp_instance` | Widget placed on page |
+| Widget | `sp_widget` | Reusable widget definition |
+| CSS Style Sheet | `sp_css` | CSS/SASS style definitions |
+| CSS Include | `sp_css_include` | Links CSS to themes/pages |
 
 ---
 
-# Part 2: Page Layout System
+## 3. Table Relationships
 
-## Layout Hierarchy
+### 🔴 MANDATORY: Record Creation Order
 
-Service Portal pages use a nested hierarchy to create responsive layouts:
-
-```
-sp_page (Page)
-    └── sp_container (Container)
-            └── sp_row (Row)
-                    └── sp_column (Column)
-                            └── sp_instance (Widget Instance)
-```
-
-### Visual Representation
+**You MUST create records in this exact order to satisfy foreign key dependencies:**
 
 ```
-┌──────────────────────────────────────────────────────────────────────────────┐
-│                              sp_page                                          │
-│  ┌────────────────────────────────────────────────────────────────────────┐  │
-│  │                         sp_container                                    │  │
-│  │  ┌──────────────────────────────────────────────────────────────────┐  │  │
-│  │  │                         sp_row                                    │  │  │
-│  │  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐               │  │  │
-│  │  │  │ sp_column   │  │ sp_column   │  │ sp_column   │               │  │  │
-│  │  │  │  (col-4)    │  │  (col-4)    │  │  (col-4)    │               │  │  │
-│  │  │  │ ┌─────────┐ │  │ ┌─────────┐ │  │ ┌─────────┐ │               │  │  │
-│  │  │  │ │sp_inst. │ │  │ │sp_inst. │ │  │ │sp_inst. │ │               │  │  │
-│  │  │  │ └─────────┘ │  │ └─────────┘ │  │ └─────────┘ │               │  │  │
-│  │  │  └─────────────┘  └─────────────┘  └─────────────┘               │  │  │
-│  │  └──────────────────────────────────────────────────────────────────┘  │  │
-│  └────────────────────────────────────────────────────────────────────────┘  │
-└──────────────────────────────────────────────────────────────────────────────┘
+1. sp_widget (if custom widgets needed)
+2. sp_css (if custom CSS needed)
+3. sp_header_footer (requires sp_widget reference)
+4. sp_theme (requires sp_header_footer reference)
+5. sp_css_include (requires sp_css AND sp_theme references)
+6. sp_instance_menu (requires sp_widget reference)
+7. sp_rectangle_menu_item (requires sp_instance_menu reference)
+8. sp_page (independent, but needed before layout)
+9. sp_container (requires sp_page reference)
+10. sp_row (requires sp_container reference)
+11. sp_column (requires sp_row reference)
+12. sp_instance (requires sp_column AND sp_widget references)
+13. sp_portal (requires sp_theme, sp_instance_menu, sp_page references)
 ```
 
-**Important:** Pages are NOT tied to specific portals—any portal can display any page.
-
----
-
-## Bootstrap v3 Grid System
-
-### The 12-Column Grid
-
-Bootstrap v3 divides each row into **12 equal-width grid columns**. Service Portal columns specify how many of these 12 units to span.
+### Complete Relationship Diagram
 
 ```
-|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  | 10  | 11  | 12  |
-|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+sp_portal
+│
+├── theme ──────────────────> sp_theme
+│                               │
+│                               ├── header ──────> sp_header_footer
+│                               │                    └── widget ──> sp_widget (Stock Header)
+│                               │
+│                               ├── footer ──────> sp_header_footer
+│                               │                    └── widget ──> sp_widget (Footer widget)
+│                               │
+│                               └── [css_includes related list] ──> sp_css_include
+│                                                                     └── style_sheet ──> sp_css
+│
+├── sp_rectangle_menu ──────> sp_instance_menu
+│                               │
+│                               ├── widget ──────> sp_widget (Header Menu / widget-menu)
+│                               │
+│                               └── [Menu Items related list] ──> sp_rectangle_menu_item
+│                                                                   ├── sp_rectangle_menu ──> sp_instance_menu
+│                                                                   └── page ──> sp_page (if type=page)
+│
+├── homepage ───────────────> sp_page
+├── login_page ─────────────> sp_page
+└── 404_page ───────────────> sp_page
+
+sp_page
+│
+└── [Containers related] ──> sp_container
+                               │
+                               └── sp_page ──────> sp_page (REQUIRED)
+                                   │
+                                   └── [Rows related] ──> sp_row
+                                                            │
+                                                            └── sp_container ──> sp_container (REQUIRED)
+                                                                │
+                                                                └── [Columns related] ──> sp_column
+                                                                                            │
+                                                                                            └── sp_row ──> sp_row (REQUIRED)
+                                                                                                │
+                                                                                                └── [Instances] ──> sp_instance
+                                                                                                                     │
+                                                                                                                     ├── sp_column ──> sp_column (REQUIRED)
+                                                                                                                     └── widget ──> sp_widget (REQUIRED)
 ```
 
-**Column Span Examples:**
-- `size_md=12` → Full width (12/12 = 100%)
-- `size_md=6` → Half width (6/12 = 50%)
-- `size_md=4` → One-third width (4/12 = 33.33%)
-- `size_md=3` → One-quarter width (3/12 = 25%)
+### 🔴 CRITICAL FIELD MAPPINGS
 
-### Breakpoint Definitions
-
-| Breakpoint | Field | Class Prefix | Screen Width | Typical Devices |
-|------------|-------|--------------|--------------|-----------------|
-| Extra Small | `size_xs` | `col-xs-` | < 768px | Phones |
-| Small | `size_sm` | `col-sm-` | ≥ 768px | Tablets |
-| Medium | `size_md` | `col-md-` | ≥ 992px | Desktops |
-| Large | `size_lg` | `col-lg-` | ≥ 1200px | Large desktops |
-
-### Responsive Class Inheritance
-
-Bootstrap v3 classes **scale up**. A class set for a smaller breakpoint applies to all larger breakpoints unless overridden.
+#### Portal to Theme to Header Chain
 
 ```javascript
-// sp_column record:
-{
-    size_xs: 12,    // Full width on phones
-    size_sm: 6,     // Half width on tablets
-    size_md: 4,     // One-third on desktops
-    size_lg: 3      // One-quarter on large screens
+// CORRECT CHAIN:
+sp_portal.theme           → sp_theme.sys_id
+sp_theme.header           → sp_header_footer.sys_id
+sp_header_footer.widget   → sp_widget.sys_id (MUST BE "Stock Header" widget-stock-header)
+
+// INCORRECT - NEVER DO THIS:
+sp_header_footer.widget   → sp_widget where widget.id = "widget-menu" // WRONG!
+```
+
+#### Portal to Menu Chain
+
+```javascript
+// CORRECT CHAIN:
+sp_portal.sp_rectangle_menu → sp_instance_menu.sys_id
+sp_instance_menu.widget     → sp_widget.sys_id (MUST BE "Header Menu" widget-menu)
+```
+
+#### Page Layout Chain
+
+```javascript
+// CORRECT CHAIN:
+sp_container.sp_page   → sp_page.sys_id
+sp_row.sp_container    → sp_container.sys_id
+sp_column.sp_row       → sp_row.sys_id
+sp_instance.sp_column  → sp_column.sys_id
+sp_instance.widget     → sp_widget.sys_id
+```
+
+---
+
+## 4. Complete Portal Creation Workflow
+
+### Step 1: Create Theme (`sp_theme`)
+
+```javascript
+var themeGr = new GlideRecord('sp_theme');
+themeGr.initialize();
+themeGr.setValue('name', 'My Custom Theme');
+// css_variables: Leave empty or set based on design requirements
+var themeSysId = themeGr.insert();
+```
+
+### Step 2: Create Header (`sp_header_footer`)
+
+```javascript
+// Find Stock Header widget sys_id
+var stockHeaderGr = new GlideRecord('sp_widget');
+stockHeaderGr.addQuery('id', 'widget-stock-header');
+stockHeaderGr.query();
+var stockHeaderSysId = '';
+if (stockHeaderGr.next()) {
+    stockHeaderSysId = stockHeaderGr.getUniqueValue();
 }
 
-// Generates CSS classes:
-// class="col-xs-12 col-sm-6 col-md-4 col-lg-3"
+// Create header record
+var headerGr = new GlideRecord('sp_header_footer');
+headerGr.initialize();
+headerGr.setValue('name', 'My Portal Header');
+headerGr.setValue('widget', stockHeaderSysId); // MUST be Stock Header widget
+var headerSysId = headerGr.insert();
 ```
 
-### Column Sum Rule
+### Step 3: Link Header to Theme
 
-**CRITICAL:** Columns in a single row should sum to exactly 12 for optimal layout.
-
+```javascript
+var themeUpdate = new GlideRecord('sp_theme');
+if (themeUpdate.get(themeSysId)) {
+    themeUpdate.setValue('header', headerSysId);
+    themeUpdate.update();
+}
 ```
-Valid:   col-4 + col-4 + col-4 = 12 ✓
-Valid:   col-8 + col-4 = 12 ✓
-Valid:   col-3 + col-6 + col-3 = 12 ✓
-Invalid: col-5 + col-5 + col-5 = 15 ✗ (wraps to next line)
+
+### Step 4: Create Menu Instance (`sp_instance_menu`)
+
+```javascript
+// Find Header Menu widget sys_id
+var menuWidgetGr = new GlideRecord('sp_widget');
+menuWidgetGr.addQuery('id', 'widget-menu');
+menuWidgetGr.query();
+var menuWidgetSysId = '';
+if (menuWidgetGr.next()) {
+    menuWidgetSysId = menuWidgetGr.getUniqueValue();
+}
+
+// Create menu instance
+var menuGr = new GlideRecord('sp_instance_menu');
+menuGr.initialize();
+menuGr.setValue('title', 'My Portal Main Menu');
+menuGr.setValue('widget', menuWidgetSysId); // MUST be Header Menu widget
+var menuSysId = menuGr.insert();
+```
+
+### Step 5: Create Menu Items (`sp_rectangle_menu_item`)
+
+```javascript
+// Create Home menu item
+var homeItem = new GlideRecord('sp_rectangle_menu_item');
+homeItem.initialize();
+homeItem.setValue('label', 'Home');
+homeItem.setValue('sp_rectangle_menu', menuSysId);
+homeItem.setValue('order', 100);
+homeItem.setValue('type', 'page');
+homeItem.setValue('page', 'index'); // page ID, not sys_id
+homeItem.insert();
+
+// Create Service Catalog menu item
+var catalogItem = new GlideRecord('sp_rectangle_menu_item');
+catalogItem.initialize();
+catalogItem.setValue('label', 'Service Catalog');
+catalogItem.setValue('sp_rectangle_menu', menuSysId);
+catalogItem.setValue('order', 200);
+catalogItem.setValue('type', 'sc');
+catalogItem.insert();
+```
+
+### Step 6: Create Page (`sp_page`)
+
+```javascript
+var pageGr = new GlideRecord('sp_page');
+pageGr.initialize();
+pageGr.setValue('title', 'Homepage');
+pageGr.setValue('id', 'home'); // Unique page ID - used in URLs
+pageGr.setValue('public', true);
+var pageSysId = pageGr.insert();
+```
+
+### Step 7: Create Container (`sp_container`)
+
+```javascript
+var containerGr = new GlideRecord('sp_container');
+containerGr.initialize();
+containerGr.setValue('sp_page', pageSysId); // REQUIRED - links to page
+containerGr.setValue('width', 'fixed'); // 'fixed' or 'fluid'
+containerGr.setValue('order', 100);
+var containerSysId = containerGr.insert();
+```
+
+### Step 8: Create Row (`sp_row`)
+
+```javascript
+var rowGr = new GlideRecord('sp_row');
+rowGr.initialize();
+rowGr.setValue('sp_container', containerSysId); // REQUIRED - links to container
+rowGr.setValue('order', 100);
+var rowSysId = rowGr.insert();
+```
+
+### Step 9: Create Column (`sp_column`)
+
+```javascript
+var columnGr = new GlideRecord('sp_column');
+columnGr.initialize();
+columnGr.setValue('sp_row', rowSysId); // REQUIRED - links to row
+columnGr.setValue('order', 100);
+columnGr.setValue('size', 12); // Bootstrap column size (1-12)
+var columnSysId = columnGr.insert();
+```
+
+### Step 10: Create Widget Instance (`sp_instance`)
+
+```javascript
+// Get sys_id of widget to place
+var widgetGr = new GlideRecord('sp_widget');
+widgetGr.addQuery('id', 'YOUR_WIDGET_ID'); // Replace with actual widget ID
+widgetGr.query();
+var widgetSysId = '';
+if (widgetGr.next()) {
+    widgetSysId = widgetGr.getUniqueValue();
+}
+
+var instanceGr = new GlideRecord('sp_instance');
+instanceGr.initialize();
+instanceGr.setValue('sp_column', columnSysId); // REQUIRED - links to column
+instanceGr.setValue('widget', widgetSysId); // REQUIRED - links to widget
+instanceGr.setValue('order', 100);
+var instanceSysId = instanceGr.insert();
+```
+
+### Step 11: Create Portal (`sp_portal`)
+
+```javascript
+var portalGr = new GlideRecord('sp_portal');
+portalGr.initialize();
+portalGr.setValue('title', 'My Employee Portal');
+portalGr.setValue('url_suffix', 'emp'); // Portal URL: /emp
+portalGr.setValue('theme', themeSysId);
+portalGr.setValue('sp_rectangle_menu', menuSysId);
+portalGr.setValue('homepage', pageSysId);
+portalGr.insert();
 ```
 
 ---
 
-## Creating Page Layouts Programmatically
+## 5. Header and Menu Implementation
 
-### Complete Layout Creation Script
+### Understanding the Distinction
+
+**Headers and Menus are TWO SEPARATE components:**
+
+| Component | Table | Widget Required | Linked Via | Purpose |
+|-----------|-------|-----------------|------------|---------|
+| Header | `sp_header_footer` | "Stock Header" (`widget-stock-header`) | `sp_theme.header` | Container structure (logo, branding, navbar) |
+| Menu | `sp_instance_menu` | "Header Menu" (`widget-menu`) | `sp_portal.sp_rectangle_menu` | Navigation links |
+
+### How They Work Together
+
+At runtime, the Stock Header widget automatically embeds the portal's menu (from `sp_portal.sp_rectangle_menu`) to create the complete header with navigation.
+
+### Out-of-Box Widget Reference
+
+| Widget Name | Widget ID | Used For |
+|-------------|-----------|----------|
+| Stock Header | `widget-stock-header` | `sp_header_footer.widget` for headers |
+| Header Menu | `widget-menu` | `sp_instance_menu.widget` for navigation |
+
+---
+
+## 6. Page Layout Creation
+
+### Bootstrap Grid System
+
+Service Portal uses **Bootstrap 3.3.6** with a 12-column grid:
+
+| Size | Width % | Use Case |
+|------|---------|----------|
+| 12 | 100% | Full width |
+| 6 | 50% | Half width (2-column layout) |
+| 4 | 33.33% | Third width (3-column layout) |
+| 3 | 25% | Quarter width (4-column layout) |
+
+### Responsive Classes
+
+Use the `class` field on `sp_column` for responsive layouts:
+
+```
+col-xs-12 col-md-6   /* Full on mobile, half on desktop */
+col-xs-12 col-sm-6 col-md-4   /* Full on mobile, half on tablet, third on desktop */
+```
+
+---
+
+## 7. Theme and CSS Configuration
+
+### Creating CSS Records (`sp_css`)
 
 ```javascript
-/**
- * Creates a Service Portal page with a complete layout
- * @param {string} pageId - Unique page identifier
- * @param {string} pageTitle - Display title
- * @param {array} layoutConfig - Array of row configurations
- * @returns {string} - sys_id of created page
- */
-function createPageWithLayout(pageId, pageTitle, layoutConfig) {
+var cssGr = new GlideRecord('sp_css');
+cssGr.initialize();
+cssGr.setValue('name', 'Custom Portal Styles');
+// css field: Leave empty - populate based on specific design requirements
+var cssSysId = cssGr.insert();
+```
+
+### Creating CSS Include (`sp_css_include`)
+
+```javascript
+var cssIncludeGr = new GlideRecord('sp_css_include');
+cssIncludeGr.initialize();
+cssIncludeGr.setValue('name', 'Custom Portal Styles Include');
+cssIncludeGr.setValue('source', 'Style Sheet');
+cssIncludeGr.setValue('style_sheet', cssSysId);
+var cssIncludeSysId = cssIncludeGr.insert();
+```
+
+### Common SASS Variables
+
+These variables can be used in `sp_theme.css_variables` when styling is required:
+
+```scss
+/* Brand Colors */
+$brand-primary: #0056D2;
+$brand-success: #28a745;
+$brand-info: #17a2b8;
+$brand-warning: #ffc107;
+$brand-danger: #dc3545;
+
+/* Navbar */
+$navbar-default-bg: #ffffff;
+$navbar-default-color: #333333;
+
+/* Text */
+$text-color: #333333;
+$text-muted: #777777;
+```
+
+---
+
+## 8. Widget Development
+
+### Creating a Widget (`sp_widget`)
+
+```javascript
+var widgetGr = new GlideRecord('sp_widget');
+widgetGr.initialize();
+widgetGr.setValue('name', 'My Custom Widget');
+widgetGr.setValue('id', 'my-custom-widget'); // Lowercase, hyphens only
+// template: Leave empty - populate based on requirements
+// client_script: Leave empty - populate based on requirements
+// script: Leave empty - populate based on requirements
+// css: Leave empty - populate based on design requirements
+// option_schema: Leave empty - define based on configuration needs
+widgetGr.insert();
+```
+
+### Widget Fields Overview
+
+| Field | Purpose |
+|-------|---------|
+| template | AngularJS HTML template |
+| client_script | AngularJS controller (client-side JavaScript) |
+| script | Server-side script (GlideRecord operations) |
+| css | SASS/CSS styling |
+| option_schema | JSON schema for configuration options |
+
+---
+
+## 9. Field Reference Tables
+
+### sp_portal Fields
+
+| Field | Column Name | Type | Required | Description |
+|-------|-------------|------|----------|-------------|
+| Title | title | String | Yes | Portal display name |
+| URL suffix | url_suffix | String | Yes | URL path (/suffix) |
+| Homepage | homepage | Reference | No | Default landing page |
+| Login page | login_page | Reference | No | Custom login page |
+| 404 page | 404_page | Reference | No | Custom error page |
+| Main menu | sp_rectangle_menu | Reference | No | Navigation menu |
+| Theme | theme | Reference | Yes | Portal theme |
+| Logo | logo | Image | No | Header logo (max 200x46px) |
+| CSS variables | css_variables | String | No | Portal-level SASS variables |
+
+### sp_theme Fields
+
+| Field | Column Name | Type | Required | Description |
+|-------|-------------|------|----------|-------------|
+| Name | name | String | Yes | Theme name |
+| Header | header | Reference | No | Header widget container |
+| Footer | footer | Reference | No | Footer widget container |
+| Fixed header | fixed_header | Boolean | No | Lock header on scroll |
+| CSS variables | css_variables | String | No | Theme SASS variables |
+
+### sp_header_footer Fields
+
+| Field | Column Name | Type | Required | Description |
+|-------|-------------|------|----------|-------------|
+| Name | name | String | Yes | Header/footer name |
+| Widget | widget | Reference | Yes | **MUST be "Stock Header" for headers** |
+
+### sp_instance_menu Fields
+
+| Field | Column Name | Type | Required | Description |
+|-------|-------------|------|----------|-------------|
+| Title | title | String | Yes | Menu title |
+| Widget | widget | Reference | Yes | **MUST be "Header Menu" (widget-menu)** |
+
+### sp_rectangle_menu_item Fields
+
+| Field | Column Name | Type | Required | Description |
+|-------|-------------|------|----------|-------------|
+| Label | label | String | Yes | Display text |
+| Parent menu | sp_rectangle_menu | Reference | Yes | Parent menu |
+| Order | order | Integer | Yes | Sort order (100, 200, 300...) |
+| Type | type | Choice | Yes | Link type |
+| Page | page | String | Conditional | Page ID (when type=page) |
+
+**Menu Item Types:** `page`, `url`, `sc`, `sc_cat_item`, `sc_category`, `kb`, `kb_article`, `kb_category`
+
+### sp_page Fields
+
+| Field | Column Name | Type | Required | Description |
+|-------|-------------|------|----------|-------------|
+| Title | title | String | Yes | Page title |
+| ID | id | String | Yes | Unique page identifier |
+| Public | public | Boolean | No | No login required |
+
+### sp_container Fields
+
+| Field | Column Name | Type | Required | Description |
+|-------|-------------|------|----------|-------------|
+| Page | sp_page | Reference | **YES** | Parent page |
+| Width | width | Choice | No | 'fixed' or 'fluid' |
+| Order | order | Integer | No | Display order |
+
+### sp_row Fields
+
+| Field | Column Name | Type | Required | Description |
+|-------|-------------|------|----------|-------------|
+| Container | sp_container | Reference | **YES** | Parent container |
+| Order | order | Integer | No | Display order |
+
+### sp_column Fields
+
+| Field | Column Name | Type | Required | Description |
+|-------|-------------|------|----------|-------------|
+| Row | sp_row | Reference | **YES** | Parent row |
+| Size | size | Integer | No | Bootstrap column width (1-12) |
+| Order | order | Integer | No | Display order |
+
+### sp_instance Fields
+
+| Field | Column Name | Type | Required | Description |
+|-------|-------------|------|----------|-------------|
+| Column | sp_column | Reference | **YES** | Parent column |
+| Widget | widget | Reference | **YES** | Widget definition |
+| Order | order | Integer | No | Display order |
+
+---
+
+## 10. Validation Scripts
+
+### Portal Configuration Validator
+
+Run in Scripts - Background to validate portal configuration:
+
+```javascript
+var portalSuffix = 'YOUR_PORTAL_SUFFIX'; // Change this
+
+var portalGr = new GlideRecord('sp_portal');
+portalGr.addQuery('url_suffix', portalSuffix);
+portalGr.query();
+
+if (!portalGr.next()) {
+    gs.error('Portal "' + portalSuffix + '" not found');
+} else {
+    gs.info('Portal found: ' + portalGr.getValue('title'));
     
-    // Step 1: Create Page
-    var page = new GlideRecord('sp_page');
-    page.initialize();
-    page.setValue('id', pageId);
-    page.setValue('title', pageTitle);
-    page.setValue('public', false);
-    var pageSysId = page.insert();
-    
-    // Step 2: Create Container
-    var container = new GlideRecord('sp_container');
-    container.initialize();
-    container.setValue('sp_page', pageSysId);
-    container.setValue('order', 100);
-    container.setValue('container_class_name', 'container');
-    var containerSysId = container.insert();
-    
-    // Step 3: Create Rows and Columns from config
-    for (var r = 0; r < layoutConfig.length; r++) {
-        var rowConfig = layoutConfig[r];
+    // Check Theme
+    if (!portalGr.getValue('theme')) {
+        gs.error('ERROR: No theme assigned');
+    } else {
+        var theme = portalGr.theme.getRefRecord();
+        gs.info('Theme: ' + theme.getValue('name'));
         
-        var row = new GlideRecord('sp_row');
-        row.initialize();
-        row.setValue('sp_container', containerSysId);
-        row.setValue('order', (r + 1) * 100);
-        var rowSysId = row.insert();
-        
-        // Create columns
-        for (var c = 0; c < rowConfig.columns.length; c++) {
-            var colConfig = rowConfig.columns[c];
+        // Check Header
+        if (!theme.getValue('header')) {
+            gs.error('ERROR: No header in theme');
+        } else {
+            var header = theme.header.getRefRecord();
+            var headerWidget = header.widget.getRefRecord();
             
-            var column = new GlideRecord('sp_column');
-            column.initialize();
-            column.setValue('sp_row', rowSysId);
-            column.setValue('order', (c + 1) * 100);
-            column.setValue('size_xs', colConfig.size_xs || 12);
-            column.setValue('size_sm', colConfig.size_sm || null);
-            column.setValue('size_md', colConfig.size_md || null);
-            column.setValue('size_lg', colConfig.size_lg || null);
-            column.insert();
-        }
-    }
-    
-    return pageSysId;
-}
-```
-
----
-
-## Common Layout Patterns
-
-### Pattern 1: Full-Width Single Column
-```javascript
-var layout = [{
-    columns: [{ size_xs: 12, size_md: 12 }]
-}];
-```
-
-### Pattern 2: Two Equal Columns
-```javascript
-var layout = [{
-    columns: [
-        { size_xs: 12, size_md: 6 },
-        { size_xs: 12, size_md: 6 }
-    ]
-}];
-```
-
-### Pattern 3: Three Equal Columns
-```javascript
-var layout = [{
-    columns: [
-        { size_xs: 12, size_sm: 6, size_md: 4 },
-        { size_xs: 12, size_sm: 6, size_md: 4 },
-        { size_xs: 12, size_sm: 12, size_md: 4 }
-    ]
-}];
-```
-
-### Pattern 4: Sidebar + Main Content
-```javascript
-var layout = [{
-    columns: [
-        { size_xs: 12, size_md: 3 },  // Sidebar
-        { size_xs: 12, size_md: 9 }   // Main content
-    ]
-}];
-```
-
-### Pattern 5: Four Equal Columns
-```javascript
-var layout = [{
-    columns: [
-        { size_xs: 6, size_sm: 6, size_md: 3 },
-        { size_xs: 6, size_sm: 6, size_md: 3 },
-        { size_xs: 6, size_sm: 6, size_md: 3 },
-        { size_xs: 6, size_sm: 6, size_md: 3 }
-    ]
-}];
-```
-
----
-
-# Part 3: Theme System
-
-## Theme Architecture
-
-A Service Portal Theme (`sp_theme`) is the central styling component that defines:
-
-- **Visual Styling**: SCSS/CSS variables for colors, typography, spacing
-- **Header/Footer Structure**: Widget references for header and footer components
-- **External Resources**: CSS stylesheets and JavaScript files
-- **Bootstrap Configuration**: Override Bootstrap 3.3.6 SASS variables
-
-### Theme Hierarchy in Portal
-
-```
-sp_portal (Portal)
-    │
-    ├── theme ──────────────► sp_theme (Theme)
-    │                              │
-    │                              ├── header ──────► sp_header_footer
-    │                              │                       │
-    │                              │                       └── widget ──► sp_widget
-    │                              │
-    │                              ├── footer ──────► sp_header_footer
-    │                              │                       │
-    │                              │                       └── widget ──► sp_widget
-    │                              │
-    │                              ├── CSS Includes ─► [m2m] ──► sp_css
-    │                              │
-    │                              └── JS Includes ──► [m2m] ──► sp_js_include
-    │
-    └── css_variables (Portal-level overrides)
-```
-
-### sp_theme Table Fields
-
-| Field Name | Type | Description | Required |
-|------------|------|-------------|----------|
-| `sys_id` | GUID | Unique identifier | Auto |
-| `name` | String | Theme display name | Yes |
-| `css_variables` | String (Large) | SCSS variable declarations ONLY | No |
-| `header` | Reference | Header component (→ sp_header_footer) | No |
-| `footer` | Reference | Footer component (→ sp_header_footer) | No |
-| `navbar_fixed` | Boolean | Fix header to top of viewport | No |
-| `footer_fixed` | Boolean | Fix footer to bottom of viewport | No |
-
----
-
-## CSS/SCSS Processing Pipeline
-
-### How Service Portal Compiles CSS
-
-```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                      CSS COMPILATION PIPELINE                                    │
-└─────────────────────────────────────────────────────────────────────────────────┘
-
-Browser Request: /sp_bootstrap.scss?portal_id=<sys_id>
-
-Step 1: Gather SCSS Variables
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│  sp_theme.css_variables        (Theme SCSS variables)                           │
-│           +                                                                      │
-│  sp_portal.css_variables       (Portal SCSS variables - overrides theme)        │
-└─────────────────────────────────────────────────────────────────────────────────┘
-                                    │
-                                    ▼
-Step 2: Append CSS Includes
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│  m2m_sp_theme_css records (ordered by 'order' field)                            │
-│  └── sp_css.css content appended                                                │
-└─────────────────────────────────────────────────────────────────────────────────┘
-                                    │
-                                    ▼
-Step 3: Compile with Bootstrap
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│  Bootstrap 3.3.6 SCSS + ServiceNow SCSS                                         │
-│  Variables from Steps 1-2 override Bootstrap defaults                           │
-└─────────────────────────────────────────────────────────────────────────────────┘
-                                    │
-                                    ▼
-Step 4: Return Compiled CSS
-```
-
-### CSS Priority Order (Lowest to Highest)
-
-```
-LOWEST PRIORITY (easily overridden)
-         │
-         ▼
-┌─────────────────────────────────┐
-│       Portal CSS Variables      │  ← sp_portal.css_variables
-└─────────────────────────────────┘
-         │
-         ▼
-┌─────────────────────────────────┐
-│         Theme CSS               │  ← sp_theme CSS includes
-└─────────────────────────────────┘
-         │
-         ▼
-┌─────────────────────────────────┐
-│         Page CSS                │  ← sp_page.css field
-└─────────────────────────────────┘
-         │
-         ▼
-┌─────────────────────────────────┐
-│    Widget Instance CSS          │  ← sp_instance.css field
-└─────────────────────────────────┘
-         │
-         ▼
-┌─────────────────────────────────┐
-│      Widget Class CSS           │  ← sp_widget.css (auto-scoped)
-└─────────────────────────────────┘
-         │
-HIGHEST PRIORITY (overrides all above)
-```
-
----
-
-## SASS Variables Reference
-
-### Bootstrap 3.3.6 Variables (Most Common)
-
-#### Brand Colors
-```scss
-$brand-primary: #337ab7 !default;
-$brand-success: #5cb85c !default;
-$brand-info:    #5bc0de !default;
-$brand-warning: #f0ad4e !default;
-$brand-danger:  #d9534f !default;
-```
-
-#### Typography
-```scss
-$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
-$font-family-base:       $font-family-sans-serif !default;
-$font-size-base:         14px !default;
-$headings-font-family:   inherit !default;
-$headings-font-weight:   500 !default;
-```
-
-#### Navbar
-```scss
-$navbar-height:                    50px !default;
-$navbar-default-bg:                #f8f8f8 !default;
-$navbar-inverse-bg:                #222 !default;
-$navbar-inverse-link-color:        lighten(#777, 15%) !default;
-$navbar-inverse-link-hover-color:  #fff !default;
-```
-
-### ServiceNow-Specific SASS Variables
-```scss
-$sp-tagline-color:           #999 !default;
-$sp-navbar-divider-color:    #ccc !default;
-$sp-nav-bg:                  #fff !default;
-$sp-nav-link-color:          #485563 !default;
-$sp-body-bg:                 #f5f5f5 !default;
-$sp-homepage-bg:             #fff !default;
-```
-
-### Using the !default Flag
-
-**CRITICAL:** Always use `!default` when declaring variables in widgets.
-
-```scss
-// In Theme CSS Variables (takes priority - NO !default)
-$my-color: #ff0000;
-
-// In Widget CSS (will be overridden by theme value)
-$my-color: #0000ff !default;
-
-.my-element {
-    color: $my-color;  // Renders as #ff0000 (theme value)
-}
-```
-
----
-
-# Part 4: Header & Menu System
-
-## ⚠️ CRITICAL: Header vs Menu Understanding
-
-**The "Header Menu" is formed by TWO separate components working together:**
-
-| Component | Table | Linked Via | What It Actually Is |
-|-----------|-------|------------|---------------------|
-| **TRUE Header** | `sp_header_footer` | `sp_theme.header` | The actual `<header>` HTML element with Bootstrap navbar - the PARENT container |
-| **Menu Widget** | `sp_instance_menu` | `sp_portal.sp_rectangle_menu` | Just the navigation menu COMPONENT that gets embedded inside the header |
-
-### Architecture Diagram
-
-```
-                              ┌─────────────────┐
-                              │    sp_portal    │
-                              │    (Portal)     │
-                              └────────┬────────┘
-                                       │
-               ┌───────────────────────┴───────────────────────────┐
-               │                                                   │
-               │ sp_portal.theme                                   │ sp_portal.sp_rectangle_menu
-               ▼                                                   ▼
-      ┌─────────────────┐                                ┌─────────────────────┐
-      │    sp_theme     │                                │  sp_instance_menu   │
-      │    (Theme)      │                                │  (Menu Instance)    │
-      └────────┬────────┘                                └──────────┬──────────┘
-               │                                                    │
-               │ sp_theme.header                                    │ widget
-               ▼                                                    ▼
-      ┌─────────────────┐                                ┌─────────────────────┐
-      │sp_header_footer │                                │     sp_widget       │
-      │ (Header Record) │                                │   "Header Menu"     │
-      └────────┬────────┘                                │                     │
-               │                                         │  Renders menu items │
-               │ widget                                  │  as <ul><li> links  │
-               ▼                                         └──────────┬──────────┘
-      ┌─────────────────┐                                           │
-      │    sp_widget    │                                           │
-      │ "Stock Header"  │◄──────────── embeds via ──────────────────┘
-      │                 │              $sp.getWidgetFromInstance()
-      │ THIS IS THE     │
-      │ TRUE HEADER     │
-      │                 │
-      │ Creates:        │
-      │ <header>        │
-      │   <nav.navbar>  │
-      │     [logo]      │
-      │     [menu] ◄────│──── Menu widget rendered here
-      │     [user]      │
-      │   </nav>        │
-      │ </header>       │
-      └─────────────────┘
-```
-
-### DO NOT:
-- ❌ Create header widget as a normal widget instance on a page
-- ❌ Add header to sp_container/sp_row/sp_column
-- ❌ Confuse menu widget (navigation component) with header widget (container)
-- ❌ Forget to link BOTH theme AND menu to the portal
-
-### MUST DO:
-- ✅ Create header via `sp_header_footer` table
-- ✅ Link header to theme via `sp_theme.header` field
-- ✅ Create menu via `sp_instance_menu` table
-- ✅ Link menu to portal via `sp_portal.sp_rectangle_menu` field
-- ✅ Link theme to portal via `sp_portal.theme` field
-
----
-
-## The TRUE Header vs Menu Widget
-
-| Aspect | TRUE Header (`sp_header_footer`) | Menu Widget (`sp_instance_menu`) |
-|--------|----------------------------------|----------------------------------|
-| **Purpose** | The actual page header container | Navigation links component |
-| **HTML Output** | `<header><nav class="navbar">...</nav></header>` | `<ul class="nav navbar-nav">...</ul>` |
-| **Contains** | Logo, tagline, menu widget, user profile | Only navigation links/dropdowns |
-| **Table** | `sp_header_footer` | `sp_instance_menu` |
-| **Linked From** | `sp_theme.header` | `sp_portal.sp_rectangle_menu` |
-| **Widget Example** | "Stock Header" | "Header Menu" |
-| **Is Parent/Child** | **PARENT** - contains everything | **CHILD** - embedded inside header |
-
-### The Embedding Mechanism
-
-The TRUE Header widget embeds the Menu Widget using:
-
-```javascript
-// Inside Stock Header server script
-(function() {
-    var portalGr = $sp.getPortalRecord();
-    var menuInstanceSysId = $sp.getValue('sp_rectangle_menu');
-    
-    // EMBED the menu widget
-    data.menu = $sp.getWidgetFromInstance(menuInstanceSysId);
-    
-    data.logo = portalGr.getDisplayValue('logo');
-    data.title = portalGr.getDisplayValue('title');
-})();
-```
-
-And in the template:
-```html
-<div class="collapse navbar-collapse">
-    <sp-widget widget="data.menu"></sp-widget>
-</div>
-```
-
----
-
-## Creating the Menu
-
-### sp_rectangle_menu_item (Menu Item) Fields
-
-| Field Name | Type | Description |
-|------------|------|-------------|
-| `label` | String | Display text |
-| `sp_rectangle_menu` | Reference | Parent menu instance |
-| `parent` | Reference | Parent menu item (for submenus) |
-| `page` | Reference | Target page (if Type = "page") |
-| `url` | String | Target URL (if Type = "url") |
-| `type` | Choice | page, url, sc, kb, filtered, scripted |
-| `order` | Integer | Display order |
-| `roles` | String | Comma-separated roles for visibility |
-| `condition` | Script | Visibility condition script |
-
-### Menu Item Type Values
-
-| Type | API Value | Use Case |
-|------|-----------|----------|
-| Page | `page` | Link to sp_page |
-| URL | `url` | External or custom URL |
-| Service Catalog | `sc` | Link to catalog homepage |
-| Catalog Category | `sc_category` | Link to specific category |
-| Knowledge Base | `kb` | Link to KB homepage |
-| KB Article | `kb_article` | Link to specific article |
-| Filtered List | `filtered` | Dynamic list based on filter |
-| Scripted List | `scripted` | Script-generated menu items |
-
----
-
-# Part 5: Widget Development
-
-## Widget Architecture
-
-Widgets consist of these components:
-
-| Component | Location | Purpose |
-|-----------|----------|---------|
-| HTML Template | `template` field | AngularJS HTML markup |
-| Client Script | `client_script` field | AngularJS controller logic |
-| Server Script | `script` field | Server-side orchestration (calls Script Includes) |
-| CSS/SCSS | `css` field | Widget-specific styling (auto-scoped) |
-| Link Function | `link` field | Advanced DOM manipulation |
-| Option Schema | `option_schema` field | JSON defining configurable options |
-
-### Option Schema Definition
-
-```json
-{
-  "title": {
-    "displayName": "Title",
-    "description": "Widget title text",
-    "fieldType": "string",
-    "default_value": "Default Title"
-  },
-  "table": {
-    "displayName": "Table",
-    "description": "Source table for data",
-    "fieldType": "table_name"
-  },
-  "limit": {
-    "displayName": "Record Limit",
-    "description": "Maximum records to display",
-    "fieldType": "integer",
-    "default_value": 10
-  }
-}
-```
-
----
-
-## CRITICAL: Script Include Pattern
-
-> **⚠️ BUILD AGENT INSTRUCTION: NEVER place GlideRecord scripts directly in widget Server Script fields.**
-
-Widget Server Scripts should be lightweight orchestrators that call Script Include functions containing the actual GlideRecord logic.
-
-### Why Script Includes Are Required
-
-| Reason | Explanation |
-|--------|-------------|
-| **Reusability** | Functions can be called from multiple widgets, Business Rules, REST APIs |
-| **Testability** | Script Includes can be unit tested independently |
-| **Maintainability** | Centralizes business logic; changes propagate to all consumers |
-| **Performance** | Script Includes are cached by the platform |
-| **Separation of Concerns** | Widget scripts handle data flow; Script Includes handle business logic |
-
-### Architecture Pattern
-
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                         CORRECT ARCHITECTURE                                 │
-└─────────────────────────────────────────────────────────────────────────────┘
-
-  ┌──────────────────┐         ┌──────────────────┐
-  │  Widget Server   │         │  Widget Server   │
-  │     Script       │         │     Script       │
-  │  (Orchestrator)  │         │  (Orchestrator)  │
-  └────────┬─────────┘         └────────┬─────────┘
-           │                            │
-           │  calls                     │  calls
-           ▼                            ▼
-  ┌─────────────────────────────────────────────────┐
-  │              Script Include                      │
-  │         (Contains GlideRecord Logic)            │
-  │                                                  │
-  │   - getActiveIncidents()                        │
-  │   - createIncident(data)                        │
-  │   - updateIncidentStatus(sysId, status)         │
-  └─────────────────────────────────────────────────┘
-```
-
-### Step 1: Create the Script Include
-
-```javascript
-// Script Include Name: IncidentUtils
-// Client Callable: false
-
-var IncidentUtils = Class.create();
-IncidentUtils.prototype = {
-    
-    initialize: function() {},
-    
-    getMyActiveIncidents: function(limit) {
-        var incidents = [];
-        var gr = new GlideRecord('incident');
-        gr.addQuery('caller_id', gs.getUserID());
-        gr.addQuery('active', true);
-        gr.orderByDesc('sys_created_on');
-        gr.setLimit(limit || 10);
-        gr.query();
-        
-        while (gr.next()) {
-            incidents.push({
-                sys_id: gr.getUniqueValue(),
-                number: gr.getValue('number'),
-                short_description: gr.getValue('short_description'),
-                state: gr.getDisplayValue('state')
-            });
-        }
-        
-        return incidents;
-    },
-    
-    type: 'IncidentUtils'
-};
-```
-
-### Step 2: Widget Server Script (Orchestrator Only)
-
-```javascript
-// Widget Server Script - KEEP IT SIMPLE
-(function() {
-    var incidentUtils = new IncidentUtils();
-    var limit = options.limit || 10;
-    data.incidents = incidentUtils.getMyActiveIncidents(limit);
-    
-    if (input && input.action === 'create') {
-        data.createResult = incidentUtils.createIncident(input.incidentData);
-    }
-})();
-```
-
-### Step 3: Widget Client Script
-
-```javascript
-api.controller = function($scope, spUtil) {
-    var c = this;
-    
-    c.incidents = c.data.incidents;
-    
-    c.createIncident = function() {
-        c.server.get({
-            action: 'create',
-            incidentData: c.newIncident
-        }).then(function(response) {
-            if (response.data.createResult.success) {
-                spUtil.addInfoMessage('Incident created');
-                c.server.refresh();
-            }
-        });
-    };
-};
-```
-
----
-
-## Client Scripts
-
-### Widget Client Script Structure
-
-```javascript
-api.controller = function($scope, spUtil, $http) {
-    var c = this;
-    
-    // Initialize data from server
-    c.data = $scope.data;
-    
-    // Client-side functions
-    c.submitForm = function() {
-        if (!c.data.name) {
-            spUtil.addErrorMessage('Name is required');
-            return;
-        }
-        
-        c.server.update().then(function(response) {
-            // CORRECT: Use $scope.data (automatically updated)
-            c.data = $scope.data;
-            spUtil.addInfoMessage('Success!');
-        });
-    };
-};
-```
-
-### Client Script Best Practices
-
-1. **Use `c` (controller) instead of `$scope`** for data binding
-2. **Minimize watchers** - They impact performance
-3. **Use one-time bindings** (`{{::value}}`) for static data
-4. **Handle errors gracefully** with `.catch()` on promises
-5. **Never call `$scope.$apply()`** - Service Portal handles digest cycles
-
----
-
-## Server Scripts
-
-### Server Script Structure
-
-```javascript
-// Widget Server Script - ORCHESTRATOR ONLY
-(function() {
-    // 1. Instantiate Script Includes
-    var utils = new MyAppUtils();
-    
-    // 2. Read widget options
-    var tableName = options.table || 'incident';
-    var limit = options.limit || 10;
-    
-    // 3. Get URL parameters if needed
-    var recordId = $sp.getParameter('sys_id');
-    
-    // 4. Call Script Include functions
-    data.records = utils.getRecords(tableName, limit);
-    
-    // 5. Handle client input
-    if (input && input.action === 'save') {
-        data.saveResult = utils.saveRecord(input.record);
-    }
-    
-    // 6. Set additional data
-    data.canCreate = gs.hasRole('itil');
-})();
-```
-
-### Available Server-Side Objects
-
-| Object | Description |
-|--------|-------------|
-| `data` | Object passed to client |
-| `input` | Data sent from client via `c.server.update()` |
-| `options` | Widget instance options |
-| `$sp` | Service Portal API object |
-| `gs` | GlideSystem API |
-
----
-
-# Part 6: Widget Communication
-
-## Event Broadcasting ($rootScope.$broadcast / $on)
-
-The most common method for widget-to-widget communication on the **same page**.
-
-### Sender Widget
-
-```javascript
-api.controller = function($rootScope, $scope) {
-    var c = this;
-    
-    $scope.sendStatus = function() {
-        var payload = {
-            status: 10,
-            message: 'Task completed'
-        };
-        
-        $rootScope.$broadcast('status_updated', payload);
-    };
-};
-```
-
-### Receiver Widget
-
-```javascript
-api.controller = function($rootScope, $scope) {
-    var c = this;
-    
-    // Register the listener
-    var deregister = $rootScope.$on('status_updated', function(event, data) {
-        c.currentStatus = data.status;
-    });
-    
-    // CRITICAL: Clean up listener on scope destroy to prevent memory leaks
-    $scope.$on('$destroy', function() {
-        deregister();
-    });
-};
-```
-
-### Common OOB Widget Events
-
-| Event Name | Source Widget | Triggered When |
-|------------|--------------|----------------|
-| `sp.form.submitted` | Form Widget | Form is submitted |
-| `$sp.list.click` | Simple List | Row is clicked |
-| `data_table.click` | Data Table | Row is clicked |
-| `spModel.gForm.initialized` | Form Widget | Form is initialized |
-
----
-
-## Embedded Widgets
-
-Use when you need **parent-to-child** communication.
-
-### Server Script (Parent Widget)
-
-```javascript
-(function() {
-    var widgetOptions = {
-        table: 'incident',
-        filter: 'active=true',
-        limit: 10
-    };
-    
-    data.embeddedWidget = $sp.getWidget('child-widget-id', widgetOptions);
-})();
-```
-
-### HTML (Parent Widget)
-
-```html
-<div class="container">
-    <sp-widget widget="c.data.embeddedWidget"></sp-widget>
-</div>
-```
-
----
-
-## Angular Service Providers
-
-The most **scalable and maintainable** approach for complex applications.
-
-### Creating an Angular Provider
-
-Navigate to **Service Portal > Angular Providers**:
-
-```javascript
-function sharedDataService($rootScope) {
-    var service = {};
-    var sharedData = {};
-    
-    service.setData = function(key, value) {
-        sharedData[key] = value;
-        $rootScope.$broadcast('sharedData.updated', { key: key, value: value });
-    };
-    
-    service.getData = function(key) {
-        return sharedData[key];
-    };
-    
-    return service;
-}
-```
-
-### Using in Widget
-
-```javascript
-api.controller = function($scope, sharedDataService) {
-    var c = this;
-    
-    c.saveSelection = function(item) {
-        sharedDataService.setData('selectedItem', item);
-    };
-    
-    c.item = sharedDataService.getData('selectedItem');
-};
-```
-
----
-
-## URL Parameters
-
-Use for **cross-page communication** or bookmarkable state.
-
-### Setting URL Parameters (Client)
-
-```javascript
-api.controller = function($scope, $location) {
-    var c = this;
-    
-    c.selectRecord = function(sysId) {
-        $location.search('sys_id', sysId);
-    };
-};
-```
-
-### Reading URL Parameters (Server)
-
-```javascript
-(function() {
-    var sysId = $sp.getParameter('sys_id');
-    var table = $sp.getParameter('table') || 'incident';
-    
-    if (sysId) {
-        var gr = new GlideRecord(table);
-        if (gr.get(sysId)) {
-            data.record = {
-                sys_id: gr.getUniqueValue(),
-                number: gr.getValue('number')
-            };
-        }
-    }
-})();
-```
-
----
-
-## Session Data
-
-Use for **persistent cross-page communication** within a user session.
-
-### Storing Session Data (Server Script)
-
-```javascript
-(function() {
-    // Store data in session
-    if (input && input.action === 'savePreferences') {
-        gs.getSession().putClientData('userPreferences', JSON.stringify({
-            theme: input.theme,
-            itemsPerPage: input.itemsPerPage
-        }));
-    }
-    
-    // Retrieve session data
-    var prefsString = gs.getSession().getClientData('userPreferences');
-    if (prefsString) {
-        data.preferences = JSON.parse(prefsString);
-    }
-})();
-```
-
----
-
-# Part 7: Pagination
-
-## The Pagination Problem
-
-Service Portal widgets often experience pagination failures where:
-- Clicking page 2, 3, etc. always returns page 1 data
-- Server logs show `input.page` as null or undefined
-- `chooseWindow()` GlideRecord method behaves inconsistently
-
-## The Multi-Fallback Solution
-
-### Client-Side Implementation
-
-```javascript
-api.controller = function($scope, $location) {
-    var c = this;
-    
-    c.goToPage = function(page) {
-        if (page < 1 || page > c.totalPages || page === c.currentPage || c.isLoading) {
-            return;
-        }
-        
-        c.isLoading = true;
-        
-        // CRITICAL: Triple-redundancy approach
-        
-        // Method 1: Store in data object before server call (most reliable)
-        $scope.data.requested_page = page;
-        
-        // Method 2: Update URL parameter for state persistence
-        $location.search('p', page);
-        
-        // Method 3: Include in request data (traditional approach)
-        var requestData = {
-            page: page,
-            _t: Date.now() // Force cache refresh
-        };
-        
-        $scope.server.update(requestData).then(function() {
-            // CORRECT: Use $scope.data (automatically updated)
-            c.items = angular.copy($scope.data.items || []);
-            c.currentPage = $scope.data.current_page || page;
-            c.totalPages = $scope.data.total_pages || 1;
-            c.isLoading = false;
-        });
-    };
-};
-```
-
-### Server-Side Implementation
-
-```javascript
-(function() {
-    var itemsPerPage = parseInt(options.items_per_page) || 9;
-    
-    // Triple-fallback page parameter retrieval
-    var requestedPage = 1;
-    
-    // Method 1: From stored data.requested_page (most reliable)
-    if (data.requested_page && !isNaN(parseInt(data.requested_page))) {
-        requestedPage = parseInt(data.requested_page);
-    }
-    // Method 2: From input.page (traditional method)
-    else if (input && input.page !== undefined && input.page !== null) {
-        var parsed = parseInt(String(input.page), 10);
-        if (!isNaN(parsed) && parsed >= 1) {
-            requestedPage = parsed;
-        }
-    }
-    // Method 3: From URL parameter (fallback)
-    else {
-        var urlPage = parseInt($sp.getParameter('p')) || 1;
-        if (urlPage > 1) {
-            requestedPage = urlPage;
-        }
-    }
-    
-    data.page = requestedPage;
-    
-    // Get total count
-    var countGr = new GlideRecord('your_table');
-    countGr.query();
-    data.total_count = countGr.getRowCount();
-    data.total_pages = Math.max(1, Math.ceil(data.total_count / itemsPerPage));
-    
-    var offset = (data.page - 1) * itemsPerPage;
-    
-    // CRITICAL: Use MANUAL pagination instead of chooseWindow()
-    var gr = new GlideRecord('your_table');
-    gr.query();
-    
-    var results = [];
-    var skipped = 0;
-    var collected = 0;
-    
-    while (gr.next()) {
-        if (skipped < offset) {
-            skipped++;
-            continue;
-        }
-        
-        if (collected >= itemsPerPage) {
-            break;
-        }
-        
-        results.push({
-            sys_id: gr.getUniqueValue(),
-            name: gr.getValue('name')
-        });
-        collected++;
-    }
-    
-    data.items = results;
-    data.current_page = data.page;
-})();
-```
-
-### Key Success Principles
-
-1. **Triple Redundancy**: Never rely on a single method for critical parameters
-2. **Manual Pagination Over chooseWindow()**: Manual skip-and-collect is more reliable
-3. **Comprehensive Logging**: Log all parameter sources for debugging
-4. **State Persistence**: Use URL parameters to maintain page state
-
----
-
-# Part 8: Troubleshooting
-
-## Infinite Digest Loop Prevention
-
-### Symptom
-- Console shows `[$rootScope:infdig]` errors
-- Application becomes unresponsive
-- "10 $digest() iterations reached. Aborting!" error
-
-### Fix 1: Correct Response Structure
-
-**❌ WRONG:**
-```javascript
-$scope.server.update({...}).then(function(response) {
-    c.data = response.data.prompts; // WRONG
-});
-```
-
-**✅ CORRECT:**
-```javascript
-$scope.server.update({...}).then(function(response) {
-    c.data = $scope.data.prompts; // Use $scope.data
-});
-```
-
-### Fix 2: Never Call $scope.$apply()
-
-**❌ WRONG:**
-```javascript
-$scope.server.update({...}).then(function(response) {
-    c.data = $scope.data.prompts;
-    $scope.$apply(); // ❌ CAUSES INFINITE DIGEST LOOP
-});
-```
-
-**✅ CORRECT:**
-```javascript
-$scope.server.update({...}).then(function(response) {
-    c.data = $scope.data.prompts;
-    // ✅ No $scope.$apply() needed
-});
-```
-
-### Fix 3: Cache Template Function Results
-
-**❌ WRONG:**
-```javascript
-c.getStars = function(rating) {
-    var stars = [];
-    for (var i = 0; i < rating; i++) {
-        stars.push({ class: 'fa-star' });
-    }
-    return stars; // ❌ New array every time
-};
-```
-
-**✅ CORRECT:**
-```javascript
-c.starCache = {};
-
-c.getStars = function(rating) {
-    var cacheKey = rating.toString();
-    if (c.starCache[cacheKey]) {
-        return c.starCache[cacheKey]; // ✅ Same object reference
-    }
-    
-    var stars = [];
-    for (var i = 0; i < rating; i++) {
-        stars.push({ class: 'fa-star' });
-    }
-    c.starCache[cacheKey] = stars;
-    return stars;
-};
-```
-
----
-
-## Common Issues & Solutions
-
-### Issue: Header Not Showing
-
-**Checklist:**
-1. ☐ Portal has Theme assigned (`sp_portal.theme`)
-2. ☐ Theme has Header assigned (`sp_theme.header`)
-3. ☐ Header record has Widget assigned (`sp_header_footer.widget`)
-4. ☐ Widget exists and is active (`sp_widget`)
-5. ☐ Portal has Main menu assigned (`sp_portal.sp_rectangle_menu`)
-
-### Issue: Widget Data Not Loading
-
-**Solutions:**
-1. Test Script Include functions in Scripts - Background
-2. Verify Script Include name matches exactly (case-sensitive)
-3. Add `gs.info()` logging to trace data flow
-4. Check ACLs allow current user to read the queried table
-
-### Issue: CSS Not Applied
-
-**Solutions:**
-1. Check for SCSS syntax errors in widget CSS field
-2. Use browser dev tools to inspect applied styles
-3. Add `!default` flag to widget SCSS variables
-4. Clear cache via `cache.do`
-
----
-
-## Diagnostic Scripts
-
-### Diagnose Portal Header
-
-```javascript
-function diagnosePortalHeader(portalUrlSuffix) {
-    var result = [];
-    
-    var portal = new GlideRecord('sp_portal');
-    portal.addQuery('url_suffix', portalUrlSuffix);
-    portal.query();
-    
-    if (!portal.next()) {
-        result.push('ERROR: Portal not found');
-        return result;
-    }
-    result.push('OK: Portal found - ' + portal.getValue('title'));
-    
-    var themeSysId = portal.getValue('theme');
-    if (!themeSysId) {
-        result.push('ERROR: Portal has no theme assigned');
-        return result;
-    }
-    
-    var theme = new GlideRecord('sp_theme');
-    if (!theme.get(themeSysId)) {
-        result.push('ERROR: Theme record not found');
-        return result;
-    }
-    result.push('OK: Theme found - ' + theme.getValue('name'));
-    
-    var headerSysId = theme.getValue('header');
-    if (!headerSysId) {
-        result.push('ERROR: Theme has no header assigned');
-        return result;
-    }
-    
-    var header = new GlideRecord('sp_header_footer');
-    if (!header.get(headerSysId)) {
-        result.push('ERROR: Header/Footer record not found');
-        return result;
-    }
-    result.push('OK: Header record found - ' + header.getValue('name'));
-    
-    var headerWidgetSysId = header.getValue('widget');
-    if (!headerWidgetSysId) {
-        result.push('ERROR: Header record has no widget assigned');
-        return result;
-    }
-    
-    var headerWidget = new GlideRecord('sp_widget');
-    if (!headerWidget.get(headerWidgetSysId)) {
-        result.push('ERROR: Header widget not found');
-        return result;
-    }
-    result.push('OK: Header widget found - ' + headerWidget.getValue('name'));
-    
-    return result;
-}
-
-// Usage
-var diagnosis = diagnosePortalHeader('my_portal');
-diagnosis.forEach(function(line) {
-    gs.info(line);
-});
-```
-
-### Diagnose Page Layout
-
-```javascript
-function diagnosePageLayout(pageId) {
-    var page = new GlideRecord('sp_page');
-    page.addQuery('id', pageId);
-    page.query();
-    
-    if (!page.next()) {
-        gs.error('Page not found: ' + pageId);
-        return;
-    }
-    
-    gs.info('Page: ' + page.getValue('title') + ' (sys_id: ' + page.getUniqueValue() + ')');
-    
-    var container = new GlideRecord('sp_container');
-    container.addQuery('sp_page', page.getUniqueValue());
-    container.orderBy('order');
-    container.query();
-    
-    while (container.next()) {
-        gs.info('  Container: ' + container.getValue('name') + ' (order: ' + container.getValue('order') + ')');
-        
-        var row = new GlideRecord('sp_row');
-        row.addQuery('sp_container', container.getUniqueValue());
-        row.orderBy('order');
-        row.query();
-        
-        while (row.next()) {
-            gs.info('    Row: order=' + row.getValue('order'));
-            
-            var column = new GlideRecord('sp_column');
-            column.addQuery('sp_row', row.getUniqueValue());
-            column.orderBy('order');
-            column.query();
-            
-            var totalMd = 0;
-            while (column.next()) {
-                var md = parseInt(column.getValue('size_md') || '0', 10);
-                totalMd += md;
-                gs.info('      Column: md=' + md);
-            }
-            
-            if (totalMd !== 12 && totalMd > 0) {
-                gs.warn('      ⚠️ Column sizes sum to ' + totalMd + ' (should be 12)');
+            if (headerWidget.getValue('id') === 'widget-menu') {
+                gs.error('CRITICAL: Header using "Header Menu" widget - should use "Stock Header"');
+            } else {
+                gs.info('Header widget: ' + headerWidget.getValue('id'));
             }
         }
     }
+    
+    // Check Menu
+    if (!portalGr.getValue('sp_rectangle_menu')) {
+        gs.error('ERROR: No menu assigned');
+    } else {
+        var menu = portalGr.sp_rectangle_menu.getRefRecord();
+        var menuWidget = menu.widget.getRefRecord();
+        
+        if (menuWidget.getValue('id') !== 'widget-menu') {
+            gs.error('ERROR: Menu not using "Header Menu" widget');
+        } else {
+            gs.info('Menu widget correct: widget-menu');
+        }
+    }
 }
 ```
 
 ---
 
-# Part 9: Quick Reference
+## Quick Reference: Out-of-Box Widget IDs
 
-## All Service Portal Tables
-
-```
-sp_portal              → Portal configuration
-sp_theme               → Theme/branding
-sp_header_footer       → Header/Footer containers
-sp_page                → Pages
-sp_container           → Page sections
-sp_row                 → Row layouts
-sp_column              → Columns in rows
-sp_widget              → Widget definitions
-sp_instance            → Widget placements
-sp_instance_*          → Instance extensions
-sp_css                 → CSS stylesheets
-sp_js_include          → JavaScript includes
-sp_dependency          → JS/CSS dependencies
-sp_angular_provider    → Angular services/directives
-sp_rectangle_menu_item → Menu items
-sp_instance_menu       → Menu instances
-m2m_sp_theme_css       → Theme ↔ CSS junction
-m2m_sp_theme_js        → Theme ↔ JS junction
-```
-
-## Common $sp Methods
-
-| Method | Description |
-|--------|-------------|
-| `$sp.getPortalRecord()` | Get current portal GlideRecord |
-| `$sp.getParameter(name)` | Get URL parameter value |
-| `$sp.getWidget(id, options)` | Get widget model |
-| `$sp.getWidgetFromInstance(sysId)` | Get widget from instance |
-| `$sp.canReadRecord(table, sysId)` | Check read access |
-| `$sp.getValue(field)` | Get value from instance/portal |
-| `$sp.getDisplayValue(field)` | Get display value from instance/portal |
-
-## Common spUtil Methods (Client)
-
-| Method | Description |
-|--------|-------------|
-| `spUtil.get(widgetId, options)` | Load widget dynamically |
-| `spUtil.update($scope)` | Update scope |
-| `spUtil.addErrorMessage(msg)` | Display error message |
-| `spUtil.addInfoMessage(msg)` | Display info message |
-| `spUtil.recordWatch($scope, table, filter, callback)` | Watch for record changes |
-
-## OOB Widget IDs
-
-| Widget Name | Widget ID |
-|-------------|-----------|
-| Stock Header | `widget-stock-header` |
-| Header Menu | `widget-menu` |
-| Sample Footer | `widget-footer` |
-| Form | `widget-form` |
-| Data Table | `widget-data-table` |
-| Simple List | `widget-simple-list` |
-
-## Bootstrap v3 Column Classes
-
-```
-col-xs-*  → Extra small (< 768px)
-col-sm-*  → Small (≥ 768px)
-col-md-*  → Medium (≥ 992px)
-col-lg-*  → Large (≥ 1200px)
-```
-
-## Order Field Convention
-
-Use multiples of 100 for order fields:
-```
-First item:  order = 100
-Second item: order = 200
-Third item:  order = 300
-```
-
-## Script Include Naming Convention
-
-```
-[AppName]Utils      → General utility functions
-[AppName]UtilsAjax  → Client-callable Ajax version
-[TableName]Utils    → Table-specific operations
-[Feature]Service    → Service-oriented logic
-```
+| Widget Name | Widget ID | Purpose |
+|-------------|-----------|---------|
+| Stock Header | `widget-stock-header` | Headers |
+| Header Menu | `widget-menu` | Navigation menus |
+| Homepage Search | `homepage-search` | Search bar |
+| Icon Link | `icon-link` | Category icons |
+| Data Table | `data-table` | List displays |
+| Form | `form` | Record forms |
+| SC Catalog Item | `sc-cat-item` | Catalog items |
+| KB Article View | `kb-article-view` | KB articles |
 
 ---
 
-## Build Agent Checklist
+## Summary: The Three Critical Rules
 
-When creating Service Portal components:
+1. **Header Widget Rule**: `sp_header_footer.widget` MUST reference "Stock Header" (`widget-stock-header`), NEVER "Header Menu"
 
-### Portal Setup
-- [ ] Create `sp_portal` with url_suffix, title, theme
-- [ ] Link homepage via `sp_portal.homepage`
-- [ ] Link main menu via `sp_portal.sp_rectangle_menu`
+2. **Menu Widget Rule**: `sp_instance_menu.widget` MUST reference "Header Menu" (`widget-menu`), NEVER "Stock Header"
 
-### Theme Setup
-- [ ] Create `sp_theme` with css_variables (SCSS only)
-- [ ] Create `sp_header_footer` for header widget wrapper
-- [ ] Link header via `sp_theme.header`
-- [ ] Link theme to portal via `sp_portal.theme`
-
-### Page Layout Setup
-- [ ] Create `sp_page` with unique id
-- [ ] Create `sp_container` linked to page
-- [ ] Create `sp_row` linked to container
-- [ ] Create `sp_column` linked to row (sizes sum to 12)
-- [ ] Create `sp_instance` linked to column and widget
-
-### Widget Development
-- [ ] Create Script Include for GlideRecord logic
-- [ ] Keep Server Script under 20 lines (orchestrator only)
-- [ ] Use `!default` flag in widget SCSS variables
-- [ ] Always deregister `$rootScope.$on` listeners
-- [ ] Never call `$scope.$apply()`
-- [ ] Cache template function results
+3. **Page Layout Chain Rule**: Always create in order:
+   ```
+   sp_page → sp_container → sp_row → sp_column → sp_instance
+   ```
+   Each child MUST reference its parent via the required reference field.
 
 ---
 
-*Document Version: 2.0*  
-*Target: ServiceNow Build Agent*  
-*Framework: Service Portal with Bootstrap v3.3.6, AngularJS 1.5.1*
+**End of Guide**
