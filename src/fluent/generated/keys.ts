@@ -58,6 +58,10 @@ declare global {
                         table: 'sys_ui_element'
                         id: '20662f2d932dbed43321f2cbdd03d6fd'
                     }
+                    '220ef3860f12be50a764d3d300d1b2a8': {
+                        table: 'sys_scope_privilege'
+                        id: '220ef3860f12be50a764d3d300d1b2a8'
+                    }
                     '24662f2d932dbed43321f2cbdd03d6fa': {
                         table: 'sys_ui_element'
                         id: '24662f2d932dbed43321f2cbdd03d6fa'
@@ -65,6 +69,10 @@ declare global {
                     '28662f2d932dbed43321f2cbdd03d6f7': {
                         table: 'sys_ui_element'
                         id: '28662f2d932dbed43321f2cbdd03d6f7'
+                    }
+                    '2e0eff4e0f12be50a764d3d300d1b2d8': {
+                        table: 'sys_scope_privilege'
+                        id: '2e0eff4e0f12be50a764d3d300d1b2d8'
                     }
                     '3c0b665693e1b2583321f2cbdd03d6f2': {
                         table: 'sp_row'
@@ -289,6 +297,10 @@ declare global {
                     e8662f2d932dbed43321f2cbdd03d6fd: {
                         table: 'sys_ui_element'
                         id: 'e8662f2d932dbed43321f2cbdd03d6fd'
+                    }
+                    ea0eff4e0f12be50a764d3d300d1b2d1: {
+                        table: 'sys_scope_privilege'
+                        id: 'ea0eff4e0f12be50a764d3d300d1b2d1'
                     }
                     ec662f2d932dbed43321f2cbdd03d6fa: {
                         table: 'sys_ui_element'
@@ -793,6 +805,10 @@ declare global {
                     prompt_gallery_search_widget_instance: {
                         table: 'sp_instance'
                         id: 'f977b48d950848f5aeab8713b1af72bf'
+                    }
+                    prompt_gallery_service: {
+                        table: 'sys_script_include'
+                        id: 'bbf14e84af2b4693ad1c0b33f28f295f'
                     }
                     prompt_gallery_service_portal: {
                         table: 'sp_portal'

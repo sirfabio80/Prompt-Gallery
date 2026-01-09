@@ -19,14 +19,20 @@ function PromptGalleryCreateController($scope, $location, $window) {
       return;
     }
     
+    // Client-side validation before server call
+    if (!c.isFormValid()) {
+      c.data.error_message = 'Please fill in all required fields.';
+      return;
+    }
+    
     c.isSubmitting = true;
     
     // Clear previous messages
     c.data.success_message = '';
     c.data.error_message = '';
     
-    // Prepare data for submission
-    var submitData = {
+    // Use server.get() with data object - the documented pattern for targeted server calls
+    c.server.get({
       action: 'create_prompt',
       name: c.formData.name,
       short_description: c.formData.short_description,
@@ -34,12 +40,13 @@ function PromptGalleryCreateController($scope, $location, $window) {
       category: c.formData.category,
       owner_team: c.formData.owner_team,
       is_active: c.formData.is_active
-    };
-    
-    c.server.update(submitData).then(function(response) {
+    }).then(function() {
       c.isSubmitting = false;
       
-      if (response.data.success_message) {
+      // Since creation works but no success_message is set, redirect if no error occurred
+      var hasError = c.data.error_message && c.data.error_message.trim() !== '';
+      
+      if (!hasError) {
         // Reset form on success
         c.formData = {
           name: '',
@@ -56,14 +63,11 @@ function PromptGalleryCreateController($scope, $location, $window) {
           $scope.createPromptForm.$setUntouched();
         }
         
-        // Scroll to top to show success message
-        $window.scrollTo(0, 0);
+        // Clear draft on successful submission
+        c.clearDraft();
         
-        // Optional: Auto-redirect after success (uncomment if desired)
-        // setTimeout(function() {
-        //   $location.url('?id=prompt_gallery');
-        //   $scope.$apply();
-        // }, 3000);
+        // Redirect to Prompt Gallery homepage
+        $location.search('id', 'prompt_gallery');
       }
     }, function(error) {
       c.isSubmitting = false;

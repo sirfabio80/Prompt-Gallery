@@ -48,12 +48,17 @@
         name="short_description"
         class="form-control"
         ng-model="c.formData.short_description"
+        ng-class="{'is-invalid': c.getDescriptionLength() > 1000}"
         placeholder="Briefly describe what this prompt does and when to use it"
         maxlength="1000"
         rows="3"
       ></textarea>
-      <small class="form-text text-muted">
-        {{c.formData.short_description.length || 0}}/1000 characters
+      <small class="form-text" ng-class="{'text-danger': c.getDescriptionLength() > 1000, 'text-muted': c.getDescriptionLength() <= 1000}">
+        {{c.getDescriptionLength()}}/1000 characters
+        <span ng-if="c.getDescriptionLength() > 1000" class="text-danger">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          Too long!
+        </span>
       </small>
     </div>
 
@@ -74,8 +79,12 @@
       <div class="invalid-feedback" ng-show="createPromptForm.full_prompt.$invalid && createPromptForm.full_prompt.$touched">
         Full prompt content is required
       </div>
-      <small class="form-text text-muted">
-        {{c.formData.full_prompt.length || 0}} characters
+      <small class="form-text" ng-class="{'text-info': c.getContentLength() > 0, 'text-muted': c.getContentLength() === 0}">
+        {{c.getContentLength()}} characters
+        <span ng-if="c.getContentLength() > 5000" class="text-warning">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+          Very long prompt
+        </span>
       </small>
     </div>
 
