@@ -332,6 +332,10 @@ declare global {
                         id: 'c41c3c00126140798abe824093fc15f5'
                         deleted: true
                     }
+                    marked_js_ui_script: {
+                        table: 'sys_ui_script'
+                        id: 'd526b5286e1747b8a843b32a31713b7c'
+                    }
                     menu_item_admin: {
                         table: 'sp_rectangle_menu_item'
                         id: '5016ceacd07643a1940c1203dfd3c5dd'

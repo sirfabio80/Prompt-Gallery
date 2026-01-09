@@ -9,6 +9,7 @@ function PromptGalleryDetailController($scope, $rootScope, spUtil, $sce, $timeou
     c.isLoading = false;
     c.actionMessage = null;
     c.usageHistory = $scope.data.usage_history || [];
+    c.markedReady = false;
 
     // Auto-clear action messages
     c.clearMessageTimer = null;
@@ -21,6 +22,9 @@ function PromptGalleryDetailController($scope, $rootScope, spUtil, $sce, $timeou
     $timeout(function() { c.removeCloseButtonTooltip(); }, 100);
     $timeout(function() { c.removeCloseButtonTooltip(); }, 500);
     $timeout(function() { c.removeCloseButtonTooltip(); }, 1000);
+
+    // Ensure marked.js is loaded and ready
+    c.waitForMarkedJS();
   };
   
   // Remove tooltip from modal close button
@@ -56,6 +60,59 @@ function PromptGalleryDetailController($scope, $rootScope, spUtil, $sce, $timeou
     });
   };
 
+  // Wait for marked.js to be available
+  c.waitForMarkedJS = function() {
+    var maxAttempts = 100; // Wait up to 10 seconds (100 * 100ms)
+    var attempts = 0;
+    
+    var checkMarked = function() {
+      attempts++;
+      
+      if (typeof window.marked !== 'undefined') {
+        console.log('marked.js is ready');
+        c.initMarked(); // Configure marked options
+        
+        // Force re-render of content after marked.js loads
+        $scope.$apply(function() {
+          c.markedReady = true;
+        });
+        return;
+      }
+      
+      if (attempts < maxAttempts) {
+        $timeout(checkMarked, 100); // Check again in 100ms
+      } else {
+        console.warn('marked.js failed to load after 10 seconds - using fallback rendering');
+        console.log('window.marked:', typeof window.marked);
+        console.log('global marked:', typeof marked);
+        
+        // Try to load manually as a last resort
+        c.loadMarkedDirectly();
+      }
+    };
+    
+    checkMarked();
+  };
+
+  // Load marked.js directly if UI Script fails
+  c.loadMarkedDirectly = function() {
+    if (typeof window.marked !== 'undefined') return;
+    
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js';
+    script.onload = function() {
+      console.log('marked.js loaded directly');
+      c.initMarked();
+      $scope.$apply(function() {
+        c.markedReady = true;
+      });
+    };
+    script.onerror = function() {
+      console.error('Failed to load marked.js directly');
+    };
+    document.head.appendChild(script);
+  };
+
   // Initialize selected version with fallbacks
   c.initializeSelectedVersion = function() {
     // First try the server-provided selected version
@@ -78,12 +135,94 @@ function PromptGalleryDetailController($scope, $rootScope, spUtil, $sce, $timeou
     }
   };
 
-  // Function to get trusted HTML content
-  c.getTrustedHtml = function(htmlContent) {
-    if (htmlContent) {
-      return $sce.trustAsHtml(htmlContent);
+  // Function to get trusted HTML content with Markdown rendering
+  c.getTrustedHtml = function(content) {
+    if (!content) {
+      return $sce.trustAsHtml('<p class="empty-content">No content available</p>');
     }
-    return '';
+    
+    return c.getRenderedMarkdown(content);
+  };
+
+  // Render Markdown to trusted HTML
+  c.getRenderedMarkdown = function(content) {
+    if (!content) {
+      return $sce.trustAsHtml('<p class="empty-content">No content available</p>');
+    }
+
+    // Check if marked is available and initialized
+    if (!c.initMarked() || typeof window.marked === 'undefined') {
+      // Fallback: return escaped plain text if marked not loaded
+      console.warn('marked.js not loaded - using fallback rendering');
+      return $sce.trustAsHtml('<pre class="markdown-fallback">' + c.escapeHtml(content) + '</pre>');
+    }
+
+    try {
+      console.log('Parsing markdown content:', content.substring(0, 100) + '...');
+      var rendered = window.marked.parse(content);
+      console.log('Rendered HTML:', rendered.substring(0, 200) + '...');
+      
+      // Basic XSS protection - remove script tags and event handlers
+      rendered = c.sanitizeHtml(rendered);
+      
+      return $sce.trustAsHtml(rendered);
+    } catch (e) {
+      console.error('Markdown parsing error:', e);
+      // Fallback to escaped plain text on error
+      return $sce.trustAsHtml('<pre class="markdown-error">' + c.escapeHtml(content) + '</pre>');
+    }
+  };
+
+  // Configure marked options
+  c.initMarked = function() {
+    if (typeof window.marked !== 'undefined') {
+      // Configure marked if not already configured
+      if (!window.marked._configured) {
+        try {
+          window.marked.setOptions({
+            breaks: true,           // Convert \n to <br>
+            gfm: true,             // GitHub Flavored Markdown
+            headerIds: false,      // Disable auto header IDs (security)
+            mangle: false,         // Don't mangle email addresses
+            sanitize: false        // We'll use custom sanitization
+          });
+          window.marked._configured = true;
+          console.log('marked.js configured successfully');
+        } catch (e) {
+          console.error('Error configuring marked.js:', e);
+        }
+      }
+      return true;
+    }
+    return false;
+  };
+
+  // HTML escape for fallback
+  c.escapeHtml = function(text) {
+    var div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  };
+
+  // Basic sanitization - remove dangerous elements and attributes
+  c.sanitizeHtml = function(html) {
+    // Remove script tags
+    html = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+    
+    // Remove event handlers
+    html = html.replace(/\s*on\w+\s*=\s*["'][^"']*["']/gi, '');
+    
+    // Remove javascript: URLs
+    html = html.replace(/href\s*=\s*["']javascript:[^"']*["']/gi, 'href="#"');
+    html = html.replace(/src\s*=\s*["']javascript:[^"']*["']/gi, 'src="#"');
+    
+    // Remove style attributes that might contain expression()
+    html = html.replace(/style\s*=\s*["'][^"']*expression\s*\([^"']*["']/gi, '');
+    
+    // Remove potentially dangerous attributes
+    html = html.replace(/\s*(?:onload|onerror|onmouseover|onmouseout|onclick|ondblclick|onkeydown|onkeyup|onkeypress|onsubmit|onreset|onselect|onblur|onfocus|onabort)\s*=\s*["'][^"']*["']/gi, '');
+    
+    return html;
   };
 
   // Handle version change
@@ -112,24 +251,43 @@ function PromptGalleryDetailController($scope, $rootScope, spUtil, $sce, $timeou
   c.copyToClipboard = function(type, text) {
     if (!text) return;
 
-    // Strip HTML tags for copying if it's HTML content
+    // For full_content and full_prompt types, always use raw source
     var textToCopy = text;
     if ((type === 'full_content' || type === 'full_prompt') && text.indexOf('<') !== -1) {
-      // Create a temporary element to strip HTML tags
+      // If the content has HTML tags (from legacy rich-text), strip them
       var tempDiv = document.createElement('div');
       tempDiv.innerHTML = text;
       textToCopy = tempDiv.textContent || tempDiv.innerText || '';
     }
+    
+    // For markdown content, we want to copy the raw markdown source
+    // The server provides the raw content in data.prompt.full_prompt, so we're good
 
-    if (navigator.clipboard) {
+    if (navigator.clipboard && window.isSecureContext) {
       navigator.clipboard.writeText(textToCopy).then(function() {
-        c.showActionMessage('success', type.charAt(0).toUpperCase() + type.slice(1) + ' copied to clipboard!');
+        c.showActionMessage('success', c.getTypeLabel(type) + ' copied to clipboard!');
       }).catch(function(err) {
+        console.error('Clipboard write failed:', err);
         c.fallbackCopy(textToCopy, type);
       });
     } else {
       c.fallbackCopy(textToCopy, type);
     }
+  };
+
+  // Get user-friendly label for copy type
+  c.getTypeLabel = function(type) {
+    var labels = {
+      'full_content': 'Full prompt',
+      'full_prompt': 'Full prompt',
+      'full_prompt_content': 'Full prompt',
+      'header_prompt': 'Prompt',
+      'role': 'Role instructions',
+      'prompt': 'Prompt',
+      'input': 'Example input',
+      'output': 'Example output'
+    };
+    return labels[type] || type.charAt(0).toUpperCase() + type.slice(1);
   };
 
   // Fallback copy method
@@ -138,17 +296,19 @@ function PromptGalleryDetailController($scope, $rootScope, spUtil, $sce, $timeou
     textArea.value = text;
     textArea.style.position = 'fixed';
     textArea.style.opacity = '0';
+    textArea.style.left = '-9999px';
     document.body.appendChild(textArea);
     textArea.select();
 
     try {
       var successful = document.execCommand('copy');
       if (successful) {
-        c.showActionMessage('success', type.charAt(0).toUpperCase() + type.slice(1) + ' copied to clipboard!');
+        c.showActionMessage('success', c.getTypeLabel(type) + ' copied to clipboard!');
       } else {
         c.showActionMessage('error', 'Failed to copy to clipboard. Please copy manually.');
       }
     } catch (err) {
+      console.error('Fallback copy failed:', err);
       c.showActionMessage('error', 'Copy not supported. Please copy manually.');
     }
 
@@ -472,6 +632,15 @@ function PromptGalleryDetailController($scope, $rootScope, spUtil, $sce, $timeou
       if (!c.selectedVersion && newPrompt.versions && newPrompt.versions.length > 0) {
         c.initializeSelectedVersion();
       }
+    }
+  });
+
+  // Watch for marked.js ready state to trigger re-rendering
+  $scope.$watch(function() { return c.markedReady; }, function(newVal, oldVal) {
+    if (newVal && !oldVal) {
+      console.log('marked.js is ready - triggering content re-render');
+      // Force digest cycle to re-render markdown content
+      $scope.$digest();
     }
   });
 

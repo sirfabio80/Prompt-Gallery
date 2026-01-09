@@ -64,11 +64,11 @@
         <i class="fa fa-file-text-o"></i>
         Full Prompt Content
       </h4>
-      <div class="content-block rich-content">
-        <div class="rich-text-display" ng-bind-html="c.getTrustedHtml(data.prompt.full_prompt)"></div>
+      <div class="content-block markdown-content">
+        <div class="markdown-rendered" ng-bind-html="c.getTrustedHtml(data.prompt.full_prompt)"></div>
         <button class="btn btn-sm btn-default copy-btn" 
                 ng-click="c.copyToClipboard('full_content', data.prompt.full_prompt)"
-                title="Copy full prompt content">
+                title="Copy raw Markdown source">
           <i class="fa fa-copy"></i>
         </button>
       </div>
