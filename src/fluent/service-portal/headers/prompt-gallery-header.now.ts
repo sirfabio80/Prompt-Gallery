@@ -28,8 +28,10 @@ export const prompt_gallery_header_footer = Record({
     <!-- Navigation Menu -->
     <nav class="header-nav" role="navigation" aria-label="Main Navigation">
       <ul class="nav-menu">
-        <!-- Create New Prompt Button (when on prompt gallery pages) -->
-        <li ng-if="::user.logged_in && (page.id == 'prompt_gallery' || page.id == 'prompt_create' || page.id == 'prompt_gallery_edit')" class="create-prompt-item">
+        <!-- Create New Prompt Button (with fade animation) -->
+        <li ng-if="::user.logged_in && (page.id == 'prompt_gallery' || page.id == 'prompt_create' || page.id == 'prompt_gallery_edit')" 
+            class="create-prompt-item" 
+            ng-class="{'hidden': page.id == 'prompt_create'}">
           <a href="?id=prompt_create" class="nav-link create-prompt-link" aria-label="Create New Prompt">
             <i class="fa fa-plus" aria-hidden="true"></i>
             <span>Create New Prompt</span>
@@ -169,6 +171,19 @@ export const prompt_gallery_header_footer = Record({
 }
 
 /* Create New Prompt Button */
+.create-prompt-item {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, transform 0.3s ease;
+  transform: translateX(0);
+}
+
+.create-prompt-item.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(20px);
+}
+
 .create-prompt-link {
   background-color: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.25);
