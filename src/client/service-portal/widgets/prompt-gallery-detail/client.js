@@ -10,6 +10,7 @@ function PromptGalleryDetailController($scope, $rootScope, spUtil, $sce, $timeou
     c.actionMessage = null;
     c.usageHistory = $scope.data.usage_history || [];
     c.markedReady = false;
+    c.contentReady = true; // Show content immediately, enhance with markdown when ready
 
     // Auto-clear action messages
     c.clearMessageTimer = null;
@@ -23,8 +24,8 @@ function PromptGalleryDetailController($scope, $rootScope, spUtil, $sce, $timeou
     $timeout(function() { c.removeCloseButtonTooltip(); }, 500);
     $timeout(function() { c.removeCloseButtonTooltip(); }, 1000);
 
-    // Ensure marked.js is loaded and ready
-    c.waitForMarkedJS();
+    // Load marked.js directly in the widget
+    c.loadMarkedJS();
   };
   
   // Remove tooltip from modal close button
@@ -60,56 +61,39 @@ function PromptGalleryDetailController($scope, $rootScope, spUtil, $sce, $timeou
     });
   };
 
-  // Wait for marked.js to be available
-  c.waitForMarkedJS = function() {
-    var maxAttempts = 100; // Wait up to 10 seconds (100 * 100ms)
-    var attempts = 0;
-    
-    var checkMarked = function() {
-      attempts++;
-      
-      if (typeof window.marked !== 'undefined') {
-        console.log('marked.js is ready');
-        c.initMarked(); // Configure marked options
-        
-        // Force re-render of content after marked.js loads
-        $scope.$apply(function() {
-          c.markedReady = true;
-        });
-        return;
-      }
-      
-      if (attempts < maxAttempts) {
-        $timeout(checkMarked, 100); // Check again in 100ms
-      } else {
-        console.warn('marked.js failed to load after 10 seconds - using fallback rendering');
-        console.log('window.marked:', typeof window.marked);
-        console.log('global marked:', typeof marked);
-        
-        // Try to load manually as a last resort
-        c.loadMarkedDirectly();
-      }
-    };
-    
-    checkMarked();
-  };
+  // Load marked.js directly in the widget (bypass UI Script issues)
+  c.loadMarkedJS = function() {
+    // First check if marked.js is already available from any source
+    if (typeof window.marked !== 'undefined') {
+      console.log('marked.js already available');
+      c.initMarked();
+      c.markedReady = true;
+      return;
+    }
 
-  // Load marked.js directly if UI Script fails
-  c.loadMarkedDirectly = function() {
-    if (typeof window.marked !== 'undefined') return;
-    
+    // Load marked.js directly
     var script = document.createElement('script');
     script.src = 'https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js';
+    script.async = true; // Load asynchronously to not block UI
+    
     script.onload = function() {
-      console.log('marked.js loaded directly');
-      c.initMarked();
-      $scope.$apply(function() {
-        c.markedReady = true;
-      });
+      console.log('marked.js loaded successfully');
+      if (typeof window.marked !== 'undefined') {
+        c.initMarked();
+        $timeout(function() {
+          c.markedReady = true;
+        });
+      } else {
+        console.warn('marked.js script loaded but window.marked not available');
+      }
     };
-    script.onerror = function() {
-      console.error('Failed to load marked.js directly');
+    
+    script.onerror = function(error) {
+      console.error('Failed to load marked.js:', error);
+      // Content is already showing, just won't have markdown enhancement
     };
+    
+    // Add to head
     document.head.appendChild(script);
   };
 
@@ -144,33 +128,30 @@ function PromptGalleryDetailController($scope, $rootScope, spUtil, $sce, $timeou
     return c.getRenderedMarkdown(content);
   };
 
-  // Render Markdown to trusted HTML
+  // Render Markdown to trusted HTML (enhanced but not blocking approach)
   c.getRenderedMarkdown = function(content) {
     if (!content) {
       return $sce.trustAsHtml('<p class="empty-content">No content available</p>');
     }
 
-    // Check if marked is available and initialized
-    if (!c.initMarked() || typeof window.marked === 'undefined') {
-      // Fallback: return escaped plain text if marked not loaded
-      console.warn('marked.js not loaded - using fallback rendering');
-      return $sce.trustAsHtml('<pre class="markdown-fallback">' + c.escapeHtml(content) + '</pre>');
+    // If marked.js is ready, render as markdown
+    if (c.markedReady && typeof window.marked !== 'undefined') {
+      try {
+        console.log('Rendering markdown content');
+        var rendered = window.marked.parse(content);
+        
+        // Basic XSS protection - remove script tags and event handlers
+        rendered = c.sanitizeHtml(rendered);
+        
+        return $sce.trustAsHtml(rendered);
+      } catch (e) {
+        console.error('Markdown parsing error:', e);
+        // Fall through to plain text rendering
+      }
     }
 
-    try {
-      console.log('Parsing markdown content:', content.substring(0, 100) + '...');
-      var rendered = window.marked.parse(content);
-      console.log('Rendered HTML:', rendered.substring(0, 200) + '...');
-      
-      // Basic XSS protection - remove script tags and event handlers
-      rendered = c.sanitizeHtml(rendered);
-      
-      return $sce.trustAsHtml(rendered);
-    } catch (e) {
-      console.error('Markdown parsing error:', e);
-      // Fallback to escaped plain text on error
-      return $sce.trustAsHtml('<pre class="markdown-error">' + c.escapeHtml(content) + '</pre>');
-    }
+    // Fallback: Show content as preformatted text (better than nothing)
+    return $sce.trustAsHtml('<pre class="content-text">' + c.escapeHtml(content) + '</pre>');
   };
 
   // Configure marked options
@@ -635,12 +616,10 @@ function PromptGalleryDetailController($scope, $rootScope, spUtil, $sce, $timeou
     }
   });
 
-  // Watch for marked.js ready state to trigger re-rendering
-  $scope.$watch(function() { return c.markedReady; }, function(newVal, oldVal) {
+  // Watch for marked.js ready state to trigger re-rendering (simplified)
+  $scope.$watch(function() { return c.contentReady; }, function(newVal, oldVal) {
     if (newVal && !oldVal) {
-      console.log('marked.js is ready - triggering content re-render');
-      // Force digest cycle to re-render markdown content
-      $scope.$digest();
+      console.log('Content is ready for display');
     }
   });
 

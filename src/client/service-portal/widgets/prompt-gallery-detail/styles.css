@@ -104,6 +104,66 @@
   font-size: 16px;
 }
 
+/* Content Loading State */
+.content-loading-section {
+  padding: 30px 0;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  margin-bottom: 24px;
+}
+
+.content-loading-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-loading-wrapper .fa-spinner {
+  font-size: 24px;
+  color: #0073e6;
+  margin-bottom: 12px;
+}
+
+.content-loading-wrapper .loading-text {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* Markdown loading and error states */
+.markdown-loading {
+  padding: 20px;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.markdown-loading .fa-spinner {
+  margin-right: 8px;
+  color: #0073e6;
+}
+
+.markdown-fallback-notice,
+.markdown-error-notice {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #495057;
+}
+
+.markdown-error-notice {
+  color: #721c24;
+}
+
+.markdown-error-notice::before {
+  content: "⚠️ ";
+}
+
 /* Prompt Header */
 .prompt-header {
   background: #f8f9fa;

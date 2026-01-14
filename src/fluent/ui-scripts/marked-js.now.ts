@@ -8,7 +8,7 @@ export const marked_js_ui_script = Record({
     name: 'MarkedJS',
     description: 'Markdown parser and compiler library for rendering Markdown content',
     script: `// Marked.js - Markdown Parser and Compiler for Service Portal
-// Load marked.js library for client-side Markdown rendering
+// Simple and reliable marked.js loading
 (function() {
   'use strict';
   
@@ -20,62 +20,41 @@ export const marked_js_ui_script = Record({
     return;
   }
   
-  // Load marked.js from CDN
-  function loadMarkedJS() {
-    return new Promise(function(resolve, reject) {
-      var script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js';
-      script.async = true;
-      script.defer = false;
-      
-      script.onload = function() {
-        console.log('marked.js loaded successfully from CDN');
-        console.log('window.marked available:', typeof window.marked !== 'undefined');
-        
-        // Configure marked options after loading
-        if (typeof window.marked !== 'undefined') {
-          try {
-            window.marked.setOptions({
-              breaks: true,           // Convert \\n to <br>
-              gfm: true,             // GitHub Flavored Markdown
-              headerIds: false,      // Disable auto header IDs (security)
-              mangle: false,         // Don't mangle email addresses
-              sanitize: false        // We'll use Angular's $sce for sanitization
-            });
-            console.log('marked.js configured successfully');
-            window.marked._configured = true;
-          } catch (e) {
-            console.error('Error configuring marked.js:', e);
-          }
-        }
-        
-        resolve();
-      };
-      
-      script.onerror = function(error) {
-        console.error('Failed to load marked.js:', error);
-        reject(new Error('Failed to load marked.js'));
-      };
-      
-      // Insert before first script tag to ensure early loading
-      var firstScript = document.getElementsByTagName('script')[0];
-      if (firstScript) {
-        firstScript.parentNode.insertBefore(script, firstScript);
-      } else {
-        document.head.appendChild(script);
+  // Simple script injection approach
+  var script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js';
+  script.async = false; // Load synchronously for reliability
+  script.defer = false;
+  
+  script.onload = function() {
+    console.log('marked.js loaded successfully from CDN');
+    console.log('window.marked available:', typeof window.marked !== 'undefined');
+    
+    // Configure marked options after loading
+    if (typeof window.marked !== 'undefined') {
+      try {
+        window.marked.setOptions({
+          breaks: true,           // Convert \\n to <br>
+          gfm: true,             // GitHub Flavored Markdown
+          headerIds: false,      // Disable auto header IDs (security)
+          mangle: false,         // Don't mangle email addresses
+          sanitize: false        // We'll use Angular's $sce for sanitization
+        });
+        console.log('marked.js configured successfully');
+        window.marked._configured = true;
+      } catch (e) {
+        console.error('Error configuring marked.js:', e);
       }
-    });
-  }
+    }
+  };
   
-  // Load the library immediately
-  loadMarkedJS().then(function() {
-    console.log('MarkedJS UI Script loaded successfully');
-  }).catch(function(error) {
-    console.error('Error in MarkedJS UI Script:', error);
-  });
+  script.onerror = function(error) {
+    console.error('Failed to load marked.js:', error);
+  };
   
-  // Make loading function available globally for widgets that need it
-  window.markedJSLoader = loadMarkedJS;
+  // Insert at the very beginning of head for immediate loading
+  var head = document.head || document.getElementsByTagName('head')[0];
+  head.insertBefore(script, head.firstChild);
   
 })();`,
     global: true,
