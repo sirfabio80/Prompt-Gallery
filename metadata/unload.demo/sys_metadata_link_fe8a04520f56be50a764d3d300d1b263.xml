@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>fa8d03060fda3e50a764d3d300d1b264</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_prompt_galle_prompt">
+    <x_snc_prompt_galle_prompt action="INSERT_OR_UPDATE">
+        <category display_value="Documentation">f4d5a9583a454dd985ebc62f50407b44</category>
+        <created_by/>
+        <created_on/>
+        <full_prompt># AI Assistant System Prompt&#13;
+&#13;
+## Overview&#13;
+&#13;
+Lorem ipsum dolor sit amet, **consectetur adipiscing elit**. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, *quis nostrud exercitation* ullamco laboris.&#13;
+&#13;
+## Core Behaviors&#13;
+&#13;
+### Response Guidelines&#13;
+&#13;
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&#13;
+&#13;
+Key principles include:&#13;
+&#13;
+- **Clarity**: Lorem ipsum dolor sit amet consectetur&#13;
+- **Accuracy**: Adipiscing elit sed do eiusmod tempor&#13;
+- **Helpfulness**: Incididunt ut labore et dolore magna&#13;
+  - Sub-point alpha: Ut enim ad minim veniam&#13;
+  - Sub-point beta: Quis nostrud exercitation ullamco&#13;
+- **Safety**: Laboris nisi ut aliquip ex ea commodo&#13;
+&#13;
+### Processing Steps&#13;
+&#13;
+1. First, analyze the user query for intent and context&#13;
+2. Second, retrieve relevant information from knowledge base&#13;
+3. Third, formulate a structured response&#13;
+4. Fourth, validate output against safety guidelines&#13;
+5. Finally, deliver the response with appropriate formatting&#13;
+&#13;
+## Code Examples&#13;
+&#13;
+When generating code, use proper formatting. Here's an inline example: `const response = await generateAnswer(query);`&#13;
+&#13;
+For longer snippets, use fenced code blocks:&#13;
+&#13;
+```python&#13;
+def process_prompt(user_input: str) -&gt; str:&#13;
+    """&#13;
+    Process user input and generate response.&#13;
+    Lorem ipsum dolor sit amet consectetur.&#13;
+    """&#13;
+    context = retrieve_context(user_input)&#13;
+    response = generate_response(context)&#13;
+    return validate_output(response)&#13;
+```&#13;
+&#13;
+```javascript&#13;
+// JavaScript implementation&#13;
+async function handleRequest(req, res) {&#13;
+  const { prompt } = req.body;&#13;
+  const result = await model.generate(prompt);&#13;
+  res.json({ success: true, data: result });&#13;
+}&#13;
+```&#13;
+&#13;
+## Parameters Reference&#13;
+&#13;
+| Parameter | Type | Default | Description |&#13;
+|-----------|------|---------|-------------|&#13;
+| temperature | float | 0.7 | Controls randomness in output generation |&#13;
+| max_tokens | int | 2048 | Maximum length of generated response |&#13;
+| top_p | float | 0.9 | Nucleus sampling threshold value |&#13;
+| frequency_penalty | float | 0.0 | Reduces repetition of token sequences |&#13;
+&#13;
+## Important Notes&#13;
+&#13;
+&gt; **Warning**: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Always validate outputs before production use.&#13;
+&#13;
+&gt; Blockquote example: *"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."*&#13;
+&#13;
+## Links and Resources&#13;
+&#13;
+For more information, visit the [Documentation Portal](https://example.com/docs) or check the [API Reference Guide](https://example.com/api).&#13;
+&#13;
+Contact support at ~~old-email@example.com~~ **new-support@example.com** for assistance.&#13;
+&#13;
+---&#13;
+&#13;
+## Appendix&#13;
+&#13;
+### Version History&#13;
+&#13;
+Lorem ipsum dolor sit amet:&#13;
+&#13;
+1. **v1.0** - Initial release with core functionality&#13;
+2. **v1.1** - Added support for `multi-turn` conversations&#13;
+3. **v2.0** - Major refactor with ~~deprecated features~~ new architecture&#13;
+&#13;
+### Final Checklist&#13;
+&#13;
+- [x] Review prompt structure&#13;
+- [x] Validate markdown formatting&#13;
+- [ ] Test with edge cases&#13;
+- [ ] Deploy to production&#13;
+&#13;
+---&#13;
+&#13;
+*Last updated: January 2025 | Maintained by Lorem Ipsum Team*</full_prompt>
+        <is_active>true</is_active>
+        <latest_version_number>0</latest_version_number>
+        <name>Sample MD prompt</name>
+        <owner_team/>
+        <short_description>Sample MD prompt AI Assistant System Prompt</short_description>
+        <sys_created_by>fabio.petito</sys_created_by>
+        <sys_created_on>2026-01-09 09:29:39</sys_created_on>
+        <sys_id>fa8d03060fda3e50a764d3d300d1b264</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>fabio.petito</sys_updated_by>
+        <sys_updated_on>2026-01-09 09:29:39</sys_updated_on>
+        <total_usage_count>0</total_usage_count>
+        <updated_by/>
+        <updated_on/>
+    </x_snc_prompt_galle_prompt>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>fabio.petito</sys_created_by>
+        <sys_created_on>2026-01-09 13:54:48</sys_created_on>
+        <sys_id>fe8a04520f56be50a764d3d300d1b263</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Sample MD prompt</sys_name>
+        <sys_package display_value="WDS Prompt Gallery" source="x_snc_prompt_galle">0189e2a593a17ed43321f2cbdd03d62e</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="WDS Prompt Gallery">0189e2a593a17ed43321f2cbdd03d62e</sys_scope>
+        <sys_update_name>sys_metadata_link_fe8a04520f56be50a764d3d300d1b263</sys_update_name>
+        <sys_updated_by>fabio.petito</sys_updated_by>
+        <sys_updated_on>2026-01-09 13:54:48</sys_updated_on>
+        <tablename>x_snc_prompt_galle_prompt</tablename>
+    </sys_metadata_link>
+</record_update>

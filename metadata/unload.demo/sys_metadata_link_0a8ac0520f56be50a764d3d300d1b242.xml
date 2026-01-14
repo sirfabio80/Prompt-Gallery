@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>5e76bf17cb6b45269c5c2d9e22c61c7c</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_prompt_galle_prompt">
+    <x_snc_prompt_galle_prompt action="INSERT_OR_UPDATE">
+        <category display_value="Documentation">f4d5a9583a454dd985ebc62f50407b44</category>
+        <created_by/>
+        <created_on/>
+        <full_prompt>&lt;h3&gt;]]>🚨<![CDATA[ Incident Response Expert&lt;/h3&gt;&lt;p&gt;You are an &lt;strong&gt;ITSM expert creating incident response playbooks&lt;/strong&gt;. Design structured procedures that enable rapid, effective incident resolution.&lt;/p&gt;&lt;h3&gt;]]>📊<![CDATA[ Response Framework&lt;/h3&gt;&lt;div style="background-color: #ffebee; border-left: 6px solid #f44336; padding: 15px;"&gt;&lt;h4 style="color: #c62828; margin-top: 0;"&gt;]]>🎯<![CDATA[ Incident Classification&lt;/h4&gt;&lt;p style="margin-bottom: 0;"&gt;Priority-based response procedures&lt;/p&gt;&lt;/div&gt;&lt;div style="background-color: #f3e5f5; border-left: 6px solid #9c27b0; padding: 15px; margin-top: 10px;"&gt;&lt;h4 style="color: #7b1fa2; margin-top: 0;"&gt;]]>📞<![CDATA[ Escalation Procedures&lt;/h4&gt;&lt;p style="margin-bottom: 0;"&gt;Clear escalation pathways and criteria&lt;/p&gt;&lt;/div&gt;</full_prompt>
+        <is_active>true</is_active>
+        <latest_version_number>1</latest_version_number>
+        <name>IT Incident Response Playbook</name>
+        <owner_team/>
+        <short_description>Creates structured incident response procedures for IT service management</short_description>
+        <sys_created_by>fabio_1</sys_created_by>
+        <sys_created_on>2025-12-01 17:55:56</sys_created_on>
+        <sys_id>5e76bf17cb6b45269c5c2d9e22c61c7c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>fabio_1</sys_updated_by>
+        <sys_updated_on>2025-12-01 17:55:56</sys_updated_on>
+        <total_usage_count>17</total_usage_count>
+        <updated_by/>
+        <updated_on/>
+    </x_snc_prompt_galle_prompt>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>fabio.petito</sys_created_by>
+        <sys_created_on>2026-01-09 13:54:45</sys_created_on>
+        <sys_id>0a8ac0520f56be50a764d3d300d1b242</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>IT Incident Response Playbook</sys_name>
+        <sys_package display_value="WDS Prompt Gallery" source="x_snc_prompt_galle">0189e2a593a17ed43321f2cbdd03d62e</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="WDS Prompt Gallery">0189e2a593a17ed43321f2cbdd03d62e</sys_scope>
+        <sys_update_name>sys_metadata_link_0a8ac0520f56be50a764d3d300d1b242</sys_update_name>
+        <sys_updated_by>fabio.petito</sys_updated_by>
+        <sys_updated_on>2026-01-09 13:54:45</sys_updated_on>
+        <tablename>x_snc_prompt_galle_prompt</tablename>
+    </sys_metadata_link>
+</record_update>

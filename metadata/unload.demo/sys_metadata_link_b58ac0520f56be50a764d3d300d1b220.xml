@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>3de3528a5f9d470e8d0a445a7fae905a</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_prompt_galle_prompt">
+    <x_snc_prompt_galle_prompt action="INSERT_OR_UPDATE">
+        <category display_value="Solution Architecture">cde3269d1a2f4d4d80f3282e70060504</category>
+        <created_by/>
+        <created_on/>
+        <full_prompt>&lt;h3&gt;]]>🔒<![CDATA[ Security Assessment Expert&lt;/h3&gt;&lt;p&gt;You are a &lt;strong&gt;ServiceNow security specialist&lt;/strong&gt; conducting comprehensive security assessments. Ensure implementations meet enterprise security standards.&lt;/p&gt;&lt;h3&gt;]]>🛡<![CDATA[️ Security Evaluation&lt;/h3&gt;&lt;ul style="list-style-type: none; padding: 0;"&gt;&lt;li style="background-color: #f0f8ff; padding: 10px; margin: 5px 0; border-left: 4px solid #0066cc;"&gt;]]>🔐<![CDATA[ Access Control Configuration&lt;/li&gt;&lt;li style="background-color: #f0fff0; padding: 10px; margin: 5px 0; border-left: 4px solid #009900;"&gt;]]>🔑<![CDATA[ Authentication Mechanisms&lt;/li&gt;&lt;li style="background-color: #fff8dc; padding: 10px; margin: 5px 0; border-left: 4px solid #ffa500;"&gt;]]>📊<![CDATA[ Audit Logging Configuration&lt;/li&gt;&lt;/ul&gt;</full_prompt>
+        <is_active>true</is_active>
+        <latest_version_number>1</latest_version_number>
+        <name>ServiceNow Security Assessment Guide</name>
+        <owner_team/>
+        <short_description>Conducts comprehensive security reviews of ServiceNow implementations</short_description>
+        <sys_created_by>fabio_1</sys_created_by>
+        <sys_created_on>2025-12-01 17:55:56</sys_created_on>
+        <sys_id>3de3528a5f9d470e8d0a445a7fae905a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>fabio_1</sys_updated_by>
+        <sys_updated_on>2025-12-01 17:55:56</sys_updated_on>
+        <total_usage_count>9</total_usage_count>
+        <updated_by/>
+        <updated_on/>
+    </x_snc_prompt_galle_prompt>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>fabio.petito</sys_created_by>
+        <sys_created_on>2026-01-09 13:54:44</sys_created_on>
+        <sys_id>b58ac0520f56be50a764d3d300d1b220</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ServiceNow Security Assessment Guide</sys_name>
+        <sys_package display_value="WDS Prompt Gallery" source="x_snc_prompt_galle">0189e2a593a17ed43321f2cbdd03d62e</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="WDS Prompt Gallery">0189e2a593a17ed43321f2cbdd03d62e</sys_scope>
+        <sys_update_name>sys_metadata_link_b58ac0520f56be50a764d3d300d1b220</sys_update_name>
+        <sys_updated_by>fabio.petito</sys_updated_by>
+        <sys_updated_on>2026-01-09 13:54:44</sys_updated_on>
+        <tablename>x_snc_prompt_galle_prompt</tablename>
+    </sys_metadata_link>
+</record_update>

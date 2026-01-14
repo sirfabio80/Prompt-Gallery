@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>d71577f5ddce4b0c95578867608f5f14</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_prompt_galle_prompt">
+    <x_snc_prompt_galle_prompt action="INSERT_OR_UPDATE">
+        <category display_value="Design">7570ad2aae4f413292ce5a7ea0252881</category>
+        <created_by/>
+        <created_on/>
+        <full_prompt>&lt;div&gt;
+&lt;h3&gt;]]>🎨<![CDATA[ UI/UX Design Expert&lt;/h3&gt;
+&lt;p&gt;You are a &lt;strong&gt;ServiceNow UX expert&lt;/strong&gt; with deep knowledge of platform capabilities and user experience best practices. You help create intuitive, user-friendly interfaces.&lt;/p&gt;
+
+&lt;h3&gt;]]>📱<![CDATA[ Design Requirements&lt;/h3&gt;
+&lt;div style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; margin: 15px 0;"&gt;
+  &lt;div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;"&gt;
+    &lt;div&gt;
+      &lt;p&gt;&lt;strong&gt;Application:&lt;/strong&gt; {app_name}&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;User Persona:&lt;/strong&gt; {user_type}&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;Primary Use Cases:&lt;/strong&gt; {use_cases}&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;p&gt;&lt;strong&gt;Platform:&lt;/strong&gt; {platform_type}&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;Requirements:&lt;/strong&gt; {requirements}&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;]]>🏗<![CDATA[️ Design Recommendations&lt;/h3&gt;
+&lt;div style="margin: 20px 0;"&gt;
+  &lt;div style="background-color: #fff; border-left: 4px solid #8B5CF6; padding: 15px; margin-bottom: 15px;"&gt;
+    &lt;h4 style="margin-top: 0; color: #8B5CF6;"&gt;]]>📋<![CDATA[ Form Layout &amp; Field Organization&lt;/h4&gt;
+    &lt;p style="margin-bottom: 0;"&gt;Optimal field grouping and layout structure&lt;/p&gt;
+  &lt;/div&gt;
+  
+  &lt;div style="background-color: #fff; border-left: 4px solid #10B981; padding: 15px; margin-bottom: 15px;"&gt;
+    &lt;h4 style="margin-top: 0; color: #10B981;"&gt;]]>📊<![CDATA[ List View Configuration&lt;/h4&gt;
+    &lt;p style="margin-bottom: 0;"&gt;Column selection and display optimization&lt;/p&gt;
+  &lt;/div&gt;
+  
+  &lt;div style="background-color: #fff; border-left: 4px solid #F59E0B; padding: 15px; margin-bottom: 15px;"&gt;
+    &lt;h4 style="margin-top: 0; color: #F59E0B;"&gt;]]>🧭<![CDATA[ Navigation Structure&lt;/h4&gt;
+    &lt;p style="margin-bottom: 0;"&gt;Intuitive menu organization and user pathways&lt;/p&gt;
+  &lt;/div&gt;
+  
+  &lt;div style="background-color: #fff; border-left: 4px solid #EF4444; padding: 15px; margin-bottom: 15px;"&gt;
+    &lt;h4 style="margin-top: 0; color: #EF4444;"&gt;]]>📱<![CDATA[ Mobile &amp; Accessibility&lt;/h4&gt;
+    &lt;p style="margin-bottom: 0;"&gt;Responsive design and accessibility considerations&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</full_prompt>
+        <is_active>true</is_active>
+        <latest_version_number>1</latest_version_number>
+        <name>ServiceNow UI/UX Design Advisor</name>
+        <owner_team/>
+        <short_description>Provides guidance on creating intuitive user interfaces and optimal user experiences in ServiceNow</short_description>
+        <sys_created_by>fabio_1</sys_created_by>
+        <sys_created_on>2025-12-01 17:55:57</sys_created_on>
+        <sys_id>d71577f5ddce4b0c95578867608f5f14</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>fabio_1</sys_updated_by>
+        <sys_updated_on>2025-12-01 17:55:57</sys_updated_on>
+        <total_usage_count>14</total_usage_count>
+        <updated_by/>
+        <updated_on/>
+    </x_snc_prompt_galle_prompt>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>fabio.petito</sys_created_by>
+        <sys_created_on>2026-01-09 13:54:47</sys_created_on>
+        <sys_id>ae8ac0520f56be50a764d3d300d1b2f2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ServiceNow UI/UX Design Advisor</sys_name>
+        <sys_package display_value="WDS Prompt Gallery" source="x_snc_prompt_galle">0189e2a593a17ed43321f2cbdd03d62e</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="WDS Prompt Gallery">0189e2a593a17ed43321f2cbdd03d62e</sys_scope>
+        <sys_update_name>sys_metadata_link_ae8ac0520f56be50a764d3d300d1b2f2</sys_update_name>
+        <sys_updated_by>fabio.petito</sys_updated_by>
+        <sys_updated_on>2026-01-09 13:54:47</sys_updated_on>
+        <tablename>x_snc_prompt_galle_prompt</tablename>
+    </sys_metadata_link>
+</record_update>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>ed108cefdc05466eb05452a1d08587e1</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_prompt_galle_prompt">
+    <x_snc_prompt_galle_prompt action="INSERT_OR_UPDATE">
+        <category display_value="Documentation">f4d5a9583a454dd985ebc62f50407b44</category>
+        <created_by/>
+        <created_on/>
+        <full_prompt>&lt;div&gt;
+&lt;h3&gt;]]>📚<![CDATA[ Technical Documentation Expert&lt;/h3&gt;
+&lt;p&gt;You are a &lt;strong&gt;technical writer specializing in ServiceNow documentation&lt;/strong&gt;. You create clear, comprehensive, and user-friendly documentation that helps teams understand and implement solutions effectively.&lt;/p&gt;
+
+&lt;h3&gt;]]>📝<![CDATA[ Documentation Request&lt;/h3&gt;
+&lt;p&gt;Create technical documentation for: &lt;strong&gt;{component_name}&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Type:&lt;/strong&gt; {doc_type}&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Audience:&lt;/strong&gt; {target_audience}&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Scope:&lt;/strong&gt; {scope}&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;]]>📄<![CDATA[ Documentation Structure&lt;/h3&gt;
+&lt;div style="background-color: #f0f8ff; padding: 15px; border-radius: 8px; margin: 15px 0;"&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;strong&gt;Overview and Purpose&lt;/strong&gt; - Clear explanation of what this component does&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Prerequisites&lt;/strong&gt; - Required setup, permissions, or dependencies&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Step-by-step Procedures&lt;/strong&gt; - Detailed implementation instructions&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Screenshots and Diagrams&lt;/strong&gt; - Visual aids where helpful&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Troubleshooting Section&lt;/strong&gt; - Common issues and solutions&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Related Resources&lt;/strong&gt; - Links to additional documentation&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;✅ Quality Standards&lt;/h3&gt;
+&lt;p&gt;Ensure documentation is &lt;em&gt;accurate&lt;/em&gt;, &lt;em&gt;complete&lt;/em&gt;, and &lt;em&gt;easily navigable&lt;/em&gt; for the target audience.&lt;/p&gt;
+&lt;/div&gt;</full_prompt>
+        <is_active>true</is_active>
+        <latest_version_number>1</latest_version_number>
+        <name>Technical Documentation Writer</name>
+        <owner_team/>
+        <short_description>Creates comprehensive technical documentation for ServiceNow implementations</short_description>
+        <sys_created_by>fabio_1</sys_created_by>
+        <sys_created_on>2025-12-01 11:07:08</sys_created_on>
+        <sys_id>ed108cefdc05466eb05452a1d08587e1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>fabio_1</sys_updated_by>
+        <sys_updated_on>2025-12-01 11:07:08</sys_updated_on>
+        <total_usage_count>12</total_usage_count>
+        <updated_by/>
+        <updated_on/>
+    </x_snc_prompt_galle_prompt>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>fabio.petito</sys_created_by>
+        <sys_created_on>2026-01-09 13:54:48</sys_created_on>
+        <sys_id>268a04520f56be50a764d3d300d1b20c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Technical Documentation Writer</sys_name>
+        <sys_package display_value="WDS Prompt Gallery" source="x_snc_prompt_galle">0189e2a593a17ed43321f2cbdd03d62e</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="WDS Prompt Gallery">0189e2a593a17ed43321f2cbdd03d62e</sys_scope>
+        <sys_update_name>sys_metadata_link_268a04520f56be50a764d3d300d1b20c</sys_update_name>
+        <sys_updated_by>fabio.petito</sys_updated_by>
+        <sys_updated_on>2026-01-09 13:54:48</sys_updated_on>
+        <tablename>x_snc_prompt_galle_prompt</tablename>
+    </sys_metadata_link>
+</record_update>

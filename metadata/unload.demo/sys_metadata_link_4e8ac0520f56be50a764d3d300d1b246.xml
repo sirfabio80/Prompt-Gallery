@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>6ab86eee83f04a34b8d4c3d5a47ff690</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_prompt_galle_prompt">
+    <x_snc_prompt_galle_prompt action="INSERT_OR_UPDATE">
+        <category display_value="Solution Architecture">cde3269d1a2f4d4d80f3282e70060504</category>
+        <created_by/>
+        <created_on/>
+        <full_prompt>&lt;div&gt;
+&lt;h3&gt;]]>🏗<![CDATA[️ Architecture Expert Role&lt;/h3&gt;
+&lt;p&gt;You are a &lt;strong&gt;ServiceNow certified solution architect&lt;/strong&gt; with &lt;span style="color: #007acc;"&gt;10+ years of experience&lt;/span&gt; designing enterprise solutions across multiple industries.&lt;/p&gt;
+
+&lt;h3&gt;]]>🎯<![CDATA[ Design Challenge&lt;/h3&gt;
+&lt;p&gt;Design a comprehensive ServiceNow solution architecture for &lt;strong&gt;{customer_name}&lt;/strong&gt; based on the following requirements:&lt;/p&gt;
+&lt;blockquote style="background-color: #f5f5f5; padding: 15px; border-left: 4px solid #007acc;"&gt;
+  &lt;strong&gt;Requirements:&lt;/strong&gt; {requirements}
+&lt;/blockquote&gt;
+
+&lt;h3&gt;]]>📐<![CDATA[ Architecture Considerations&lt;/h3&gt;
+&lt;table border="1" style="border-collapse: collapse; width: 100%; margin: 15px 0;"&gt;
+  &lt;thead&gt;
+    &lt;tr style="background-color: #007acc; color: white;"&gt;
+      &lt;th style="padding: 10px;"&gt;Category&lt;/th&gt;
+      &lt;th style="padding: 10px;"&gt;Key Areas to Address&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style="padding: 8px;"&gt;&lt;strong&gt;Platform Applications&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style="padding: 8px;"&gt;Required applications, modules, and plugins&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr style="background-color: #f9f9f9;"&gt;
+      &lt;td style="padding: 8px;"&gt;&lt;strong&gt;Integration Points&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style="padding: 8px;"&gt;External systems, APIs, data flows&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style="padding: 8px;"&gt;&lt;strong&gt;Data Model Design&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style="padding: 8px;"&gt;Tables, relationships, and data structure&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr style="background-color: #f9f9f9;"&gt;
+      &lt;td style="padding: 8px;"&gt;&lt;strong&gt;Security &amp; Access&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style="padding: 8px;"&gt;Roles, ACLs, and security policies&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style="padding: 8px;"&gt;&lt;strong&gt;Performance&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style="padding: 8px;"&gt;Scalability, optimization strategies&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr style="background-color: #f9f9f9;"&gt;
+      &lt;td style="padding: 8px;"&gt;&lt;strong&gt;Deployment Strategy&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style="padding: 8px;"&gt;Phases, rollout plan, change management&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3&gt;]]>🚀<![CDATA[ Expected Output&lt;/h3&gt;
+&lt;p&gt;Provide a &lt;em&gt;detailed architectural blueprint&lt;/em&gt; with diagrams, component specifications, and implementation recommendations.&lt;/p&gt;
+&lt;/div&gt;</full_prompt>
+        <is_active>true</is_active>
+        <latest_version_number>1</latest_version_number>
+        <name>ServiceNow Solution Architecture Designer</name>
+        <owner_team/>
+        <short_description>Assists in designing comprehensive ServiceNow solutions based on business requirements</short_description>
+        <sys_created_by>fabio_1</sys_created_by>
+        <sys_created_on>2025-12-01 11:07:08</sys_created_on>
+        <sys_id>6ab86eee83f04a34b8d4c3d5a47ff690</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>fabio_1</sys_updated_by>
+        <sys_updated_on>2025-12-01 11:07:08</sys_updated_on>
+        <total_usage_count>8</total_usage_count>
+        <updated_by/>
+        <updated_on/>
+    </x_snc_prompt_galle_prompt>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>fabio.petito</sys_created_by>
+        <sys_created_on>2026-01-09 13:54:45</sys_created_on>
+        <sys_id>4e8ac0520f56be50a764d3d300d1b246</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ServiceNow Solution Architecture Designer</sys_name>
+        <sys_package display_value="WDS Prompt Gallery" source="x_snc_prompt_galle">0189e2a593a17ed43321f2cbdd03d62e</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="WDS Prompt Gallery">0189e2a593a17ed43321f2cbdd03d62e</sys_scope>
+        <sys_update_name>sys_metadata_link_4e8ac0520f56be50a764d3d300d1b246</sys_update_name>
+        <sys_updated_by>fabio.petito</sys_updated_by>
+        <sys_updated_on>2026-01-09 13:54:45</sys_updated_on>
+        <tablename>x_snc_prompt_galle_prompt</tablename>
+    </sys_metadata_link>
+</record_update>

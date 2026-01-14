@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>a2ee0757c5fc4800bb211ae6c6d64acf</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_prompt_galle_prompt">
+    <x_snc_prompt_galle_prompt action="INSERT_OR_UPDATE">
+        <category display_value="Design">7570ad2aae4f413292ce5a7ea0252881</category>
+        <created_by/>
+        <created_on/>
+        <full_prompt>&lt;div&gt;
+&lt;h3&gt;]]>🛒<![CDATA[ Service Catalog Expert&lt;/h3&gt;
+&lt;p&gt;You are a &lt;strong&gt;service catalog expert creating user-friendly self-service experiences&lt;/strong&gt;. Design catalogs that drive adoption and reduce support overhead.&lt;/p&gt;
+
+&lt;h3&gt;]]>🎯<![CDATA[ Catalog Requirements&lt;/h3&gt;
+&lt;div style="background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); padding: 20px; border-radius: 15px; color: #333;"&gt;
+  &lt;h4 style="margin-top: 0;"&gt;]]>📋<![CDATA[ Catalog Context&lt;/h4&gt;
+  &lt;div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;"&gt;
+    &lt;div&gt;
+      &lt;p&gt;&lt;strong&gt;Organization:&lt;/strong&gt; {org_name}&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;Services:&lt;/strong&gt; {service_list}&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;p&gt;&lt;strong&gt;User Types:&lt;/strong&gt; {user_personas}&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;Integrations:&lt;/strong&gt; {integration_requirements}&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;]]>🏗<![CDATA[️ Design Framework&lt;/h3&gt;
+&lt;div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0;"&gt;
+  &lt;div style="background-color: #e3f2fd; padding: 15px; border-radius: 8px; text-align: center;"&gt;
+    &lt;h4 style="color: #1976d2; margin-top: 0;"&gt;]]>🗂<![CDATA[️ Structure&lt;/h4&gt;
+    &lt;p style="margin-bottom: 0; font-size: 14px;"&gt;Catalog navigation and organization&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style="background-color: #f3e5f5; padding: 15px; border-radius: 8px; text-align: center;"&gt;
+    &lt;h4 style="color: #7b1fa2; margin-top: 0;"&gt;]]>🎨<![CDATA[ Experience&lt;/h4&gt;
+    &lt;p style="margin-bottom: 0; font-size: 14px;"&gt;User interface optimization&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style="background-color: #e8f5e8; padding: 15px; border-radius: 8px; text-align: center;"&gt;
+    &lt;h4 style="color: #388e3c; margin-top: 0;"&gt;⚙️ Automation&lt;/h4&gt;
+    &lt;p style="margin-bottom: 0; font-size: 14px;"&gt;Workflow and approval design&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</full_prompt>
+        <is_active>true</is_active>
+        <latest_version_number>1</latest_version_number>
+        <name>ServiceNow Service Catalog Designer</name>
+        <owner_team/>
+        <short_description>Designs intuitive and efficient service catalogs for end-user self-service</short_description>
+        <sys_created_by>fabio_1</sys_created_by>
+        <sys_created_on>2025-12-01 17:55:57</sys_created_on>
+        <sys_id>a2ee0757c5fc4800bb211ae6c6d64acf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>fabio_1</sys_updated_by>
+        <sys_updated_on>2025-12-01 17:55:57</sys_updated_on>
+        <total_usage_count>23</total_usage_count>
+        <updated_by/>
+        <updated_on/>
+    </x_snc_prompt_galle_prompt>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>fabio.petito</sys_created_by>
+        <sys_created_on>2026-01-09 13:54:47</sys_created_on>
+        <sys_id>ee8ac0520f56be50a764d3d300d1b2cc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ServiceNow Service Catalog Designer</sys_name>
+        <sys_package display_value="WDS Prompt Gallery" source="x_snc_prompt_galle">0189e2a593a17ed43321f2cbdd03d62e</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="WDS Prompt Gallery">0189e2a593a17ed43321f2cbdd03d62e</sys_scope>
+        <sys_update_name>sys_metadata_link_ee8ac0520f56be50a764d3d300d1b2cc</sys_update_name>
+        <sys_updated_by>fabio.petito</sys_updated_by>
+        <sys_updated_on>2026-01-09 13:54:47</sys_updated_on>
+        <tablename>x_snc_prompt_galle_prompt</tablename>
+    </sys_metadata_link>
+</record_update>

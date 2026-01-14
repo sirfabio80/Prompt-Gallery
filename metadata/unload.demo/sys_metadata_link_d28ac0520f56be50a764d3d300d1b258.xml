@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>8822d7b119ab4e12a2c23846b965520d</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_prompt_galle_prompt">
+    <x_snc_prompt_galle_prompt action="INSERT_OR_UPDATE">
+        <category display_value="Internal Productivity">65f6bd55c594448aa244e06a21666071</category>
+        <created_by/>
+        <created_on/>
+        <full_prompt>&lt;h3&gt;]]>💰<![CDATA[ Cost Optimization Expert&lt;/h3&gt;&lt;p&gt;You are a &lt;strong&gt;ServiceNow cost optimization specialist analyzing platform expenses and efficiency&lt;/strong&gt;. Identify opportunities to reduce costs while maintaining or improving service quality.&lt;/p&gt;&lt;h3&gt;]]>📊<![CDATA[ Cost Analysis&lt;/h3&gt;&lt;div style="background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 10px; padding: 20px;"&gt;&lt;h4 style="color: #856404; margin-top: 0;"&gt;]]>💳<![CDATA[ Current Setup&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Configuration:&lt;/strong&gt; {current_configuration}&lt;br&gt;&lt;strong&gt;Users:&lt;/strong&gt; {user_count}&lt;br&gt;&lt;strong&gt;Licenses:&lt;/strong&gt; {license_breakdown}&lt;/p&gt;&lt;/div&gt;&lt;div style="background-color: #d1ecf1; border: 1px solid #bee5eb; border-radius: 10px; padding: 20px; margin-top: 15px;"&gt;&lt;h4 style="color: #0c5460; margin-top: 0;"&gt;]]>🎯<![CDATA[ Optimization Goals&lt;/h4&gt;&lt;p&gt;License optimization • Usage efficiency • Cost-benefit analysis&lt;/p&gt;&lt;/div&gt;</full_prompt>
+        <is_active>true</is_active>
+        <latest_version_number>1</latest_version_number>
+        <name>ServiceNow Cost Optimization Analyst</name>
+        <owner_team/>
+        <short_description>Identifies cost optimization opportunities in ServiceNow implementations and operations</short_description>
+        <sys_created_by>fabio_1</sys_created_by>
+        <sys_created_on>2025-12-01 17:55:56</sys_created_on>
+        <sys_id>8822d7b119ab4e12a2c23846b965520d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>fabio_1</sys_updated_by>
+        <sys_updated_on>2025-12-01 17:55:56</sys_updated_on>
+        <total_usage_count>12</total_usage_count>
+        <updated_by/>
+        <updated_on/>
+    </x_snc_prompt_galle_prompt>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>fabio.petito</sys_created_by>
+        <sys_created_on>2026-01-09 13:54:46</sys_created_on>
+        <sys_id>d28ac0520f56be50a764d3d300d1b258</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ServiceNow Cost Optimization Analyst</sys_name>
+        <sys_package display_value="WDS Prompt Gallery" source="x_snc_prompt_galle">0189e2a593a17ed43321f2cbdd03d62e</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="WDS Prompt Gallery">0189e2a593a17ed43321f2cbdd03d62e</sys_scope>
+        <sys_update_name>sys_metadata_link_d28ac0520f56be50a764d3d300d1b258</sys_update_name>
+        <sys_updated_by>fabio.petito</sys_updated_by>
+        <sys_updated_on>2026-01-09 13:54:46</sys_updated_on>
+        <tablename>x_snc_prompt_galle_prompt</tablename>
+    </sys_metadata_link>
+</record_update>

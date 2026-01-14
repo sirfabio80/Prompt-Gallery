@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>5bbcec0265a24da7b6409a6e8b90c1da</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_prompt_galle_prompt">
+    <x_snc_prompt_galle_prompt action="INSERT_OR_UPDATE">
+        <category display_value="Discovery">520c13f1966849abac4f7fd2cd6dffb9</category>
+        <created_by/>
+        <created_on/>
+        <full_prompt>&lt;div&gt;
+&lt;h3&gt;]]>🎯<![CDATA[ Role &amp; Context&lt;/h3&gt;
+&lt;p&gt;You are an &lt;strong&gt;experienced ServiceNow consultant&lt;/strong&gt; facilitating a discovery workshop with deep expertise in business process analysis and requirements gathering.&lt;/p&gt;
+
+&lt;h3&gt;]]>📋<![CDATA[ Workshop Objective&lt;/h3&gt;
+&lt;p&gt;Create a comprehensive discovery workshop plan for &lt;strong&gt;{customer_name}&lt;/strong&gt; in the &lt;strong&gt;{industry}&lt;/strong&gt; industry, focusing on &lt;strong&gt;{process_area}&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3&gt;]]>🗂<![CDATA[️ Deliverables Required&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Pre-workshop preparation checklist&lt;/strong&gt; - Ensure all stakeholders and materials are ready&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Detailed agenda with timing&lt;/strong&gt; - Hour-by-hour breakdown with breaks and activities&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Key stakeholder questions&lt;/strong&gt; - Targeted questions for different roles and perspectives&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Process mapping activities&lt;/strong&gt; - Interactive exercises to document current state&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Pain point identification techniques&lt;/strong&gt; - Methods to uncover challenges and gaps&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Success criteria definition&lt;/strong&gt; - Measurable outcomes and acceptance criteria&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;✨ Additional Context&lt;/h3&gt;
+&lt;p&gt;Focus on &lt;em&gt;collaborative engagement&lt;/em&gt; and ensure all voices are heard. Design activities that encourage participation and generate actionable insights.&lt;/p&gt;
+&lt;/div&gt;</full_prompt>
+        <is_active>true</is_active>
+        <latest_version_number>2</latest_version_number>
+        <name>Discovery Workshop Facilitator</name>
+        <owner_team/>
+        <short_description>Helps facilitate effective discovery workshops to gather requirements and understand current state processes</short_description>
+        <sys_created_by>fabio_1</sys_created_by>
+        <sys_created_on>2025-12-01 11:07:08</sys_created_on>
+        <sys_id>5bbcec0265a24da7b6409a6e8b90c1da</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>fabio_1</sys_updated_by>
+        <sys_updated_on>2025-12-01 11:07:08</sys_updated_on>
+        <total_usage_count>15</total_usage_count>
+        <updated_by/>
+        <updated_on/>
+    </x_snc_prompt_galle_prompt>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>fabio.petito</sys_created_by>
+        <sys_created_on>2026-01-09 13:54:45</sys_created_on>
+        <sys_id>c28ac0520f56be50a764d3d300d1b23e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Discovery Workshop Facilitator</sys_name>
+        <sys_package display_value="WDS Prompt Gallery" source="x_snc_prompt_galle">0189e2a593a17ed43321f2cbdd03d62e</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="WDS Prompt Gallery">0189e2a593a17ed43321f2cbdd03d62e</sys_scope>
+        <sys_update_name>sys_metadata_link_c28ac0520f56be50a764d3d300d1b23e</sys_update_name>
+        <sys_updated_by>fabio.petito</sys_updated_by>
+        <sys_updated_on>2026-01-09 13:54:45</sys_updated_on>
+        <tablename>x_snc_prompt_galle_prompt</tablename>
+    </sys_metadata_link>
+</record_update>

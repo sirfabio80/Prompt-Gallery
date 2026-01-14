@@ -8,22 +8,27 @@ declare global {
                     '030f0c0a93adb6183321f2cbdd03d63a': {
                         table: 'sys_ui_element'
                         id: '030f0c0a93adb6183321f2cbdd03d63a'
+                        deleted: true
                     }
                     '070f0c0a93adb6183321f2cbdd03d60d': {
                         table: 'sys_ui_element'
                         id: '070f0c0a93adb6183321f2cbdd03d60d'
+                        deleted: true
                     }
                     '070f0c0a93adb6183321f2cbdd03d611': {
                         table: 'sys_ui_element'
                         id: '070f0c0a93adb6183321f2cbdd03d611'
+                        deleted: true
                     }
                     '070f0c0a93adb6183321f2cbdd03d637': {
                         table: 'sys_ui_element'
                         id: '070f0c0a93adb6183321f2cbdd03d637'
+                        deleted: true
                     }
                     '0b0f0c0a93adb6183321f2cbdd03d60e': {
                         table: 'sys_ui_element'
                         id: '0b0f0c0a93adb6183321f2cbdd03d60e'
+                        deleted: true
                     }
                     '0ee6ce9a93a172583321f2cbdd03d687': {
                         table: 'sp_row'
@@ -33,10 +38,12 @@ declare global {
                     '0f0f0c0a93adb6183321f2cbdd03d63c': {
                         table: 'sys_ui_element'
                         id: '0f0f0c0a93adb6183321f2cbdd03d63c'
+                        deleted: true
                     }
                     '10eab80a93613a183321f2cbdd03d680': {
                         table: 'sys_ui_element'
                         id: '10eab80a93613a183321f2cbdd03d680'
+                        deleted: true
                     }
                     '13e602da93a172583321f2cbdd03d63a': {
                         table: 'sp_instance'
@@ -45,6 +52,7 @@ declare global {
                     '14eab80a93613a183321f2cbdd03d67d': {
                         table: 'sys_ui_element'
                         id: '14eab80a93613a183321f2cbdd03d67d'
+                        deleted: true
                     }
                     '1afaee1693e1b2583321f2cbdd03d610': {
                         table: 'sp_container'
@@ -53,10 +61,12 @@ declare global {
                     '1ceab80a93613a183321f2cbdd03d682': {
                         table: 'sys_ui_element'
                         id: '1ceab80a93613a183321f2cbdd03d682'
+                        deleted: true
                     }
                     '20662f2d932dbed43321f2cbdd03d6fd': {
                         table: 'sys_ui_element'
                         id: '20662f2d932dbed43321f2cbdd03d6fd'
+                        deleted: true
                     }
                     '220ef3860f12be50a764d3d300d1b2a8': {
                         table: 'sys_scope_privilege'
@@ -65,10 +75,12 @@ declare global {
                     '24662f2d932dbed43321f2cbdd03d6fa': {
                         table: 'sys_ui_element'
                         id: '24662f2d932dbed43321f2cbdd03d6fa'
+                        deleted: true
                     }
                     '28662f2d932dbed43321f2cbdd03d6f7': {
                         table: 'sys_ui_element'
                         id: '28662f2d932dbed43321f2cbdd03d6f7'
+                        deleted: true
                     }
                     '2e0eff4e0f12be50a764d3d300d1b2d8': {
                         table: 'sys_scope_privilege'
@@ -81,14 +93,17 @@ declare global {
                     '430f0c0a93adb6183321f2cbdd03d63c': {
                         table: 'sys_ui_element'
                         id: '430f0c0a93adb6183321f2cbdd03d63c'
+                        deleted: true
                     }
                     '470f0c0a93adb6183321f2cbdd03d639': {
                         table: 'sys_ui_element'
                         id: '470f0c0a93adb6183321f2cbdd03d639'
+                        deleted: true
                     }
                     '4b0f0c0a93adb6183321f2cbdd03d610': {
                         table: 'sys_ui_element'
                         id: '4b0f0c0a93adb6183321f2cbdd03d610'
+                        deleted: true
                     }
                     '4fe4eba1932dbed43321f2cbdd03d6db': {
                         table: 'sys_scope_privilege'
@@ -97,10 +112,12 @@ declare global {
                     '50eab80a93613a183321f2cbdd03d682': {
                         table: 'sys_ui_element'
                         id: '50eab80a93613a183321f2cbdd03d682'
+                        deleted: true
                     }
                     '54eab80a93613a183321f2cbdd03d67f': {
                         table: 'sys_ui_element'
                         id: '54eab80a93613a183321f2cbdd03d67f'
+                        deleted: true
                     }
                     '570b269693e1b2583321f2cbdd03d6b1': {
                         table: 'sp_column'
@@ -109,18 +126,22 @@ declare global {
                     '64662f2d932dbed43321f2cbdd03d691': {
                         table: 'sys_ui_section'
                         id: '64662f2d932dbed43321f2cbdd03d691'
+                        deleted: true
                     }
                     '64662f2d932dbed43321f2cbdd03d6fc': {
                         table: 'sys_ui_element'
                         id: '64662f2d932dbed43321f2cbdd03d6fc'
+                        deleted: true
                     }
                     '68662f2d932dbed43321f2cbdd03d6f9': {
                         table: 'sys_ui_element'
                         id: '68662f2d932dbed43321f2cbdd03d6f9'
+                        deleted: true
                     }
                     '6c662f2d932dbed43321f2cbdd03d6f6': {
                         table: 'sys_ui_element'
                         id: '6c662f2d932dbed43321f2cbdd03d6f6'
+                        deleted: true
                     }
                     '7045d656936972583321f2cbdd03d6d7': {
                         table: 'sp_column'
@@ -137,6 +158,7 @@ declare global {
                     '870f0c0a93adb6183321f2cbdd03d63b': {
                         table: 'sys_ui_element'
                         id: '870f0c0a93adb6183321f2cbdd03d63b'
+                        deleted: true
                     }
                     '8ae6ce9a93a172583321f2cbdd03d68d': {
                         table: 'sp_column'
@@ -146,18 +168,22 @@ declare global {
                     '8b0f0c0a93adb6183321f2cbdd03d638': {
                         table: 'sys_ui_element'
                         id: '8b0f0c0a93adb6183321f2cbdd03d638'
+                        deleted: true
                     }
                     '8f0f0c0a93adb6183321f2cbdd03d60f': {
                         table: 'sys_ui_element'
                         id: '8f0f0c0a93adb6183321f2cbdd03d60f'
+                        deleted: true
                     }
                     '94eab80a93613a183321f2cbdd03d681': {
                         table: 'sys_ui_element'
                         id: '94eab80a93613a183321f2cbdd03d681'
+                        deleted: true
                     }
                     '98eab80a93613a183321f2cbdd03d67e': {
                         table: 'sys_ui_element'
                         id: '98eab80a93613a183321f2cbdd03d67e'
+                        deleted: true
                     }
                     '9cc7b0d97ab8440fbd9c75ed989463f5': {
                         table: 'sp_instance_menu'
@@ -167,6 +193,7 @@ declare global {
                     a0662f2d932dbed43321f2cbdd03d6f6: {
                         table: 'sys_ui_element'
                         id: 'a0662f2d932dbed43321f2cbdd03d6f6'
+                        deleted: true
                     }
                     a2df9b180cb6495d99f0fa5a427a5619: {
                         table: 'sp_widget'
@@ -176,14 +203,17 @@ declare global {
                     a8662f2d932dbed43321f2cbdd03d6fb: {
                         table: 'sys_ui_element'
                         id: 'a8662f2d932dbed43321f2cbdd03d6fb'
+                        deleted: true
                     }
                     ac662f2d932dbed43321f2cbdd03d6f3: {
                         table: 'sys_ui_element'
                         id: 'ac662f2d932dbed43321f2cbdd03d6f3'
+                        deleted: true
                     }
                     ac662f2d932dbed43321f2cbdd03d6f8: {
                         table: 'sys_ui_element'
                         id: 'ac662f2d932dbed43321f2cbdd03d6f8'
+                        deleted: true
                     }
                     bb8580f444f5466f8d28742fa3ef1c86: {
                         table: 'sp_row'
@@ -205,6 +235,7 @@ declare global {
                     c30f0c0a93adb6183321f2cbdd03d60f: {
                         table: 'sys_ui_element'
                         id: 'c30f0c0a93adb6183321f2cbdd03d60f'
+                        deleted: true
                     }
                     c4451656936972583321f2cbdd03d6a9: {
                         table: 'sp_container'
@@ -245,14 +276,17 @@ declare global {
                     cb0f0c0a93adb6183321f2cbdd03d63a: {
                         table: 'sys_ui_element'
                         id: 'cb0f0c0a93adb6183321f2cbdd03d63a'
+                        deleted: true
                     }
                     cf0f0c0a93adb6183321f2cbdd03d637: {
                         table: 'sys_ui_element'
                         id: 'cf0f0c0a93adb6183321f2cbdd03d637'
+                        deleted: true
                     }
                     d4eab80a93613a183321f2cbdd03d683: {
                         table: 'sys_ui_element'
                         id: 'd4eab80a93613a183321f2cbdd03d683'
+                        deleted: true
                     }
                     d80b665693e1b2583321f2cbdd03d6ec: {
                         table: 'sp_container'
@@ -265,10 +299,12 @@ declare global {
                     d8ea3cc693613a183321f2cbdd03d6fb: {
                         table: 'sys_ui_section'
                         id: 'd8ea3cc693613a183321f2cbdd03d6fb'
+                        deleted: true
                     }
                     d8eab80a93613a183321f2cbdd03d680: {
                         table: 'sys_ui_element'
                         id: 'd8eab80a93613a183321f2cbdd03d680'
+                        deleted: true
                     }
                     db0b269693e1b2583321f2cbdd03d6ac: {
                         table: 'sp_row'
@@ -281,22 +317,27 @@ declare global {
                     dceab80a93613a183321f2cbdd03d67b: {
                         table: 'sys_ui_element'
                         id: 'dceab80a93613a183321f2cbdd03d67b'
+                        deleted: true
                     }
                     dceab80a93613a183321f2cbdd03d67d: {
                         table: 'sys_ui_element'
                         id: 'dceab80a93613a183321f2cbdd03d67d'
+                        deleted: true
                     }
                     e0662f2d932dbed43321f2cbdd03d6f8: {
                         table: 'sys_ui_element'
                         id: 'e0662f2d932dbed43321f2cbdd03d6f8'
+                        deleted: true
                     }
                     e4662f2d932dbed43321f2cbdd03d6f5: {
                         table: 'sys_ui_element'
                         id: 'e4662f2d932dbed43321f2cbdd03d6f5'
+                        deleted: true
                     }
                     e8662f2d932dbed43321f2cbdd03d6fd: {
                         table: 'sys_ui_element'
                         id: 'e8662f2d932dbed43321f2cbdd03d6fd'
+                        deleted: true
                     }
                     ea0eff4e0f12be50a764d3d300d1b2d1: {
                         table: 'sys_scope_privilege'
@@ -305,6 +346,7 @@ declare global {
                     ec662f2d932dbed43321f2cbdd03d6fa: {
                         table: 'sys_ui_element'
                         id: 'ec662f2d932dbed43321f2cbdd03d6fa'
+                        deleted: true
                     }
                     engagement_acme: {
                         table: 'x_snc_prompt_galle_engagement'
@@ -1254,6 +1296,37 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '07ad2c4384f8414b905eed365eec1ff6'
+                        key: {
+                            list_id: {
+                                id: '609e2d03f333412385677fb37b9e81bd'
+                                key: {
+                                    name: 'x_snc_prompt_galle_category'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'icon'
+                        }
+                    },
+                    {
+                        table: 'sys_index'
+                        id: '07ef514045f14941b7b527f5b88a62ae'
+                        key: {
+                            logical_table_name: 'x_snc_prompt_galle_prompt_version'
+                            col_name_string: 'updated_by'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '08d45f9cd49f4d99b5cfd230f7e4a4dd'
                         key: {
@@ -1309,10 +1382,41 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_view'
+                        id: '0b6276600dce424da0782ece0a8c8870'
+                        deleted: true
+                        key: {
+                            name: 'prompt_form_view'
+                        }
+                    },
+                    {
                         table: 'sys_db_object'
                         id: '0d365edafdbe4c5dad60ee8f5bf099fe'
                         key: {
                             name: 'x_snc_prompt_galle_category'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '0d80ff20760b40cc9c17d9eb1471203c'
+                        key: {
+                            list_id: {
+                                id: '609e2d03f333412385677fb37b9e81bd'
+                                key: {
+                                    name: 'x_snc_prompt_galle_category'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'name'
                         }
                     },
                     {
@@ -1326,6 +1430,29 @@ declare global {
                                     name: 'x_snc_prompt_galle.prompt_admin'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '0e6491833f0c4ca0a6072590fde62284'
+                        key: {
+                            list_id: {
+                                id: 'e64e90bfabda4decbe97b5cc9327be40'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'full_prompt'
                         }
                     },
                     {
@@ -1360,11 +1487,80 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '0f93bb5e3a4f48e4a86be79b657aef55'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'updated_by'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '1047018917c94e438e45632dce844982'
                         key: {
                             name: 'x_snc_prompt_galle_prompt_version'
                             element: 'version_number'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '112679ba88c04bed998d9aa7acdeabc3'
+                        key: {
+                            list_id: {
+                                id: '8863ae30db9f4b2bbce8180da51a73b4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_tag'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'updated_by'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '115e1c7ecabd43d9aa94e1f1d4d6e9c8'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'rating_sum'
                         }
                     },
                     {
@@ -1380,6 +1576,29 @@ declare global {
                         id: '12747ad81fd94bd5b7d98272e75ccc00'
                         key: {
                             name: 'x_snc_prompt_galle_prompt_tag'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '127e3dd25f3947fba52eacbd97b2d5a0'
+                        key: {
+                            list_id: {
+                                id: 'e64e90bfabda4decbe97b5cc9327be40'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'owner_team'
                         }
                     },
                     {
@@ -1421,6 +1640,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '195b20168fed4a368fc336fb524faacc'
+                        key: {
+                            list_id: {
+                                id: 'ca97c0bf18d0496fa2cdf6c59bbe82da'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_tag'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'display_value'
+                        }
+                    },
+                    {
                         table: 'sys_user_role'
                         id: '1b05e863b8d84d45880b01011243fa1a'
                         key: {
@@ -1448,6 +1690,14 @@ declare global {
                         key: {
                             name: 'x_snc_prompt_galle_category'
                             element: 'is_active'
+                        }
+                    },
+                    {
+                        table: 'sys_index'
+                        id: '1c9fd3e6b9ed497a88792f244e621b1b'
+                        key: {
+                            logical_table_name: 'x_snc_prompt_galle_tag'
+                            col_name_string: 'updated_by'
                         }
                     },
                     {
@@ -1486,12 +1736,81 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '20326cf28e4a42fc87ec4bd37056f5f6'
+                        key: {
+                            list_id: {
+                                id: 'ca97c0bf18d0496fa2cdf6c59bbe82da'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_tag'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'prompt'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '2039fe0a122b4557b049b176c0e1c4c6'
                         key: {
                             name: 'x_snc_prompt_galle_engagement'
                             element: 'created_by'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '214561e1bb7a4fcab268681f648aa062'
+                        key: {
+                            list_id: {
+                                id: 'e64e90bfabda4decbe97b5cc9327be40'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'updated_by'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '233f9a9ec11d417fa85a8e7f63ccb1aa'
+                        key: {
+                            list_id: {
+                                id: '8863ae30db9f4b2bbce8180da51a73b4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_tag'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: '.begin_split'
                         }
                     },
                     {
@@ -1544,6 +1863,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '2774280086d246c5a4114e0189555c7c'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'target_tool'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '280ac456b88c4aa4b8115e3bf51c557d'
                         key: {
@@ -1557,6 +1899,29 @@ declare global {
                         key: {
                             name: 'x_snc_prompt_galle_prompt_version'
                             element: 'usage_count'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '28a02791dd4e4253b6cfaf0dfd0563c1'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'example_output'
                         }
                     },
                     {
@@ -1586,6 +1951,23 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list'
+                        id: '2aad08e62b7b432699a6bddc1d935502'
+                        key: {
+                            name: 'x_snc_prompt_galle_engagement'
+                            view: {
+                                id: 'Default view'
+                                key: {
+                                    name: 'NULL'
+                                }
+                            }
+                            sys_domain: 'global'
+                            element: 'NULL'
+                            relationship: 'NULL'
+                            parent: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '2ae52cbef2f04aca9bb666829c240c52'
                         key: {
@@ -1600,6 +1982,69 @@ declare global {
                         key: {
                             logical_table_name: 'x_snc_prompt_galle_prompt_usage'
                             col_name_string: 'engagement'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '2c4ce8f608a04e7984264f624114326b'
+                        key: {
+                            list_id: {
+                                id: '2aad08e62b7b432699a6bddc1d935502'
+                                key: {
+                                    name: 'x_snc_prompt_galle_engagement'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'end_date'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list'
+                        id: '2cff88c6dce048428347f990f595dac2'
+                        key: {
+                            name: 'x_snc_prompt_galle_prompt_usage'
+                            view: {
+                                id: 'Default view'
+                                key: {
+                                    name: 'NULL'
+                                }
+                            }
+                            sys_domain: 'global'
+                            element: 'NULL'
+                            relationship: 'NULL'
+                            parent: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '2d5f4aa0bcb84e88b15ddceb9618897a'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'role_instructions'
                         }
                     },
                     {
@@ -1642,6 +2087,29 @@ declare global {
                         key: {
                             name: 'x_snc_prompt_galle_tag'
                             element: 'tag_category'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '31d8a2997d794bd08b67ef38081e091f'
+                        key: {
+                            list_id: {
+                                id: '609e2d03f333412385677fb37b9e81bd'
+                                key: {
+                                    name: 'x_snc_prompt_galle_category'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'is_active'
                         }
                     },
                     {
@@ -1737,6 +2205,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '395da17cb531476f83d1c8cc47b70c83'
+                        key: {
+                            list_id: {
+                                id: '2aad08e62b7b432699a6bddc1d935502'
+                                key: {
+                                    name: 'x_snc_prompt_galle_engagement'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'updated_by'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '39abc45ffdb84ea6ab7be2b67a8049fa'
                         key: {
@@ -1773,6 +2264,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '3c9fb9e254554c56be245146a07559a3'
+                        key: {
+                            list_id: {
+                                id: '2cff88c6dce048428347f990f595dac2'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_usage'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'used_by'
+                        }
+                    },
+                    {
                         table: 'sys_index'
                         id: '3d0937b2f4ea4734b33e0379f8f353df'
                         key: {
@@ -1786,6 +2300,29 @@ declare global {
                         key: {
                             name: 'x_snc_prompt_galle_prompt_version'
                             element: 'updated_by'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '3e392d0943654d5c800c049aab842d3d'
+                        key: {
+                            list_id: {
+                                id: '2cff88c6dce048428347f990f595dac2'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_usage'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'engagement'
                         }
                     },
                     {
@@ -1818,6 +2355,75 @@ declare global {
                         key: {
                             name: 'x_snc_prompt_galle_prompt_version'
                             element: 'updated_on'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '42dfade4973646ca84d785ac2d5e0da3'
+                        key: {
+                            list_id: {
+                                id: 'e64e90bfabda4decbe97b5cc9327be40'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: '.end_split'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '42f3971b84f241caa3440297fbaa91e3'
+                        key: {
+                            list_id: {
+                                id: 'e64e90bfabda4decbe97b5cc9327be40'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'created_by'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '435d5d8cf2454db49673dd1895de198c'
+                        key: {
+                            list_id: {
+                                id: '8863ae30db9f4b2bbce8180da51a73b4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_tag'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'description'
                         }
                     },
                     {
@@ -1921,12 +2527,58 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '4b0e937a8153400a83a273b0c1c1143c'
+                        key: {
+                            list_id: {
+                                id: 'e64e90bfabda4decbe97b5cc9327be40'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'latest_version_number'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '4b7a5270ab264b9f818ae53f79abcaf7'
                         key: {
                             name: 'x_snc_prompt_galle_engagement'
                             element: 'NULL'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '4c078e69da7a49d28e70818cc84da6e3'
+                        key: {
+                            list_id: {
+                                id: '2aad08e62b7b432699a6bddc1d935502'
+                                key: {
+                                    name: 'x_snc_prompt_galle_engagement'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: '.begin_split'
                         }
                     },
                     {
@@ -1976,6 +2628,29 @@ declare global {
                             name: 'x_snc_prompt_galle_prompt'
                             element: 'name'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '50fa492bf0cf4531ade35dfbc6495270'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'average_rating'
                         }
                     },
                     {
@@ -2045,6 +2720,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '56cd7cecfe044b0d8623b1a0811b6de7'
+                        key: {
+                            list_id: {
+                                id: 'e64e90bfabda4decbe97b5cc9327be40'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'total_usage_count'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '5b32c581c006409498f7c99b7d2a3442'
                         key: {
@@ -2075,6 +2773,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '5d2360543d2a49d3a5b364d017ddf9a8'
+                        key: {
+                            list_id: {
+                                id: '2aad08e62b7b432699a6bddc1d935502'
+                                key: {
+                                    name: 'x_snc_prompt_galle_engagement'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'created_by'
+                        }
+                    },
+                    {
                         table: 'sys_choice_set'
                         id: '5d24b152b9ba4989aa90d1af0467036b'
                         key: {
@@ -2098,6 +2819,23 @@ declare global {
                             name: 'x_snc_prompt_galle_tag'
                             element: 'description'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list'
+                        id: '609e2d03f333412385677fb37b9e81bd'
+                        key: {
+                            name: 'x_snc_prompt_galle_category'
+                            view: {
+                                id: 'Default view'
+                                key: {
+                                    name: 'NULL'
+                                }
+                            }
+                            sys_domain: 'global'
+                            element: 'NULL'
+                            relationship: 'NULL'
+                            parent: 'NULL'
                         }
                     },
                     {
@@ -2150,6 +2888,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '64be346ab9e844a1b6e379e6a7df6700'
+                        key: {
+                            list_id: {
+                                id: '609e2d03f333412385677fb37b9e81bd'
+                                key: {
+                                    name: 'x_snc_prompt_galle_category'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: '.begin_split'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '64cbb75c01934edd8b0d20c472367c5c'
                         key: {
@@ -2168,12 +2929,81 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '6575fc4e691446b5a2a3f543ee9ec7f7'
+                        key: {
+                            list_id: {
+                                id: '2aad08e62b7b432699a6bddc1d935502'
+                                key: {
+                                    name: 'x_snc_prompt_galle_engagement'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'customer_name'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '67b911f26b484636af134619cac74ac9'
                         key: {
                             name: 'x_snc_prompt_galle_category'
                             element: 'NULL'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '6859a16d68504f85a1eb35bfc5467db7'
+                        key: {
+                            list_id: {
+                                id: '2cff88c6dce048428347f990f595dac2'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_usage'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'prompt_version'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '696ba84f0e5b4349980a53ed5365042a'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: '.split'
                         }
                     },
                     {
@@ -2218,6 +3048,52 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '6d322ac277d242e39c525031d97c5397'
+                        key: {
+                            list_id: {
+                                id: '2aad08e62b7b432699a6bddc1d935502'
+                                key: {
+                                    name: 'x_snc_prompt_galle_engagement'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'created_on'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '6e71f95498f7406e836b560173c19aa3'
+                        key: {
+                            list_id: {
+                                id: 'e64e90bfabda4decbe97b5cc9327be40'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'category'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '719ee4ccc67f4230ad2e7b6dc9f173f2'
                         key: {
@@ -2228,6 +3104,29 @@ declare global {
                                     name: 'x_snc_prompt_galle.prompt_editor'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '71a2afff2d74406b8e197fd962d95396'
+                        key: {
+                            list_id: {
+                                id: '2cff88c6dce048428347f990f595dac2'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_usage'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'used_at'
                         }
                     },
                     {
@@ -2248,6 +3147,52 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '749645f581d44e9fb0ffc967424cc818'
+                        key: {
+                            list_id: {
+                                id: 'e64e90bfabda4decbe97b5cc9327be40'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'created_on'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '7761bb9d60d14d82aedd733ec9acbc47'
+                        key: {
+                            list_id: {
+                                id: '2aad08e62b7b432699a6bddc1d935502'
+                                key: {
+                                    name: 'x_snc_prompt_galle_engagement'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: '.end_split'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '776c0205f3e14f3f983f7fad62dfda56'
                         key: {
@@ -2265,6 +3210,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '7870360d6a914c37b12331a20573a83c'
+                        key: {
+                            list_id: {
+                                id: '609e2d03f333412385677fb37b9e81bd'
+                                key: {
+                                    name: 'x_snc_prompt_galle_category'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: '.split'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '78884852f8ce48c0a9b13ba83245d5c8'
                         key: {
@@ -2275,6 +3243,23 @@ declare global {
                                     name: 'x_snc_prompt_galle.prompt_editor'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list'
+                        id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                        key: {
+                            name: 'x_snc_prompt_galle_prompt_version'
+                            view: {
+                                id: 'Default view'
+                                key: {
+                                    name: 'NULL'
+                                }
+                            }
+                            sys_domain: 'global'
+                            element: 'NULL'
+                            relationship: 'NULL'
+                            parent: 'NULL'
                         }
                     },
                     {
@@ -2314,6 +3299,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '7b8887c28d4140d5aabe7a9ab247a3c2'
+                        key: {
+                            list_id: {
+                                id: 'e64e90bfabda4decbe97b5cc9327be40'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: '.split'
+                        }
+                    },
+                    {
                         table: 'sys_choice_set'
                         id: '7c251949983640f49c31d480fc177757'
                         key: {
@@ -2348,6 +3356,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '8079ff877ea744d098316117e2c082ee'
+                        key: {
+                            list_id: {
+                                id: '8863ae30db9f4b2bbce8180da51a73b4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_tag'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'created_on'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '8103156ff5ab4274a1cf74048d302e8d'
                         deleted: false
@@ -2377,6 +3408,29 @@ declare global {
                                     name: 'x_snc_prompt_galle.prompt_editor'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '838b625b4bd845acb07a161dbaca2fb3'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: '.end_split'
                         }
                     },
                     {
@@ -2430,6 +3484,23 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list'
+                        id: '8863ae30db9f4b2bbce8180da51a73b4'
+                        key: {
+                            name: 'x_snc_prompt_galle_tag'
+                            view: {
+                                id: 'Default view'
+                                key: {
+                                    name: 'NULL'
+                                }
+                            }
+                            sys_domain: 'global'
+                            element: 'NULL'
+                            relationship: 'NULL'
+                            parent: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '88f1424dd8e146c1858958fb3cda3053'
                         key: {
@@ -2445,6 +3516,29 @@ declare global {
                             name: 'x_snc_prompt_galle_prompt_version'
                             element: 'language'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '8af2650ca7d54883a030f1022cddf004'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: '.begin_split'
                         }
                     },
                     {
@@ -2465,6 +3559,75 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '91685657859044f1a54410526277e438'
+                        key: {
+                            list_id: {
+                                id: '609e2d03f333412385677fb37b9e81bd'
+                                key: {
+                                    name: 'x_snc_prompt_galle_category'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'color'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '91c1464ca4bf44509d4e168ca9917055'
+                        key: {
+                            list_id: {
+                                id: '8863ae30db9f4b2bbce8180da51a73b4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_tag'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: '.split'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '92f7e488ea0f4f78ad32f8efe154be03'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'prompt'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '93c88d5780064ac99b1f51c090f095dd'
                         key: {
@@ -2481,6 +3644,75 @@ declare global {
                             name: 'x_snc_prompt_galle_prompt'
                             element: 'category'
                             value: 'communication'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '96ef4e6ecb0945e99d246aa7717a613f'
+                        key: {
+                            list_id: {
+                                id: '2aad08e62b7b432699a6bddc1d935502'
+                                key: {
+                                    name: 'x_snc_prompt_galle_engagement'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'description'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '982621eebb934f0794e9b5ced1d4ce7a'
+                        key: {
+                            list_id: {
+                                id: '8863ae30db9f4b2bbce8180da51a73b4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_tag'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'name'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '984650a1552a4640afbbcb78956aa609'
+                        key: {
+                            list_id: {
+                                id: '2aad08e62b7b432699a6bddc1d935502'
+                                key: {
+                                    name: 'x_snc_prompt_galle_engagement'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: '.split'
                         }
                     },
                     {
@@ -2518,6 +3750,52 @@ declare global {
                         key: {
                             name: 'x_snc_prompt_galle_engagement'
                             element: 'start_date'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '9a74f99e3caf4c689332b843783d5f88'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'language'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '9adffb65b74542c488020dd76f5e4b09'
+                        key: {
+                            list_id: {
+                                id: '609e2d03f333412385677fb37b9e81bd'
+                                key: {
+                                    name: 'x_snc_prompt_galle_category'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'prompt_count'
                         }
                     },
                     {
@@ -2580,11 +3858,65 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: 'a0953d937fc94888bde15e315a5045df'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'example_input'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'a16418a9ca264b0e898e2ae826072b3d'
                         key: {
                             name: 'x_snc_prompt_galle_prompt_tag'
                             element: 'prompt'
+                        }
+                    },
+                    {
+                        table: 'sys_index'
+                        id: 'a303d6dc5a5f4f819a5f9a2cc5d7dacc'
+                        key: {
+                            logical_table_name: 'x_snc_prompt_galle_engagement'
+                            col_name_string: 'created_by'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'a3a5922ee2b748888e053b1960fbf2b4'
+                        key: {
+                            list_id: {
+                                id: '8863ae30db9f4b2bbce8180da51a73b4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_tag'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'created_by'
                         }
                     },
                     {
@@ -2643,6 +3975,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: 'ae683022733e42d490ec3e68107c8f1f'
+                        key: {
+                            list_id: {
+                                id: '8863ae30db9f4b2bbce8180da51a73b4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_tag'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: '.end_split'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'af49af85f0b347a39e7112be4d57ea42'
                         key: {
@@ -2660,12 +4015,89 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: 'afaabb0c7d3b4516bc97162295441189'
+                        key: {
+                            list_id: {
+                                id: '609e2d03f333412385677fb37b9e81bd'
+                                key: {
+                                    name: 'x_snc_prompt_galle_category'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'sequence'
+                        }
+                    },
+                    {
+                        table: 'sys_index'
+                        id: 'afdd8a1290e0484bab896b6320122aad'
+                        key: {
+                            logical_table_name: 'x_snc_prompt_galle_prompt_version'
+                            col_name_string: 'created_by'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'b05023028ebd4352bf9462c566d670f2'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'rating_count'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'b0615062c8a04aa29095c29211c35282'
                         key: {
                             name: 'x_snc_prompt_galle_prompt_usage'
                             element: 'tool_used'
                             value: 'microsoft_copilot'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'b2922871512546e8ab40ce6da3c402e3'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'version_number'
                         }
                     },
                     {
@@ -2682,6 +4114,60 @@ declare global {
                         key: {
                             name: 'x_snc_prompt_galle_prompt_usage'
                             element: 'tool_used'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'b58800af02c14521a328bc6c3585acdc'
+                        key: {
+                            list_id: {
+                                id: 'e64e90bfabda4decbe97b5cc9327be40'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'is_active'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'b5cc2a814cb240589e57657cacf3935b'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'updated_on'
+                        }
+                    },
+                    {
+                        table: 'sys_index'
+                        id: 'b76dbe1b74ac4e3a9d36a8155e087644'
+                        key: {
+                            logical_table_name: 'x_snc_prompt_galle_engagement'
+                            col_name_string: 'updated_by'
                         }
                     },
                     {
@@ -2767,6 +4253,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: 'c23d84095ba44f7abb357bc364d747bf'
+                        key: {
+                            list_id: {
+                                id: '8863ae30db9f4b2bbce8180da51a73b4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_tag'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'is_active'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'c2968aa7e85c468094dc9efdbde8b68c'
                         key: {
@@ -2777,6 +4286,29 @@ declare global {
                                     name: 'x_snc_prompt_galle.prompt_editor'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'c5304a26b63745b288a2a47f29a365ea'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'usage_count'
                         }
                     },
                     {
@@ -2798,6 +4330,52 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: 'c6ea6113ec244498994c28ca454f1e2d'
+                        key: {
+                            list_id: {
+                                id: 'e64e90bfabda4decbe97b5cc9327be40'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'name'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'c7eae54415544fd3ac965851c0fe859a'
+                        key: {
+                            list_id: {
+                                id: 'e64e90bfabda4decbe97b5cc9327be40'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'updated_on'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'c8442c620dff4b46a5bcd5efcf5f1c68'
                         deleted: false
@@ -2808,11 +4386,42 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_index'
+                        id: 'c84b5f6d2538410db950ba4b81d904a4'
+                        key: {
+                            logical_table_name: 'x_snc_prompt_galle_tag'
+                            col_name_string: 'created_by'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'c8533d31dd1b43e1bb189712b3369e56'
                         key: {
                             name: 'x_snc_prompt_galle_prompt_usage'
                             element: 'engagement'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'c8b2d0f1f5be4b23aaabd56e28cc8782'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'version_display'
                         }
                     },
                     {
@@ -2841,10 +4450,50 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list'
+                        id: 'ca97c0bf18d0496fa2cdf6c59bbe82da'
+                        key: {
+                            name: 'x_snc_prompt_galle_prompt_tag'
+                            view: {
+                                id: 'Default view'
+                                key: {
+                                    name: 'NULL'
+                                }
+                            }
+                            sys_domain: 'global'
+                            element: 'NULL'
+                            relationship: 'NULL'
+                            parent: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'caeb2bdc1eb14dd88b3acc777e1cf06d'
                         key: {
                             name: 'x_snc_prompt_galle_prompt'
+                            element: 'created_on'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'cb2cf0b294884e8491b47c1d0227d8e9'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
                             element: 'created_on'
                         }
                     },
@@ -2854,6 +4503,29 @@ declare global {
                         key: {
                             name: 'x_snc_prompt_galle_category'
                             element: 'display_name'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'cb7d84b2231a4704a566389b5da98bf9'
+                        key: {
+                            list_id: {
+                                id: '609e2d03f333412385677fb37b9e81bd'
+                                key: {
+                                    name: 'x_snc_prompt_galle_category'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'description'
                         }
                     },
                     {
@@ -2965,12 +4637,58 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: 'd43642d25d1a4135ac9c8d7c4dd77d20'
+                        key: {
+                            list_id: {
+                                id: 'e64e90bfabda4decbe97b5cc9327be40'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'short_description'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'd5e2d4625f3b48de9e73234b72795cc2'
                         key: {
                             name: 'x_snc_prompt_galle_prompt_version'
                             element: 'rating_count'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'd60fbca2cc864c63a56c04aca8cdde39'
+                        key: {
+                            list_id: {
+                                id: 'ca97c0bf18d0496fa2cdf6c59bbe82da'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_tag'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'created_on'
                         }
                     },
                     {
@@ -2988,6 +4706,29 @@ declare global {
                         key: {
                             name: 'x_snc_prompt_galle_prompt'
                             element: 'is_active'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'd812128572104943b30927544e2fe5f2'
+                        key: {
+                            list_id: {
+                                id: '609e2d03f333412385677fb37b9e81bd'
+                                key: {
+                                    name: 'x_snc_prompt_galle_category'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: '.end_split'
                         }
                     },
                     {
@@ -3032,6 +4773,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: 'dbc32c4332bc410aaa60ce1a86637e4f'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'created_by'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'dbc7fe05fb3f40e5bf6ba3559238578f'
                         key: {
@@ -3058,11 +4822,64 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: 'de41b453f9e849748f1667cf2e416139'
+                        key: {
+                            list_id: {
+                                id: '609e2d03f333412385677fb37b9e81bd'
+                                key: {
+                                    name: 'x_snc_prompt_galle_category'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'display_name'
+                        }
+                    },
+                    {
                         table: 'sys_index'
                         id: 'deafffe27fb34d648b1537f0770cfe3a'
                         key: {
                             logical_table_name: 'x_snc_prompt_galle_prompt_version'
                             col_name_string: 'prompt'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_view'
+                        id: 'Default view'
+                        key: {
+                            name: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'df4317e2bea74da7b61dce1dc10f2d60'
+                        key: {
+                            list_id: {
+                                id: '2aad08e62b7b432699a6bddc1d935502'
+                                key: {
+                                    name: 'x_snc_prompt_galle_engagement'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'geo_region'
                         }
                     },
                     {
@@ -3099,6 +4916,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: 'e2c62df07c364081adb7dd8d1a1f2eba'
+                        key: {
+                            list_id: {
+                                id: 'ca97c0bf18d0496fa2cdf6c59bbe82da'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_tag'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'tag'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'e47e6d8338a14bf1af08b05294c7a0fd'
                         key: {
@@ -3118,6 +4958,23 @@ declare global {
                                     name: 'x_snc_prompt_galle.prompt_admin'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list'
+                        id: 'e64e90bfabda4decbe97b5cc9327be40'
+                        key: {
+                            name: 'x_snc_prompt_galle_prompt'
+                            view: {
+                                id: 'Default view'
+                                key: {
+                                    name: 'NULL'
+                                }
+                            }
+                            sys_domain: 'global'
+                            element: 'NULL'
+                            relationship: 'NULL'
+                            parent: 'NULL'
                         }
                     },
                     {
@@ -3172,11 +5029,57 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: 'ebbb34bd73aa48c681f4c3f7436d4502'
+                        key: {
+                            list_id: {
+                                id: '2cff88c6dce048428347f990f595dac2'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_usage'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'tool_used'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'ebdc72a5050c4ca9a242376d4737e2d9'
                         key: {
                             name: 'x_snc_prompt_galle_prompt_version'
                             element: 'target_tool'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'ec3389d640f2479ba30a9acfd4fce1b7'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'prompt_body'
                         }
                     },
                     {
@@ -3204,6 +5107,29 @@ declare global {
                         key: {
                             name: 'x_snc_prompt_galle_prompt'
                             element: 'full_prompt_content'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'ee0d657abacc44eaaf624822f91d0881'
+                        key: {
+                            list_id: {
+                                id: '2aad08e62b7b432699a6bddc1d935502'
+                                key: {
+                                    name: 'x_snc_prompt_galle_engagement'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'start_date'
                         }
                     },
                     {
@@ -3271,6 +5197,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: 'f355dc08326c48989ffe10546340f603'
+                        key: {
+                            list_id: {
+                                id: '78d823f9bcbf4eb79adb9ea07cc897c4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_version'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'status'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'f435bd3152dc4fe687c436add3294338'
                         key: {
@@ -3301,6 +5250,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: 'f57c6baf60d2412d87bcd70c97371a7d'
+                        key: {
+                            list_id: {
+                                id: '2cff88c6dce048428347f990f595dac2'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_usage'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'context_description'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'f5805c926660474e8efdbcd3651db091'
                         key: {
@@ -3316,6 +5288,144 @@ declare global {
                             name: 'x_snc_prompt_galle_prompt_usage'
                             element: 'tool_used'
                             value: 'now_assist'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'f6d8cde4443c4cacb9956f8ab6bf1c5b'
+                        key: {
+                            list_id: {
+                                id: '2aad08e62b7b432699a6bddc1d935502'
+                                key: {
+                                    name: 'x_snc_prompt_galle_engagement'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'updated_on'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'f83dc37110f745f58177c47cbe979c0b'
+                        key: {
+                            list_id: {
+                                id: '8863ae30db9f4b2bbce8180da51a73b4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_tag'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'updated_on'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'f9bdb11bcc35424aaab0099cef2ef616'
+                        key: {
+                            list_id: {
+                                id: 'e64e90bfabda4decbe97b5cc9327be40'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: '.begin_split'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'fc7ae0e79e92436385aca5743c0c8f88'
+                        key: {
+                            list_id: {
+                                id: '8863ae30db9f4b2bbce8180da51a73b4'
+                                key: {
+                                    name: 'x_snc_prompt_galle_tag'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'tag_category'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'fce5b194c0ec450187730286a1e14548'
+                        key: {
+                            list_id: {
+                                id: '2aad08e62b7b432699a6bddc1d935502'
+                                key: {
+                                    name: 'x_snc_prompt_galle_engagement'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'name'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'feea3c7f308a4330bec256bebc5237c4'
+                        key: {
+                            list_id: {
+                                id: '2cff88c6dce048428347f990f595dac2'
+                                key: {
+                                    name: 'x_snc_prompt_galle_prompt_usage'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'display_value'
                         }
                     },
                     {

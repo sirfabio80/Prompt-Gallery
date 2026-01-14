@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>cc5bec331c524b10b231ebe2da5c9ec0</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_prompt_galle_prompt">
+    <x_snc_prompt_galle_prompt action="INSERT_OR_UPDATE">
+        <category display_value="Communication / Email">47e7fa46ee914f329f9348e405057cc3</category>
+        <created_by/>
+        <created_on/>
+        <full_prompt>&lt;div&gt;
+&lt;div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;"&gt;
+  &lt;h3 style="margin: 0; font-size: 24px;"&gt;]]>📧<![CDATA[ Professional Email Generator&lt;/h3&gt;
+  &lt;p style="margin: 10px 0 0 0; opacity: 0.9;"&gt;Master the art of professional business communication&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 15px 0;"&gt;
+  &lt;h4 style="color: #495057; margin-top: 0;"&gt;]]>📋<![CDATA[ Email Context&lt;/h4&gt;
+  &lt;div style="display: grid; grid-template-columns: 1fr 2fr; gap: 15px; align-items: center;"&gt;
+    &lt;div&gt;&lt;strong&gt;Recipient:&lt;/strong&gt;&lt;/div&gt;
+    &lt;div style="background-color: white; padding: 8px; border-radius: 4px;"&gt;{recipient}&lt;/div&gt;
+    
+    &lt;div&gt;&lt;strong&gt;Context:&lt;/strong&gt;&lt;/div&gt;
+    &lt;div style="background-color: white; padding: 8px; border-radius: 4px;"&gt;{context}&lt;/div&gt;
+    
+    &lt;div&gt;&lt;strong&gt;Purpose:&lt;/strong&gt;&lt;/div&gt;
+    &lt;div style="background-color: white; padding: 8px; border-radius: 4px;"&gt;{purpose}&lt;/div&gt;
+    
+    &lt;div&gt;&lt;strong&gt;Tone:&lt;/strong&gt;&lt;/div&gt;
+    &lt;div style="background-color: white; padding: 8px; border-radius: 4px;"&gt;{tone}&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h4 style="color: #343a40;"&gt;]]>🎯<![CDATA[ Key Points to Include&lt;/h4&gt;
+&lt;div style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 8px;"&gt;
+  &lt;p style="margin: 0; font-style: italic;"&gt;{key_points}&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h4 style="color: #343a40;"&gt;✉️ Email Requirements&lt;/h4&gt;
+&lt;div style="display: flex; gap: 20px; flex-wrap: wrap; margin: 15px 0;"&gt;
+  &lt;span style="background-color: #e3f2fd; color: #1976d2; padding: 8px 15px; border-radius: 20px; font-size: 14px;"&gt;]]>📝<![CDATA[ Well-structured&lt;/span&gt;
+  &lt;span style="background-color: #f3e5f5; color: #7b1fa2; padding: 8px 15px; border-radius: 20px; font-size: 14px;"&gt;]]>💼<![CDATA[ Professional&lt;/span&gt;
+  &lt;span style="background-color: #e8f5e8; color: #388e3c; padding: 8px 15px; border-radius: 20px; font-size: 14px;"&gt;⚡ Actionable&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;</full_prompt>
+        <is_active>true</is_active>
+        <latest_version_number>1</latest_version_number>
+        <name>Professional Email Generator</name>
+        <owner_team/>
+        <short_description>Generates professional emails for various customer communication scenarios</short_description>
+        <sys_created_by>fabio_1</sys_created_by>
+        <sys_created_on>2025-12-01 11:07:08</sys_created_on>
+        <sys_id>cc5bec331c524b10b231ebe2da5c9ec0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>fabio_1</sys_updated_by>
+        <sys_updated_on>2025-12-01 11:07:08</sys_updated_on>
+        <total_usage_count>31</total_usage_count>
+        <updated_by/>
+        <updated_on/>
+    </x_snc_prompt_galle_prompt>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>fabio.petito</sys_created_by>
+        <sys_created_on>2026-01-09 13:54:47</sys_created_on>
+        <sys_id>ea8ac0520f56be50a764d3d300d1b2d5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Professional Email Generator</sys_name>
+        <sys_package display_value="WDS Prompt Gallery" source="x_snc_prompt_galle">0189e2a593a17ed43321f2cbdd03d62e</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="WDS Prompt Gallery">0189e2a593a17ed43321f2cbdd03d62e</sys_scope>
+        <sys_update_name>sys_metadata_link_ea8ac0520f56be50a764d3d300d1b2d5</sys_update_name>
+        <sys_updated_by>fabio.petito</sys_updated_by>
+        <sys_updated_on>2026-01-09 13:54:47</sys_updated_on>
+        <tablename>x_snc_prompt_galle_prompt</tablename>
+    </sys_metadata_link>
+</record_update>

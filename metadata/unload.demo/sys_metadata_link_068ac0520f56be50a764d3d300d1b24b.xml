@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>6e267e20525349229853f12d04ae95d7</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_prompt_galle_prompt">
+    <x_snc_prompt_galle_prompt action="INSERT_OR_UPDATE">
+        <category display_value="Internal Productivity">65f6bd55c594448aa244e06a21666071</category>
+        <created_by/>
+        <created_on/>
+        <full_prompt>&lt;div&gt;
+&lt;h3&gt;⚡ Productivity Expert&lt;/h3&gt;
+&lt;p&gt;You are an &lt;strong&gt;organizational efficiency expert&lt;/strong&gt; who helps consulting teams optimize their workflows and productivity. You focus on practical, actionable improvements.&lt;/p&gt;
+
+&lt;h3&gt;]]>🎯<![CDATA[ Team Assessment&lt;/h3&gt;
+&lt;div style="background-color: #e8f5e8; padding: 15px; border-radius: 8px; margin: 15px 0;"&gt;
+  &lt;p&gt;&lt;strong&gt;Analyze our team's current situation:&lt;/strong&gt;&lt;/p&gt;
+  &lt;ul style="margin-bottom: 0;"&gt;
+    &lt;li&gt;&lt;strong&gt;Team Size:&lt;/strong&gt; {team_size}&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Project Type:&lt;/strong&gt; {project_type}&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Current Challenges:&lt;/strong&gt; {challenges}&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Tools Available:&lt;/strong&gt; {tools}&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Goals:&lt;/strong&gt; {goals}&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;]]>🔧<![CDATA[ Optimization Areas&lt;/h3&gt;
+&lt;p&gt;Provide specific, actionable recommendations for:&lt;/p&gt;
+&lt;div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 15px 0;"&gt;
+  &lt;div style="background-color: #fff3cd; padding: 15px; border-radius: 8px;"&gt;
+    &lt;h4 style="margin-top: 0; color: #856404;"&gt;]]>📋<![CDATA[ Workflow Optimization&lt;/h4&gt;
+    &lt;p style="margin-bottom: 0; font-size: 14px;"&gt;Streamline processes and eliminate bottlenecks&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style="background-color: #d4edda; padding: 15px; border-radius: 8px;"&gt;
+    &lt;h4 style="margin-top: 0; color: #155724;"&gt;]]>💬<![CDATA[ Communication Improvements&lt;/h4&gt;
+    &lt;p style="margin-bottom: 0; font-size: 14px;"&gt;Enhance team collaboration and information sharing&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style="background-color: #cce7ff; padding: 15px; border-radius: 8px;"&gt;
+    &lt;h4 style="margin-top: 0; color: #004085;"&gt;]]>🛠<![CDATA[️ Tool Utilization&lt;/h4&gt;
+    &lt;p style="margin-bottom: 0; font-size: 14px;"&gt;Maximize efficiency through better tool usage&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style="background-color: #f8d7da; padding: 15px; border-radius: 8px;"&gt;
+    &lt;h4 style="margin-top: 0; color: #721c24;"&gt;⏰ Time Management&lt;/h4&gt;
+    &lt;p style="margin-bottom: 0; font-size: 14px;"&gt;Optimize scheduling and prioritization&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</full_prompt>
+        <is_active>true</is_active>
+        <latest_version_number>1</latest_version_number>
+        <name>Team Productivity Optimizer</name>
+        <owner_team/>
+        <short_description>Helps optimize team workflows and productivity in consulting engagements</short_description>
+        <sys_created_by>fabio_1</sys_created_by>
+        <sys_created_on>2025-12-01 11:07:08</sys_created_on>
+        <sys_id>6e267e20525349229853f12d04ae95d7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>fabio_1</sys_updated_by>
+        <sys_updated_on>2025-12-01 11:07:08</sys_updated_on>
+        <total_usage_count>9</total_usage_count>
+        <updated_by/>
+        <updated_on/>
+    </x_snc_prompt_galle_prompt>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>fabio.petito</sys_created_by>
+        <sys_created_on>2026-01-09 13:54:45</sys_created_on>
+        <sys_id>068ac0520f56be50a764d3d300d1b24b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Team Productivity Optimizer</sys_name>
+        <sys_package display_value="WDS Prompt Gallery" source="x_snc_prompt_galle">0189e2a593a17ed43321f2cbdd03d62e</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="WDS Prompt Gallery">0189e2a593a17ed43321f2cbdd03d62e</sys_scope>
+        <sys_update_name>sys_metadata_link_068ac0520f56be50a764d3d300d1b24b</sys_update_name>
+        <sys_updated_by>fabio.petito</sys_updated_by>
+        <sys_updated_on>2026-01-09 13:54:45</sys_updated_on>
+        <tablename>x_snc_prompt_galle_prompt</tablename>
+    </sys_metadata_link>
+</record_update>

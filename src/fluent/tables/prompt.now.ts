@@ -6,7 +6,6 @@ import {
     ReferenceColumn,
     DateTimeColumn,
     IntegerColumn,
-    GenericColumn,
 } from '@servicenow/sdk/core'
 
 // Main Prompt table - represents conceptual prompts that can have multiple versions
@@ -18,7 +17,7 @@ export const x_snc_prompt_galle_prompt = Table({
     audit: true,
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
-    actions: ['read', 'update', 'delete', 'create'],
+    actions: ['read', 'update', 'create'],
     schema: {
         name: StringColumn({
             label: 'Name',
@@ -32,14 +31,14 @@ export const x_snc_prompt_galle_prompt = Table({
             label: 'Short Description',
             maxLength: 1000,
         }),
-        full_prompt: GenericColumn({
+        full_prompt: StringColumn({
             label: 'Full Prompt',
             maxLength: 65000,
             mandatory: true,
             attributes: {
                 internal_type: 'html', // HTML data type with rich text support
             },
-            columnType: 'html',
+            columnType: undefined,
         }),
         category: ReferenceColumn({
             label: 'Category',
@@ -150,4 +149,7 @@ export const x_snc_prompt_galle_prompt = Table({
             element: 'updated_by',
         },
     ],
+    allowClientScripts: true,
+    allowNewFields: true,
+    allowUiActions: true,
 })

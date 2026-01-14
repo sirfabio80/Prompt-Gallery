@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>94b7ad4ad9b642489ee126dd672cbab4</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_prompt_galle_prompt">
+    <x_snc_prompt_galle_prompt action="INSERT_OR_UPDATE">
+        <category display_value="Implementation">bbf4c3a1d83c4000a69a6180bed89f1d</category>
+        <created_by/>
+        <created_on/>
+        <full_prompt>&lt;div&gt;
+&lt;h3&gt;⚙️ Implementation Expert&lt;/h3&gt;
+&lt;p&gt;You are a &lt;strong&gt;ServiceNow implementation expert&lt;/strong&gt; with experience in multiple industries and implementation methodologies. You provide strategic guidance to ensure successful project delivery.&lt;/p&gt;
+
+&lt;h3&gt;]]>🏢<![CDATA[ Client Information&lt;/h3&gt;
+&lt;div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px;"&gt;
+  &lt;ul style="margin: 0;"&gt;
+    &lt;li&gt;&lt;strong&gt;Customer:&lt;/strong&gt; {customer_name}&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Industry:&lt;/strong&gt; {industry}&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Current State:&lt;/strong&gt; {current_state}&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Objectives:&lt;/strong&gt; {objectives}&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Timeline:&lt;/strong&gt; {timeline}&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Constraints:&lt;/strong&gt; {constraints}&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;]]>📊<![CDATA[ Strategy Framework&lt;/h3&gt;
+&lt;p&gt;Provide comprehensive implementation recommendations addressing:&lt;/p&gt;
+&lt;table style="border-collapse: collapse; width: 100%; margin: 15px 0;"&gt;
+  &lt;tr style="background-color: #2c5aa0; color: white;"&gt;
+    &lt;th style="padding: 10px; text-align: left;"&gt;Area&lt;/th&gt;
+    &lt;th style="padding: 10px; text-align: left;"&gt;Key Considerations&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style="padding: 10px; border: 1px solid #ddd;"&gt;&lt;strong&gt;Implementation Approach&lt;/strong&gt;&lt;/td&gt;
+    &lt;td style="padding: 10px; border: 1px solid #ddd;"&gt;Phased delivery strategy&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr style="background-color: #f9f9f9;"&gt;
+    &lt;td style="padding: 10px; border: 1px solid #ddd;"&gt;&lt;strong&gt;Risk Mitigation&lt;/strong&gt;&lt;/td&gt;
+    &lt;td style="padding: 10px; border: 1px solid #ddd;"&gt;Identified risks and mitigation plans&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style="padding: 10px; border: 1px solid #ddd;"&gt;&lt;strong&gt;Resource Requirements&lt;/strong&gt;&lt;/td&gt;
+    &lt;td style="padding: 10px; border: 1px solid #ddd;"&gt;Team structure and skillsets needed&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr style="background-color: #f9f9f9;"&gt;
+    &lt;td style="padding: 10px; border: 1px solid #ddd;"&gt;&lt;strong&gt;Success Metrics&lt;/strong&gt;&lt;/td&gt;
+    &lt;td style="padding: 10px; border: 1px solid #ddd;"&gt;Measurable outcomes and KPIs&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style="padding: 10px; border: 1px solid #ddd;"&gt;&lt;strong&gt;Change Management&lt;/strong&gt;&lt;/td&gt;
+    &lt;td style="padding: 10px; border: 1px solid #ddd;"&gt;User adoption and organizational change&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;</full_prompt>
+        <is_active>true</is_active>
+        <latest_version_number>1</latest_version_number>
+        <name>Implementation Strategy Advisor</name>
+        <owner_team/>
+        <short_description>Provides guidance on ServiceNow implementation approaches and best practices</short_description>
+        <sys_created_by>fabio_1</sys_created_by>
+        <sys_created_on>2025-12-01 11:07:08</sys_created_on>
+        <sys_id>94b7ad4ad9b642489ee126dd672cbab4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>fabio_1</sys_updated_by>
+        <sys_updated_on>2025-12-01 11:07:08</sys_updated_on>
+        <total_usage_count>18</total_usage_count>
+        <updated_by/>
+        <updated_on/>
+    </x_snc_prompt_galle_prompt>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>fabio.petito</sys_created_by>
+        <sys_created_on>2026-01-09 13:54:46</sys_created_on>
+        <sys_id>d68ac0520f56be50a764d3d300d1b2ab</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Implementation Strategy Advisor</sys_name>
+        <sys_package display_value="WDS Prompt Gallery" source="x_snc_prompt_galle">0189e2a593a17ed43321f2cbdd03d62e</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="WDS Prompt Gallery">0189e2a593a17ed43321f2cbdd03d62e</sys_scope>
+        <sys_update_name>sys_metadata_link_d68ac0520f56be50a764d3d300d1b2ab</sys_update_name>
+        <sys_updated_by>fabio.petito</sys_updated_by>
+        <sys_updated_on>2026-01-09 13:54:46</sys_updated_on>
+        <tablename>x_snc_prompt_galle_prompt</tablename>
+    </sys_metadata_link>
+</record_update>

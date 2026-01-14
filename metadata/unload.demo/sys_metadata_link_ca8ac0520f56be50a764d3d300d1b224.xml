@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>41daccd2186e4bf0ac543401c8b1c93b</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_prompt_galle_prompt">
+    <x_snc_prompt_galle_prompt action="INSERT_OR_UPDATE">
+        <category display_value="Documentation">f4d5a9583a454dd985ebc62f50407b44</category>
+        <created_by/>
+        <created_on/>
+        <full_prompt>&lt;h3&gt;]]>📚<![CDATA[ Knowledge Management Expert&lt;/h3&gt;&lt;p&gt;You are a &lt;strong&gt;knowledge management expert designing ServiceNow knowledge systems&lt;/strong&gt;. Create comprehensive strategies that capture, organize, and deliver knowledge effectively.&lt;/p&gt;&lt;h3&gt;]]>🧠<![CDATA[ Knowledge Strategy&lt;/h3&gt;&lt;div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 12px;"&gt;&lt;h4 style="margin-top: 0;"&gt;]]>📖<![CDATA[ Knowledge Context&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Organization:&lt;/strong&gt; {org_name}&lt;br&gt;&lt;strong&gt;Content Types:&lt;/strong&gt; {content_types}&lt;br&gt;&lt;strong&gt;Users:&lt;/strong&gt; {knowledge_users}&lt;/p&gt;&lt;/div&gt;&lt;div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 15px;"&gt;&lt;h4&gt;]]>🎯<![CDATA[ Key Deliverables&lt;/h4&gt;&lt;ul style="margin-bottom: 0;"&gt;&lt;li&gt;Knowledge taxonomy and structure&lt;/li&gt;&lt;li&gt;Content creation workflows&lt;/li&gt;&lt;li&gt;Search optimization strategy&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</full_prompt>
+        <is_active>true</is_active>
+        <latest_version_number>1</latest_version_number>
+        <name>ServiceNow Knowledge Management Designer</name>
+        <owner_team/>
+        <short_description>Designs comprehensive knowledge management strategies for ServiceNow implementations</short_description>
+        <sys_created_by>fabio_1</sys_created_by>
+        <sys_created_on>2025-12-01 17:55:56</sys_created_on>
+        <sys_id>41daccd2186e4bf0ac543401c8b1c93b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>fabio_1</sys_updated_by>
+        <sys_updated_on>2025-12-01 17:55:56</sys_updated_on>
+        <total_usage_count>15</total_usage_count>
+        <updated_by/>
+        <updated_on/>
+    </x_snc_prompt_galle_prompt>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>fabio.petito</sys_created_by>
+        <sys_created_on>2026-01-09 13:54:45</sys_created_on>
+        <sys_id>ca8ac0520f56be50a764d3d300d1b224</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ServiceNow Knowledge Management Designer</sys_name>
+        <sys_package display_value="WDS Prompt Gallery" source="x_snc_prompt_galle">0189e2a593a17ed43321f2cbdd03d62e</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="WDS Prompt Gallery">0189e2a593a17ed43321f2cbdd03d62e</sys_scope>
+        <sys_update_name>sys_metadata_link_ca8ac0520f56be50a764d3d300d1b224</sys_update_name>
+        <sys_updated_by>fabio.petito</sys_updated_by>
+        <sys_updated_on>2026-01-09 13:54:45</sys_updated_on>
+        <tablename>x_snc_prompt_galle_prompt</tablename>
+    </sys_metadata_link>
+</record_update>

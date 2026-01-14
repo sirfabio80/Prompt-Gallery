@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>ff402e1862c7483bb2c9afb008955a1a</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_prompt_galle_prompt">
+    <x_snc_prompt_galle_prompt action="INSERT_OR_UPDATE">
+        <category display_value="Discovery">520c13f1966849abac4f7fd2cd6dffb9</category>
+        <created_by/>
+        <created_on/>
+        <full_prompt>&lt;div&gt;
+&lt;h3&gt;]]>📋<![CDATA[ Business Analysis Expert&lt;/h3&gt;
+&lt;p&gt;You are a &lt;strong&gt;business analyst specialized in ServiceNow requirements gathering&lt;/strong&gt;. You help create comprehensive requirements documentation that leads to successful implementations.&lt;/p&gt;
+
+&lt;h3&gt;]]>🎯<![CDATA[ Project Context&lt;/h3&gt;
+&lt;div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #dee2e6;"&gt;
+  &lt;p&gt;&lt;strong&gt;Project:&lt;/strong&gt; {project_name}&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;Stakeholders:&lt;/strong&gt; {stakeholder_types}&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;Business Process:&lt;/strong&gt; {process_name}&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;Scope:&lt;/strong&gt; {project_scope}&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;]]>📝<![CDATA[ Deliverables&lt;/h3&gt;
+&lt;ol style="line-height: 1.8;"&gt;
+  &lt;li&gt;&lt;strong style="color: #0066cc;"&gt;Functional Requirements Template&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong style="color: #0066cc;"&gt;Non-functional Requirements Checklist&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong style="color: #0066cc;"&gt;Stakeholder Interview Questions&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong style="color: #0066cc;"&gt;Acceptance Criteria Framework&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong style="color: #0066cc;"&gt;Requirements Traceability Matrix&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong style="color: #0066cc;"&gt;Risk Assessment Questions&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</full_prompt>
+        <is_active>true</is_active>
+        <latest_version_number>1</latest_version_number>
+        <name>Requirements Gathering Assistant</name>
+        <owner_team/>
+        <short_description>Structured approach to gathering and documenting business requirements</short_description>
+        <sys_created_by>fabio_1</sys_created_by>
+        <sys_created_on>2025-12-01 17:55:57</sys_created_on>
+        <sys_id>ff402e1862c7483bb2c9afb008955a1a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>fabio_1</sys_updated_by>
+        <sys_updated_on>2025-12-01 17:55:57</sys_updated_on>
+        <total_usage_count>11</total_usage_count>
+        <updated_by/>
+        <updated_on/>
+    </x_snc_prompt_galle_prompt>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>fabio.petito</sys_created_by>
+        <sys_created_on>2026-01-09 13:54:49</sys_created_on>
+        <sys_id>768a04520f56be50a764d3d300d1b268</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Requirements Gathering Assistant</sys_name>
+        <sys_package display_value="WDS Prompt Gallery" source="x_snc_prompt_galle">0189e2a593a17ed43321f2cbdd03d62e</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="WDS Prompt Gallery">0189e2a593a17ed43321f2cbdd03d62e</sys_scope>
+        <sys_update_name>sys_metadata_link_768a04520f56be50a764d3d300d1b268</sys_update_name>
+        <sys_updated_by>fabio.petito</sys_updated_by>
+        <sys_updated_on>2026-01-09 13:54:49</sys_updated_on>
+        <tablename>x_snc_prompt_galle_prompt</tablename>
+    </sys_metadata_link>
+</record_update>

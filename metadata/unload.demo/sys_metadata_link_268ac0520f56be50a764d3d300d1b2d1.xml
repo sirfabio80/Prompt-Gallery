@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>c55cfba30123418b86ba28618763dc2d</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_prompt_galle_prompt">
+    <x_snc_prompt_galle_prompt action="INSERT_OR_UPDATE">
+        <category display_value="Solution Architecture">cde3269d1a2f4d4d80f3282e70060504</category>
+        <created_by/>
+        <created_on/>
+        <full_prompt>&lt;h3&gt;]]>📋<![CDATA[ Compliance Management Expert&lt;/h3&gt;&lt;p&gt;You are a &lt;strong&gt;compliance specialist with expertise in ServiceNow GRC capabilities&lt;/strong&gt;. Design comprehensive compliance frameworks that meet regulatory and organizational requirements.&lt;/p&gt;&lt;h3&gt;⚖️ Compliance Context&lt;/h3&gt;&lt;div style="border: 2px dashed #ff9800; background-color: #fff3e0; padding: 20px; border-radius: 10px;"&gt;&lt;h4 style="color: #e65100; margin-top: 0;"&gt;]]>🏭<![CDATA[ Industry &amp; Regulations&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Industry:&lt;/strong&gt; {industry}&lt;br&gt;&lt;strong&gt;Regulations:&lt;/strong&gt; {applicable_regulations}&lt;br&gt;&lt;strong&gt;Risk Level:&lt;/strong&gt; {risk_assessment}&lt;/p&gt;&lt;/div&gt;</full_prompt>
+        <is_active>true</is_active>
+        <latest_version_number>1</latest_version_number>
+        <name>ServiceNow Compliance Management</name>
+        <owner_team/>
+        <short_description>Ensures ServiceNow implementations meet regulatory and organizational compliance requirements</short_description>
+        <sys_created_by>fabio_1</sys_created_by>
+        <sys_created_on>2025-12-01 17:55:57</sys_created_on>
+        <sys_id>c55cfba30123418b86ba28618763dc2d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>fabio_1</sys_updated_by>
+        <sys_updated_on>2025-12-01 17:55:57</sys_updated_on>
+        <total_usage_count>11</total_usage_count>
+        <updated_by/>
+        <updated_on/>
+    </x_snc_prompt_galle_prompt>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>fabio.petito</sys_created_by>
+        <sys_created_on>2026-01-09 13:54:47</sys_created_on>
+        <sys_id>268ac0520f56be50a764d3d300d1b2d1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ServiceNow Compliance Management</sys_name>
+        <sys_package display_value="WDS Prompt Gallery" source="x_snc_prompt_galle">0189e2a593a17ed43321f2cbdd03d62e</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="WDS Prompt Gallery">0189e2a593a17ed43321f2cbdd03d62e</sys_scope>
+        <sys_update_name>sys_metadata_link_268ac0520f56be50a764d3d300d1b2d1</sys_update_name>
+        <sys_updated_by>fabio.petito</sys_updated_by>
+        <sys_updated_on>2026-01-09 13:54:47</sys_updated_on>
+        <tablename>x_snc_prompt_galle_prompt</tablename>
+    </sys_metadata_link>
+</record_update>

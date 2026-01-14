@@ -16,6 +16,10 @@ export * from './acls/table-acls.now.ts';
 // Export business rules
 export * from './business-rules/prompt-version-management.now.ts';
 
+// Export lists and form layouts  
+export * from './lists/prompt-form-layout.now.ts';
+export * from './lists/additional-table-layouts.now.ts';
+
 // Export Script Includes
 export * from './script-includes/prompt-gallery-api.now.ts';
 

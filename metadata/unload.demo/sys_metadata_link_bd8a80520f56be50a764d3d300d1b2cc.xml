@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>2b2546eee08b40be988743e535b714d8</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_prompt_galle_prompt">
+    <x_snc_prompt_galle_prompt action="INSERT_OR_UPDATE">
+        <category display_value="Discovery">520c13f1966849abac4f7fd2cd6dffb9</category>
+        <created_by/>
+        <created_on/>
+        <full_prompt>&lt;h3&gt;]]>🗺<![CDATA[️ Process Mapping Expert&lt;/h3&gt;&lt;p&gt;You are a &lt;strong&gt;business process analyst expert in process mapping and optimization&lt;/strong&gt;. Create detailed process documentation that enables effective ServiceNow automation.&lt;/p&gt;&lt;div style="background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%); color: white; padding: 20px; border-radius: 10px;"&gt;&lt;h4 style="margin-top: 0;"&gt;]]>📋<![CDATA[ Process Information&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Process:&lt;/strong&gt; {process_name}&lt;br&gt;&lt;strong&gt;Department:&lt;/strong&gt; {department}&lt;br&gt;&lt;strong&gt;Current State:&lt;/strong&gt; {current_state}&lt;/p&gt;&lt;/div&gt;</full_prompt>
+        <is_active>true</is_active>
+        <latest_version_number>1</latest_version_number>
+        <name>Business Process Mapping Expert</name>
+        <owner_team/>
+        <short_description>Documents and optimizes business processes for ServiceNow automation</short_description>
+        <sys_created_by>fabio_1</sys_created_by>
+        <sys_created_on>2025-12-01 17:55:56</sys_created_on>
+        <sys_id>2b2546eee08b40be988743e535b714d8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>fabio_1</sys_updated_by>
+        <sys_updated_on>2025-12-01 17:55:56</sys_updated_on>
+        <total_usage_count>21</total_usage_count>
+        <updated_by/>
+        <updated_on/>
+    </x_snc_prompt_galle_prompt>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>fabio.petito</sys_created_by>
+        <sys_created_on>2026-01-09 13:54:44</sys_created_on>
+        <sys_id>bd8a80520f56be50a764d3d300d1b2cc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Business Process Mapping Expert</sys_name>
+        <sys_package display_value="WDS Prompt Gallery" source="x_snc_prompt_galle">0189e2a593a17ed43321f2cbdd03d62e</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="WDS Prompt Gallery">0189e2a593a17ed43321f2cbdd03d62e</sys_scope>
+        <sys_update_name>sys_metadata_link_bd8a80520f56be50a764d3d300d1b2cc</sys_update_name>
+        <sys_updated_by>fabio.petito</sys_updated_by>
+        <sys_updated_on>2026-01-09 13:54:44</sys_updated_on>
+        <tablename>x_snc_prompt_galle_prompt</tablename>
+    </sys_metadata_link>
+</record_update>
