@@ -1,4 +1,4 @@
-function PromptGalleryEditController($scope, $sce, $timeout, spUtil, $window) {
+function PromptGalleryEditController($scope, $sce, $timeout, spUtil, $window, $location) {
   var c = this;
 
   // Controller properties
@@ -6,14 +6,29 @@ function PromptGalleryEditController($scope, $sce, $timeout, spUtil, $window) {
   c.isSubmitting = false;
   c.formData = {};
   c.originalData = {};
+  c.saveInProgress = false; // Track if a save operation initiated the message
 
   // Initialize controller
   c.$onInit = function() {
     c.initializeForm();
+    c.markedReady = false;
+    c.loadMarkedJS();
+    
+    // Initialize message timers
+    c.errorMessageTimer = null;
+    c.successMessageTimer = null;
+    
+    // Clear any stale success messages on page load
+    // Success messages should only appear after user saves
+    $scope.data.success_message = null;
+    
+    // Set up auto-clear for existing error messages only
+    c.setupMessageAutoClearing();
   };
 
   // Initialize form data
   c.initializeForm = function() {
+    
     if ($scope.data.prompt) {
       // Store original data for comparison
       c.originalData = angular.copy($scope.data.prompt);
@@ -45,12 +60,21 @@ function PromptGalleryEditController($scope, $sce, $timeout, spUtil, $window) {
 
   // Update prompt
   c.updatePrompt = function() {
-    if ($scope.promptForm.$invalid) {
-      spUtil.addErrorMessage('Please fix the form errors before saving.');
+    console.log("c.updatePrompt executed");
+    
+    // Clear any existing messages first
+    $scope.data.error = null;
+    $scope.data.success_message = null;
+    
+    // Check if form exists and is invalid
+    if ($scope.promptForm && $scope.promptForm.$invalid) {
+      // Set validation error message that will auto-clear
+      $scope.data.error = 'Please fix the form errors before saving.';
       return;
     }
 
     c.isSubmitting = true;
+    c.saveInProgress = true; // Mark that we're in a save operation
 
     var updateData = {
       action: 'update_prompt',
@@ -62,33 +86,40 @@ function PromptGalleryEditController($scope, $sce, $timeout, spUtil, $window) {
       is_active: c.formData.is_active
     };
 
-    $scope.server.update(updateData).then(function() {
+    $scope.server.get(updateData).then(function() {
       c.isSubmitting = false;
+      c.saveInProgress = false; // Clear the save operation flag
+      console.log("Update server response received");
       
+      // Check if server returned an error
       if ($scope.data.error_message) {
-        spUtil.addErrorMessage($scope.data.error_message);
-      } else if ($scope.data.success_message) {
-        spUtil.addInfoMessage($scope.data.success_message);
+        // Server returned an error
+        $scope.data.error = $scope.data.error_message;
+        $scope.data.error_message = null; // Clear the server field
+      } else {
+        // Save was successful - show success message
+        // Use server message if provided, otherwise use default
+        var successMsg = $scope.data.success_message || 'Prompt has been saved successfully!';
+        $scope.data.success_message = successMsg;
         
+        console.log("Success message set:", successMsg);
         // Update original data to reflect saved state
         c.originalData = angular.copy(c.formData);
-        
-        // Optionally redirect back to gallery after a delay
-        $timeout(function() {
-          if (c.shouldRedirectAfterSave()) {
-            c.goBackToGallery();
-          }
-        }, 2000);
       }
+      
+      console.log("Update completed successfully");
     }).catch(function(error) {
       c.isSubmitting = false;
-      spUtil.addErrorMessage('An error occurred while saving the prompt.');
-      console.error('Error saving prompt:', error);
+      c.saveInProgress = false; // Clear the save operation flag
+      // Error handling - show a user-friendly error message
+      console.error('Update failed:', error);
+      $scope.data.error = 'An unexpected error occurred while saving. Please try again.';
     });
   };
 
   // Cancel edit and go back
   c.cancelEdit = function() {
+    console.log("c.hasUnsavedChanges() ",c.hasUnsavedChanges());
     if (c.hasUnsavedChanges()) {
       if (confirm('You have unsaved changes. Are you sure you want to cancel?')) {
         c.goBackToGallery();
@@ -110,15 +141,15 @@ function PromptGalleryEditController($scope, $sce, $timeout, spUtil, $window) {
            c.formData.is_active !== c.originalData.is_active;
   };
 
-  // Determine if should redirect after save
-  c.shouldRedirectAfterSave = function() {
-    // Could add user preference here
-    return true;
-  };
 
   // Navigate back to gallery
   c.goBackToGallery = function() {
-    $window.location.href = '/prompt-gallery';
+    console.log("Inside c.goBackToGallery()");
+    var homepageId = $scope.data.homepage || 'prompt_gallery';
+    console.log("Inside c.goBackToGallery() homepageId: ",homepageId);
+    $location.search({
+      id: homepageId
+    });
   };
 
   // Get header style with category color gradient
@@ -201,7 +232,8 @@ function PromptGalleryEditController($scope, $sce, $timeout, spUtil, $window) {
   // Preview functionality
   c.previewPrompt = function() {
     if (!c.formData.full_prompt) {
-      spUtil.addErrorMessage('No content to preview.');
+      // Set error message that will auto-clear instead of using spUtil
+      $scope.data.error = 'No content to preview.';
       return;
     }
     
@@ -214,24 +246,197 @@ function PromptGalleryEditController($scope, $sce, $timeout, spUtil, $window) {
     }
   };
 
-  // Get preview HTML (safely)
+  // Load marked.js directly in the widget (same as prompt-gallery-detail)
+  c.loadMarkedJS = function() {
+    // First check if marked.js is already available from any source
+    if (typeof window.marked !== 'undefined') {
+      console.log('marked.js already available');
+      c.initMarked();
+      c.markedReady = true;
+      return;
+    }
+
+    // Load marked.js directly
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js';
+    script.async = true; // Load asynchronously to not block UI
+    
+    script.onload = function() {
+      console.log('marked.js loaded successfully');
+      if (typeof window.marked !== 'undefined') {
+        c.initMarked();
+        $timeout(function() {
+          c.markedReady = true;
+        });
+      } else {
+        console.warn('marked.js script loaded but window.marked not available');
+      }
+    };
+    
+    script.onerror = function(error) {
+      console.error('Failed to load marked.js:', error);
+      // Content is already showing, just won't have markdown enhancement
+    };
+    
+    // Add to head
+    document.head.appendChild(script);
+  };
+
+  // Configure marked options (same as prompt-gallery-detail)
+  c.initMarked = function() {
+    if (typeof window.marked !== 'undefined') {
+      // Configure marked if not already configured
+      if (!window.marked._configured) {
+        try {
+          window.marked.setOptions({
+            breaks: true,           // Convert \n to <br>
+            gfm: true,             // GitHub Flavored Markdown
+            headerIds: false,      // Disable auto header IDs (security)
+            mangle: false,         // Don't mangle email addresses
+            sanitize: false        // We'll use custom sanitization
+          });
+          window.marked._configured = true;
+          console.log('marked.js configured successfully');
+        } catch (e) {
+          console.error('Error configuring marked.js:', e);
+        }
+      }
+      return true;
+    }
+    return false;
+  };
+
+  // HTML escape for fallback
+  c.escapeHtml = function(text) {
+    var div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  };
+
+  // Basic sanitization - remove dangerous elements and attributes (same as prompt-gallery-detail)
+  c.sanitizeHtml = function(html) {
+    // Remove script tags
+    html = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+    
+    // Remove event handlers
+    html = html.replace(/\s*on\w+\s*=\s*["'][^"']*["']/gi, '');
+    
+    // Remove javascript: URLs
+    html = html.replace(/href\s*=\s*["']javascript:[^"']*["']/gi, 'href="#"');
+    html = html.replace(/src\s*=\s*["']javascript:[^"']*["']/gi, 'src="#"');
+    
+    // Remove style attributes that might contain expression()
+    html = html.replace(/style\s*=\s*["'][^"']*expression\s*\([^"']*["']/gi, '');
+    
+    // Remove potentially dangerous attributes
+    html = html.replace(/\s*(?:onload|onerror|onmouseover|onmouseout|onclick|ondblclick|onkeydown|onkeyup|onkeypress|onsubmit|onreset|onselect|onblur|onfocus|onabort)\s*=\s*["'][^"']*["']/gi, '');
+    
+    return html;
+  };
+
+  // Render Markdown to trusted HTML (enhanced preview with markdown support)
+  c.getRenderedMarkdown = function(content) {
+    if (!content) {
+      return $sce.trustAsHtml('<p class="empty-content">No content available</p>');
+    }
+
+    // If marked.js is ready, render as markdown
+    if (c.markedReady && typeof window.marked !== 'undefined') {
+      try {
+        console.log('Rendering markdown content in preview');
+        var rendered = window.marked.parse(content);
+        
+        // Basic XSS protection - remove script tags and event handlers
+        rendered = c.sanitizeHtml(rendered);
+        
+        return $sce.trustAsHtml(rendered);
+      } catch (e) {
+        console.error('Markdown parsing error:', e);
+        // Fall through to plain text rendering
+      }
+    }
+
+    // Fallback: Show content as preformatted text (better than nothing)
+    return $sce.trustAsHtml('<pre class="content-text">' + c.escapeHtml(content) + '</pre>');
+  };
+
+  // Get preview HTML (enhanced with markdown support)
   c.getPreviewHtml = function() {
     if (!c.formData.full_prompt) return '';
     
-    // Basic HTML sanitization/rendering
     var content = c.formData.full_prompt;
     
-    // If content contains HTML tags, trust it (assuming it's safe)
-    if (content.indexOf('<') !== -1) {
-      return $sce.trustAsHtml(content);
-    } else {
-      // Convert line breaks to <br> for plain text
-      return $sce.trustAsHtml(content.replace(/\n/g, '<br>'));
+    // Use the enhanced markdown rendering function
+    return c.getRenderedMarkdown(content);
+  };
+
+  // Setup auto-clearing for messages (only for errors on page load)
+  c.setupMessageAutoClearing = function() {
+    // Handle error_message field by moving it to error field
+    if ($scope.data.error_message) {
+      $scope.data.error = $scope.data.error_message;
+      $scope.data.error_message = null;
     }
+    
+    // Clear error message after 5 seconds if it exists
+    // (only errors should auto-clear on page load, not success messages)
+    if ($scope.data.error) {
+      c.clearErrorMessageAfterDelay();
+    }
+    
+    // Note: Success messages are not auto-cleared on page load
+    // They should only appear after user actions (save)
+  };
+
+  // Clear error message with timer
+  c.clearErrorMessageAfterDelay = function() {
+    // Clear any existing timer
+    if (c.errorMessageTimer) {
+      $timeout.cancel(c.errorMessageTimer);
+    }
+
+    // Set timer to clear error message after 5 seconds
+    c.errorMessageTimer = $timeout(function() {
+      $scope.data.error = null;
+      c.errorMessageTimer = null;
+    }, 5000);
+  };
+
+  // Clear success message with timer
+  c.clearSuccessMessageAfterDelay = function() {
+    // Clear any existing timer
+    if (c.successMessageTimer) {
+      $timeout.cancel(c.successMessageTimer);
+    }
+
+    // Set timer to clear success message after 5 seconds
+    c.successMessageTimer = $timeout(function() {
+      $scope.data.success_message = null;
+      c.successMessageTimer = null;
+    }, 5000);
+  };
+
+  // Manually clear error message
+  c.clearErrorMessage = function() {
+    if (c.errorMessageTimer) {
+      $timeout.cancel(c.errorMessageTimer);
+      c.errorMessageTimer = null;
+    }
+    $scope.data.error = null;
+  };
+
+  // Manually clear success message
+  c.clearSuccessMessage = function() {
+    if (c.successMessageTimer) {
+      $timeout.cancel(c.successMessageTimer);
+      c.successMessageTimer = null;
+    }
+    $scope.data.success_message = null;
   };
 
   // Form validation helpers
   c.isFieldInvalid = function(fieldName) {
+    if (!$scope.promptForm) return false;
     var field = $scope.promptForm[fieldName];
     return field && field.$invalid && field.$touched;
   };
@@ -277,7 +482,7 @@ function PromptGalleryEditController($scope, $sce, $timeout, spUtil, $window) {
     var autoSaveInterval = 30000; // 30 seconds
     
     c.autoSaveTimer = $timeout(function autoSave() {
-      if (c.hasUnsavedChanges() && !c.isSubmitting && $scope.promptForm.$valid) {
+      if (c.hasUnsavedChanges() && !c.isSubmitting && $scope.promptForm && $scope.promptForm.$valid) {
         console.log('Auto-saving draft...');
         // Could implement draft saving here
       }
@@ -291,6 +496,12 @@ function PromptGalleryEditController($scope, $sce, $timeout, spUtil, $window) {
   $scope.$on('$destroy', function() {
     if (c.autoSaveTimer) {
       $timeout.cancel(c.autoSaveTimer);
+    }
+    if (c.errorMessageTimer) {
+      $timeout.cancel(c.errorMessageTimer);
+    }
+    if (c.successMessageTimer) {
+      $timeout.cancel(c.successMessageTimer);
     }
   });
 
@@ -315,6 +526,38 @@ function PromptGalleryEditController($scope, $sce, $timeout, spUtil, $window) {
     if (newCategory !== oldCategory) {
       // Force update of dynamic styles by triggering digest cycle
       $scope.$evalAsync();
+    }
+  });
+
+  // Watch for marked.js ready state to trigger re-rendering of preview
+  $scope.$watch(function() { return c.markedReady; }, function(newVal, oldVal) {
+    if (newVal && !oldVal) {
+      console.log('Markdown renderer is ready for preview');
+      // Trigger digest to update preview if modal is open
+      $scope.$evalAsync();
+    }
+  });
+
+  // Watch for new error messages to set up auto-clear
+  $scope.$watch('data.error', function(newError, oldError) {
+    if (newError && newError !== oldError) {
+      c.clearErrorMessageAfterDelay();
+    }
+  });
+
+  // Watch for new success messages to set up auto-clear
+  $scope.$watch('data.success_message', function(newSuccess, oldSuccess) {
+    if (newSuccess && newSuccess !== oldSuccess) {
+      c.clearSuccessMessageAfterDelay();
+    }
+  });
+
+  // Watch for error_message field and consolidate into error field
+  $scope.$watch('data.error_message', function(newErrorMessage, oldErrorMessage) {
+    if (newErrorMessage && newErrorMessage !== oldErrorMessage) {
+      // Move error_message to error field so it gets auto-clear behavior
+      $scope.data.error = newErrorMessage;
+      $scope.data.error_message = null; // Clear the original field
     }
   });
 }

@@ -27,6 +27,10 @@ export const prompt_gallery_edit_widget = Record({
       data.success_message = '';
       data.error_message = '';
       
+      // Get homepage ID from portal configuration
+      var portalGr = $sp.getPortalRecord();
+      data.homepage = portalGr.getDisplayValue("homepage.id");
+      
       // Load prompt data
       function loadPromptData() {
         try {

@@ -4,21 +4,21 @@
     <div class="row">
       <div class="col-md-12">
         <!-- Error State -->
-        <div class="alert alert-danger" ng-if="data.error" role="alert">
+        <div class="alert alert-danger alert-dismissible" ng-if="data.error" role="alert">
           <i class="fa fa-exclamation-triangle"></i>
           {{data.error}}
+          <button type="button" class="close" ng-click="c.clearErrorMessage()" title="Dismiss">
+            <span>&times;</span>
+          </button>
         </div>
 
         <!-- Success Message -->
-        <div class="alert alert-success" ng-if="data.success_message" role="alert">
+        <div class="alert alert-success alert-dismissible" ng-if="data.success_message" role="alert">
           <i class="fa fa-check-circle"></i>
           {{data.success_message}}
-        </div>
-
-        <!-- Error Message -->
-        <div class="alert alert-danger" ng-if="data.error_message" role="alert">
-          <i class="fa fa-exclamation-triangle"></i>
-          {{data.error_message}}
+          <button type="button" class="close" ng-click="c.clearSuccessMessage()" title="Dismiss">
+            <span>&times;</span>
+          </button>
         </div>
 
         <!-- Loading State -->
@@ -233,15 +233,37 @@
               </div>
               <div class="modal-body">
                 <div class="preview-content">
-                  <h6>Name:</h6>
-                  <p class="preview-name">{{c.formData.name}}</p>
+                  <div class="preview-section" ng-if="c.formData.name">
+                    <h6 class="preview-label">Name:</h6>
+                    <p class="preview-name">{{c.formData.name}}</p>
+                  </div>
                   
-                  <h6>Description:</h6>
-                  <p class="preview-description">{{c.formData.short_description || 'No description provided'}}</p>
+                  <div class="preview-section" ng-if="c.formData.short_description">
+                    <h6 class="preview-label">Description:</h6>
+                    <p class="preview-description">{{c.formData.short_description}}</p>
+                  </div>
                   
-                  <h6>Content:</h6>
-                  <div class="preview-prompt" ng-bind-html="c.getPreviewHtml()"></div>
+                  <div class="preview-section">
+                    <h6 class="preview-label">Content:</h6>
+                    <div class="content-block markdown-content">
+                      <div class="markdown-rendered" ng-bind-html="c.getPreviewHtml()"></div>
+                    </div>
+                  </div>
+
+                  <!-- Loading indicator for markdown -->
+                  <div class="markdown-loading" ng-if="!c.markedReady && c.formData.full_prompt">
+                    <small class="text-muted">
+                      <i class="fa fa-spinner fa-spin"></i>
+                      Loading enhanced preview...
+                    </small>
+                  </div>
                 </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                  <i class="fa fa-times"></i>
+                  Close
+                </button>
               </div>
             </div>
           </div>
